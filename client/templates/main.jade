@@ -1,0 +1,24 @@
+.spacer-75.align-center
+  .search.inline-block.align-left.trans
+    form(action='')
+      input.block#search-term(type='text' placeholder='Search')
+      button.block.green#search Search
+.align-center
+  .content.bg-white-shade.box-center.box-shadow.align-center.trans#content-index
+
+    - if (items){
+    - each post in items
+      .content-cards.bg-white-pure.box-shadow-light.align-left.trans
+        a(href='/item/#{post.id}').title
+          | #{post.title}
+        .user
+          a(href='/#{post.author}')
+            //img.icon(src='#{post._user[0].icon}')
+            .name.text-small
+              | name
+              //| #{post._user[0].name}
+        .stats
+          img.icon(src='images/like.png')
+          .likes.align-center.grey
+            | #{post.likes}
+    - }

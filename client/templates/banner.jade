@@ -1,0 +1,21 @@
+nav.navbar.navbar-default
+  .navbar-header
+    a.navbar-brand.green(href="/") Blarney
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar .navbar-collapse')
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+  .nav.sidebar
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li
+          a(href ="http://node.la/auth/twitter") Login with Twitter 
+        li
+          a(href ="http://node.la/v1/items") API
+      ul.nav.navbar-nav.pull-right
+        li.btn-success 
+          a(href="/new") New
+        li 
+          a(href="profile") User
+        li.nav-user
+          a(href="/SteveDeLacy") Profile

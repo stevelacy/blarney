@@ -1,0 +1,46 @@
+.wrapper
+  .profile-background
+    img.img(src='#{profile.background}')
+  .spacer
+  .align-center.z-index
+    .content.bg-white-trans.box-center.box-shadow.align-left
+      .profile
+        .user
+          .icon
+            img(src='#{profile.image}')
+          //.name.text-large.white(class='#{profile.colors.name}')
+          .name.text-large.white
+            | #{profile.name}
+        .bio.bg.bg-white-pure
+          //.bio-left(class='#{profile.colors.bio}')
+          .bio-left
+            | #{profile.description}
+          .bio-right
+            a(href='http://Slacy.me') Slacy.me
+            br
+            a(href='http://Github.io/stevelacy') Github.io/stevelacy
+
+  .align-center.z-index
+    .spacer
+    .spacer
+    .content.bg-white-shade.box-center.box-shadow-light.align-center.profile-content
+      
+      - if (posts){
+      - each post in posts
+        .content-cards.bg-white-pure.box-shadow-light.align-left
+            a(href='/item/#{post.id}').title
+              | #{post.title}
+            .user
+              img.icon(src='#{profile.image}')
+              a(href='/#{profile.username}').name.text-small
+                | #{profile.name}
+            .stats
+              img.icon(src='/images/like.png')
+              .likes.align-center.grey
+                | #{post.likes}
+      - }
+      - else{
+        h2 
+          span.green #{profile.name} 
+          | has not posted yet
+      - }

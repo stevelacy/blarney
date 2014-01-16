@@ -1,0 +1,17 @@
+.spacer
+.align-center
+  .content.bg-white.box-center.box-shadow.align-left
+    .post-author.bg-grey.z-index
+      a(href='/#')
+        img(src='#{user.image}').icon 
+        .name.white #{user.name}
+        .bio.white #{user.description}
+
+    .post-title.text-med #{item.title}
+    .post-stats.grey#rating-post(data-id= '#{item.id}')
+      img(src='/images/like.png') 
+      span
+        | likes
+    br
+    .post-content #{item.content}
+    .spacer
