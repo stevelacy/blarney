@@ -1,4 +1,4 @@
-define ["models/Item", "models/User", "templates/post/main"],(Item, User, templ) ->
+define ["models/Item", "models/User", "templates/post/main", "app/auth"],(Item, User, templ, auth) ->
 
 
 	class View extends Backbone.Marionette.View
@@ -13,7 +13,7 @@ define ["models/Item", "models/User", "templates/post/main"],(Item, User, templ)
 					@userModel = new User _id: @json.author
 					@userModel.fetch
 						success: (user) =>
-							@.$el.html templ item:@json, user: user.toJSON()
+							@.$el.html templ item:@json, user: user.toJSON(), auth:auth
 							console.log user.toJSON()
 			return @
 		events:

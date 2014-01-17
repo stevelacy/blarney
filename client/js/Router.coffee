@@ -1,4 +1,10 @@
-define ['views/Main','views/Item', 'views/Banner', 'views/New', 'views/Profile', 'app/auth'], (Main, Item, Banner, New, Profile, auth) ->
+define [
+	'views/Main',
+	'views/Item',
+	'views/Banner',
+	'views/New',
+	'views/Profile',
+	'app/auth'], (Main, Item, Banner, New, Profile, auth) ->
 
 
 

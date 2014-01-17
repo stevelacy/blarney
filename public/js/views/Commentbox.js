@@ -2,7 +2,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(["models/Item", "models/User", "templates/post/main", "app/auth"], function(Item, User, templ, auth) {
+  define(["models/Comment", "app/Router", "templates/post/commentbox", "app/auth"], function(Comment, Router, templ, auth) {
     var View, _ref;
     return View = (function(_super) {
       __extends(View, _super);
@@ -13,36 +13,17 @@
       }
 
       View.prototype.render = function() {
-        var _this = this;
-        console.log(this.id);
-        this.model = new Item({
+        this.model = new Comment;
+        this.$el.html(templ({
+          auth: auth,
           id: this.id
-        });
-        this.model.fetch({
-          success: function(data) {
-            _this.json = data.toJSON();
-            console.log(_this.json);
-            _this.userModel = new User({
-              _id: _this.json.author
-            });
-            return _this.userModel.fetch({
-              success: function(user) {
-                _this.$el.html(templ({
-                  item: _this.json,
-                  user: user.toJSON(),
-                  auth: auth
-                }));
-                return console.log(user.toJSON());
-              }
-            });
-          }
-        });
+        }));
         return this;
       };
 
       View.prototype.events = {
         "submit form": "saveData",
-        "click .delete": "destroyModel"
+        "click #delete": "destroyModel"
       };
 
       View.prototype.saveData = function(e) {
@@ -51,7 +32,6 @@
         itemData = this.getFormData(this.$el.find("form"));
         console.log(itemData);
         return this.model.save(itemData, {
-          patch: true,
           success: function(data) {
             return console.log(data);
           }

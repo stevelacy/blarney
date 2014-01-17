@@ -189,7 +189,7 @@ a:hover {
   top: 0;
   right: 0;
   width: 20%;
-  min-height: 150px;
+  height: 100%;
 }
 .post-author .icon {
   position: relative;
@@ -284,12 +284,16 @@ a:hover {
   font-family: 'Open Sans', sans-serif;
 }
 .new-comment {
-  width: 100%;
+  width: 80%;
   min-height: 200px;
   padding: 20px 5%;
   margin: 50px 0 0 0;
   display: block;
   float: left;
+}
+.new-comment textarea {
+  width: 100%;
+  min-height: 200px;
 }
 .profile-background {
   position: absolute;
@@ -510,7 +514,7 @@ a:hover {
     top: 0;
     right: 0;
     width: 100%;
-    min-height: 73px;
+    height: 73px;
   }
   .post-author .bio {
     display: none;
