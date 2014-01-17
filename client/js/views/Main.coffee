@@ -1,25 +1,25 @@
 define ['models/Item','collections/Users' , 'templates/main'], (Item, Users, templ) ->
 
-	users = new Users()
+  users = new Users()
 
-	class View extends Backbone.Marionette.View
+  class View extends Backbone.Marionette.View
 
-		render: ->
-			items = new Item author:true
+    render: ->
+      items = new Item author:true
 
-			items.fetch
-				success: (items) =>
-					test = items.toJSON()
-					console.log test[0].author.name
-					@.$el.html templ items:items.toJSON()
+      items.fetch
+        success: (items) =>
+          test = items.toJSON()
+          console.log test[0].author.name
+          @.$el.html templ items:items.toJSON()
 
-			return @
+      return @
 
-		events:
-			"click input[type=button]": "runTest"
+    events:
+      "click input[type=button]": "runTest"
 
-		runTest: (e) ->
-			console.log $("#test").val()
+    runTest: (e) ->
+      console.log $("#test").val()
 
-	
+  
 
