@@ -1,10 +1,8 @@
 define ->
-  logged = false
-  request = $.ajax
-    type: "GET"
-    url: '/checkauth'
-    statusCode: ->
-      200: ->
-        logged "status 200"
-        logged = true
-  return logged
+  auth =
+    loggedIn: -> window._loggedIn
+    id: -> window._loggedInId
+    image: -> window._image
+    clearToken: -> window.location.href = "/logout"
+    login: -> dermis.router.show "/login"
+  return auth

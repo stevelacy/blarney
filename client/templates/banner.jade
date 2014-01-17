@@ -9,13 +9,16 @@ nav.navbar.navbar-default
     .navbar-collapse.collapse
       ul.nav.navbar-nav
         li
-          a(href ="http://node.la/auth/twitter") Login with Twitter 
-        li
           a(href ="http://node.la/v1/items") API
-      ul.nav.navbar-nav.pull-right
-        li.btn-success 
-          a(href="/new") New
-        li 
-          a(href="profile") User
-        li.nav-user
-          a(href="/SteveDeLacy") Profile
+      ul.nav.navbar-nav.pull-right.position-relative
+        if auth.loggedIn()
+          li.btn-success 
+            a(href="/new") New
+          li 
+            a(href="profile") User
+          .nav-user
+            a(href="/SteveDeLacy")
+              img(src="#{auth.image()}" alt="")
+        else
+          li
+            a(href ="http://node.la/auth/twitter") Login with Twitter 

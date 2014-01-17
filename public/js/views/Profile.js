@@ -16,16 +16,14 @@
         var _this = this;
         console.log("handle " + this.id);
         this.model = new User({
-          id: this.id
+          urlRoot: "http://node.la/v1/users?handle=" + this.id
         });
         this.model.fetch({
           success: function(data) {
             _this.json = data.toJSON();
-            console.log(_this.json);
             _this.itemModel = new Item({
-              author: _this.json._id
+              author: _this.json[0]._id
             });
-            console.log("username " + _this.json.handle);
             return _this.itemModel.fetch({
               success: function(items) {
                 _this.$el.html(templ({

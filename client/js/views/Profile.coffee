@@ -5,13 +5,11 @@ define ["models/User", "models/Item", "templates/profile/main"],(User, Item ,tem
 				
 		render: ->
 			console.log "handle #{@id}"
-			@model = new User id: @id
+			@model = new User urlRoot: "http://node.la/v1/users?handle=#{@id}"
 			@model.fetch
 				success: (data) =>
 					@json = data.toJSON()
-					console.log @json
-					@itemModel = new Item author: @json._id
-					console.log "username #{@json.handle}"
+					@itemModel = new Item author: @json[0]._id
 					@itemModel.fetch
 						success: (items) =>
 							@.$el.html templ profile:@json, posts: items.toJSON()

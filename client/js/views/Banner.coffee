@@ -1,8 +1,8 @@
-define ['templates/banner'],(templ)->
+define ['templates/banner', 'app/auth'],(templ, auth)->
 	class View extends Backbone.Marionette.View
 
 		render: ->
-			@$el.html templ test:"test"
+			@$el.html templ auth: auth
 			return @
 
 		events:

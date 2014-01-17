@@ -1,10 +1,13 @@
-script(src="http://code.jquery.com/jquery-2.0.3.min.js")
-script(src="http://underscorejs.org/underscore-min.js")
-script(src="http://backbonejs.org/backbone-min.js")
-script(src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
-script(src="/js/style.js")
-script(src="/js/vendor/marionette.min.js")
-script(src="/js/vendor/require.js")
+include ./templates/mixins/src.jade
+
++js("http://code.jquery.com/jquery-2.0.3.min.js")
++js("http://underscorejs.org/underscore-min.js")
++js("http://backbonejs.org/backbone-min.js")
++js("//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
++js("/js/style.js")
++js("/js/vendor/marionette.min.js")
++js("/js/vendor/require.js")
++js('/js/loggedIn.js')
 script
   require({
     baseUrl: ".",

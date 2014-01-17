@@ -2,7 +2,7 @@ app = require './express'
 path = require 'path'
 
 
-restFile = path.join 'public', "index.html"
+rootFile = path.join 'public', "index.html"
 
 
 app.get '/checkauth', (req, res) ->
@@ -10,4 +10,4 @@ app.get '/checkauth', (req, res) ->
   res.send 200
 
 app.get '/*', (req, res) ->
-  res.sendfile restFile
+  res.sendfile rootFile, {user: req.user}

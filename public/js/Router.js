@@ -1,7 +1,6 @@
 (function() {
   define(['views/Main', 'views/Item', 'views/Banner', 'views/New', 'views/Profile', 'app/auth'], function(Main, Item, Banner, New, Profile, auth) {
     var AppRouter, appRouter, bannerView;
-    console.log(auth);
     AppRouter = Backbone.Router.extend({
       routes: {
         "": "main",

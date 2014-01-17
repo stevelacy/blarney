@@ -2,7 +2,7 @@ define ['views/Main','views/Item', 'views/Banner', 'views/New', 'views/Profile',
 
 
 
-	console.log auth
+
 
 
 

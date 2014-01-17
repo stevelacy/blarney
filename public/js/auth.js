@@ -1,20 +1,24 @@
 (function() {
   define(function() {
-    var logged, request;
-    logged = false;
-    request = $.ajax({
-      type: "GET",
-      url: '/checkauth',
-      statusCode: function() {
-        return {
-          200: function() {
-            logged("status 200");
-            return logged = true;
-          }
-        };
+    var auth;
+    auth = {
+      loggedIn: function() {
+        return window._loggedIn;
+      },
+      id: function() {
+        return window._loggedInId;
+      },
+      image: function() {
+        return window._image;
+      },
+      clearToken: function() {
+        return window.location.href = "/logout";
+      },
+      login: function() {
+        return dermis.router.show("/login");
       }
-    });
-    return logged;
+    };
+    return auth;
   });
 
 }).call(this);

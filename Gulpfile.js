@@ -22,7 +22,7 @@ gulp.task("templates", function(){
 });
 
 gulp.task("jade", function(){
-	gulp.src("./client/index.jade")
+	gulp.src("./client/*.jade")
 	.pipe(jade())
 	.pipe(gulp.dest("./public"))
 	.pipe(reload(server));
@@ -68,8 +68,8 @@ gulp.task("watch", function(){
 		gulp.watch("./client/templates/**", function(e){
 			gulp.run("templates");
 		});
-		gulp.watch("./client/*.html", function(e){
-			gulp.run("copy");
+		gulp.watch("./client/*.jade", function(e){
+			gulp.run("jade");
 		});
 		gulp.watch("./client/index.jade", function(e){
 			gulp.run("jade");
