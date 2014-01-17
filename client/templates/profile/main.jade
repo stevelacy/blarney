@@ -1,20 +1,20 @@
 .wrapper
   .profile-background
-    img.img(src='#{profile.background}')
+    img.img(src='#{profile[0].background}')
   .spacer
   .align-center.z-index
     .content.bg-white-trans.box-center.box-shadow.align-left
       .profile
         .user
           .icon
-            img(src='#{profile.image}')
+            img(src='#{profile[0].image}')
           //.name.text-large.white(class='#{profile.colors.name}')
           .name.text-large.white
-            | #{profile.name}
+            | #{profile[0].name}
         .bio.bg.bg-white-pure
           //.bio-left(class='#{profile.colors.bio}')
           .bio-left
-            | #{profile.description}
+            | #{profile[0].description}
           .bio-right
             a(href='http://Slacy.me') Slacy.me
             br
@@ -31,9 +31,9 @@
             a(href='/item/#{post.id}').title
               | #{post.title}
             .user
-              img.icon(src='#{profile.image}')
-              a(href='/#{profile.username}').name.text-small
-                | #{profile.name}
+              img.icon(src='#{profile[0].image}')
+              a(href='/#{profile[0].handle}').name.text-small
+                | #{profile[0].name}
             .stats
               img.icon(src='/images/like.png')
               .likes.align-center.grey
@@ -41,6 +41,6 @@
       - }
       - else{
         h2 
-          span.green #{profile.name} 
+          span.green #{profile[0].name} 
           | has not posted yet
       - }

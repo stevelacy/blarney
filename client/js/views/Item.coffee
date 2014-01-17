@@ -10,7 +10,7 @@ define ["models/Item", "models/User", "templates/post/main"],(Item, User, templ)
 				success: (data) =>
 					@json = data.toJSON()
 					console.log @json
-					@userModel = new User id: @json.author
+					@userModel = new User _id: @json.author
 					@userModel.fetch
 						success: (user) =>
 							@.$el.html templ item:@json, user: user.toJSON()

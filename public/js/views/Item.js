@@ -23,7 +23,7 @@
             _this.json = data.toJSON();
             console.log(_this.json);
             _this.userModel = new User({
-              id: _this.json.author
+              _id: _this.json.author
             });
             return _this.userModel.fetch({
               success: function(user) {

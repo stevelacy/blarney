@@ -16,7 +16,7 @@
         var _this = this;
         console.log("handle " + this.id);
         this.model = new User({
-          urlRoot: "http://node.la/v1/users?handle=" + this.id
+          handle: this.id
         });
         this.model.fetch({
           success: function(data) {
@@ -26,11 +26,13 @@
             });
             return _this.itemModel.fetch({
               success: function(items) {
+                var test;
                 _this.$el.html(templ({
                   profile: _this.json,
                   posts: items.toJSON()
                 }));
-                return console.log(_this.json);
+                test = items.toJSON();
+                return console.log(test[0]);
               }
             });
           }

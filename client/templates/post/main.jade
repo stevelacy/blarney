@@ -2,10 +2,10 @@
 .align-center
   .content.bg-white.box-center.box-shadow.align-left
     .post-author.bg-grey.z-index
-      a(href='/#')
-        img(src='#{user.image}').icon 
-        .name.white #{user.name}
-        .bio.white #{user.description}
+      a(href='/#{user[0].handle}')
+        img(src='#{user[0].image}').icon 
+        .name.white #{user[0].name}
+        .bio.white #{user[0].description}
 
     .post-title.text-med #{item.title}
     .post-stats.grey#rating-post(data-id= '#{item.id}')

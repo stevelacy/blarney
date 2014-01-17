@@ -5,7 +5,7 @@ define ["models/User", "models/Item", "templates/profile/main"],(User, Item ,tem
 				
 		render: ->
 			console.log "handle #{@id}"
-			@model = new User urlRoot: "http://node.la/v1/users?handle=#{@id}"
+			@model = new User handle: @id
 			@model.fetch
 				success: (data) =>
 					@json = data.toJSON()
@@ -13,5 +13,6 @@ define ["models/User", "models/Item", "templates/profile/main"],(User, Item ,tem
 					@itemModel.fetch
 						success: (items) =>
 							@.$el.html templ profile:@json, posts: items.toJSON()
-							console.log @json
+							test = items.toJSON()
+							console.log test[0]
 			return @

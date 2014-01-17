@@ -12,7 +12,15 @@
         return _ref;
       }
 
-      Item.prototype.urlRoot = 'http://node.la/v1/items';
+      Item.prototype.urlRoot = '/v1/items';
+
+      Item.prototype.url = function() {
+        if (this.get('_id')) {
+          console.log("" + this.urlRoot + "?_id=" + (this.get('_id')));
+          return "" + this.urlRoot + "?_id=" + (this.get('_id'));
+        }
+        return this.urlRoot;
+      };
 
       return Item;
 
