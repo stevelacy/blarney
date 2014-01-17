@@ -9,7 +9,7 @@
     if items
       each post in items
         .content-cards.bg-white-pure.box-shadow-light.align-left.trans
-          a(href='/item/#{post.id}').title
+          a(href='/p/#{post.id}').title
             | #{post.title}
           .user
             a(href='/#{post.author.handle}')
