@@ -19,9 +19,17 @@
           console.log("" + this.urlRoot + "?_id=" + (this.get('_id')));
           return "" + this.urlRoot + "?_id=" + (this.get('_id'));
         }
+        if (this.get('id')) {
+          console.log("" + this.urlRoot + "/" + (this.get('id')));
+          return "" + this.urlRoot + "/" + (this.get('id'));
+        }
         if (this.get('author')) {
           console.log("" + this.urlRoot + "?populate=author");
           return "" + this.urlRoot + "?populate=author";
+        }
+        if (this.get('post')) {
+          console.log("" + this.urlRoot + "/" + (this.get('post')) + "?populate=author");
+          return "" + this.urlRoot + "/" + (this.get('post')) + "?populate=author";
         }
         return this.urlRoot;
       };

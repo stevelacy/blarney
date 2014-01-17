@@ -5,16 +5,11 @@ define ["models/Item", "models/User", "templates/post/main", "app/auth"],(Item, 
 			
 		render: ->
 			console.log @.id
-			@model = new Item id: @id, author:true
+			@model = new Item post:@id
 			@model.fetch
 				success: (data) =>
 					@json = data.toJSON()
-					console.log @json
-					@userModel = new User _id: @json.author
-					@userModel.fetch
-						success: (user) =>
-							@.$el.html templ item:@json, user: user.toJSON(), auth:auth
-							console.log user.toJSON()
+					@.$el.html templ item:@json, auth:auth
 			return @
 		events:
 			"submit form": "comment"

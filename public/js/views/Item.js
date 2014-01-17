@@ -16,26 +16,15 @@
         var _this = this;
         console.log(this.id);
         this.model = new Item({
-          id: this.id,
-          author: true
+          post: this.id
         });
         this.model.fetch({
           success: function(data) {
             _this.json = data.toJSON();
-            console.log(_this.json);
-            _this.userModel = new User({
-              _id: _this.json.author
-            });
-            return _this.userModel.fetch({
-              success: function(user) {
-                _this.$el.html(templ({
-                  item: _this.json,
-                  user: user.toJSON(),
-                  auth: auth
-                }));
-                return console.log(user.toJSON());
-              }
-            });
+            return _this.$el.html(templ({
+              item: _this.json,
+              auth: auth
+            }));
           }
         });
         return this;
