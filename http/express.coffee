@@ -16,6 +16,7 @@ app.use express.cookieParser()
 
 sessionStore = new MongoStore
   mongoose_connection: db
+  auto_reconnect: true
 
 app.use express.session
   store: sessionStore
