@@ -2,7 +2,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['models/Item', 'collections/Users', 'templates/main'], function(Item, Users, templ) {
+  define(['models/Post', 'collections/Users', 'templates/main'], function(Post, Users, templ) {
     var View, users, _ref;
     users = new Users();
     return View = (function(_super) {
@@ -16,16 +16,14 @@
       View.prototype.render = function() {
         var items,
           _this = this;
-        items = new Item({
+        items = new Post({
           author: true
         });
         items.fetch({
           success: function(items) {
-            var test;
-            test = items.toJSON();
-            console.log(test[0].author.name);
+            console.log(items);
             return _this.$el.html(templ({
-              items: items.toJSON()
+              items: items
             }));
           }
         });

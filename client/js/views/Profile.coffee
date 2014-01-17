@@ -1,4 +1,4 @@
-define ["models/User", "models/Item", "templates/profile/main"],(User, Item ,templ) ->
+define ["models/User", "models/Post", "templates/profile/main"],(User, Post ,templ) ->
 
 
 	class View extends Backbone.Marionette.View
@@ -9,7 +9,7 @@ define ["models/User", "models/Item", "templates/profile/main"],(User, Item ,tem
 			@model.fetch
 				success: (data) =>
 					@json = data.toJSON()
-					@itemModel = new Item author: @json[0]._id
+					@itemModel = new Post author: @json[0]._id
 					@itemModel.fetch
 						success: (items) =>
 							@.$el.html templ profile:@json, posts: items.toJSON()

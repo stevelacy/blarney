@@ -1,21 +1,21 @@
 (function() {
-  define(['views/Main', 'views/Item', 'views/Banner', 'views/New', 'views/Profile', 'app/auth'], function(Main, Item, Banner, New, Profile, auth) {
+  define(['views/Main', 'views/Post', 'views/Banner', 'views/New', 'views/Profile', 'app/auth'], function(Main, Post, Banner, New, Profile, auth) {
     var AppRouter, appRouter, bannerView;
     AppRouter = Backbone.Router.extend({
       routes: {
         "": "main",
-        "items/:id": "getItem",
-        "item/:id": "item",
+        "posts/:id": "getPost",
+        "p/:id": "post",
         "note/:id": "note",
         "new": "new",
         "*user": "profile"
       }
     });
     appRouter = new AppRouter;
-    appRouter.on('route:item', function(id) {
+    appRouter.on('route:post', function(id) {
       var view;
-      console.log("Item route called -  number is " + id);
-      view = new Item({
+      console.log("Post route called -  number is " + id);
+      view = new Post({
         id: id
       });
       return $("#content").html(view.render().el);
@@ -28,7 +28,7 @@
     });
     appRouter.on('route:new', function() {
       var view;
-      console.log("new item");
+      console.log("new post");
       view = new New;
       return $("#content").html(view.render().el);
     });

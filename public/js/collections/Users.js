@@ -12,7 +12,7 @@
         return _ref;
       }
 
-      Users.prototype.url = 'http://node.la/v1/users';
+      Users.prototype.url = '/v1/users';
 
       return Users;
 

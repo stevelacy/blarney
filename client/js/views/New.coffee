@@ -1,10 +1,10 @@
-define ["models/Item","app/Router", "templates/new/main"],(Item, Router, templ) ->
+define ["models/Post","app/Router", "templates/new/main"],(Post, Router, templ) ->
 
 
 	class View extends Backbone.Marionette.View
 				
 		render: ->
-			@model = new Item
+			@model = new Post
 			@$el.html templ
 			return @
 		events:

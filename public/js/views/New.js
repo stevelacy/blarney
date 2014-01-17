@@ -2,7 +2,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(["models/Item", "app/Router", "templates/new/main"], function(Item, Router, templ) {
+  define(["models/Post", "app/Router", "templates/new/main"], function(Post, Router, templ) {
     var View, _ref;
     return View = (function(_super) {
       __extends(View, _super);
@@ -13,7 +13,7 @@
       }
 
       View.prototype.render = function() {
-        this.model = new Item;
+        this.model = new Post;
         this.$el.html(templ);
         return this;
       };
