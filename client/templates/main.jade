@@ -12,10 +12,10 @@
           a(href='/item/#{post.id}').title
             | #{post.title}
           .user
-            a(href='/#{post.author}')
-              img.icon(src='#{post.author}')
+            a(href='/#{post.author.handle}')
+              img.icon(src='#{post.author.handle}')
               .name.text-small
-                | #{post.author}
+                | #{post.author.handle}
           .stats
             img.icon(src='images/like.png')
             .likes.align-center.grey
