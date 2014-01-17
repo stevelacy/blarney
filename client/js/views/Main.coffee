@@ -1,16 +1,18 @@
-define ['collections/Items','collections/Users' , 'templates/main'], (Items, Users, templ) ->
-	items = new Items()
+define ['models/Item','collections/Users' , 'templates/main'], (Item, Users, templ) ->
+
 	users = new Users()
 
 	class View extends Backbone.Marionette.View
 
 		render: ->
+			items = new Item author:true
+
 			items.fetch
 				success: (items) =>
-					console.log items.models
-					users.fetch
-						success: (users) =>
-							@.$el.html templ items:items.toJSON(), users: users.toJSON()
+					test = items.toJSON()
+					console.log test[0].author.name
+					@.$el.html templ items:items.toJSON()
+
 			return @
 
 		events:

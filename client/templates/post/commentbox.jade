@@ -2,12 +2,13 @@ if auth.loggedIn()
   .new-comment.bg-white-shade
     | Comment
     br
-    form(action='/comment' method='post')
-      textarea(name='message' id='message')
+    form
+      input(type='text' name='title' placeholder='Title')
+      textarea(name='content' placeholder="Message")
       input(type='hidden' name='post' id='post' value='#{id}')
       br
       br
-      input.bg-green.white#comment-submit(type='submit')
+      button.btn.btn-success(type='submit') Comment
 else
   .new-comment.bg-white-shade.align-center
     .spacer-50

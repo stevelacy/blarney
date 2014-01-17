@@ -15,18 +15,4 @@
     br
     .post-content #{item.content}
     .spacer
-    if auth.loggedIn()
-      .new-comment.bg-white-shade
-        | Comment
-        br
-        form(action='/comment' method='post')
-          textarea(name='message' id='message')
-          input(type='hidden' name='post' id='post' value='#{id}')
-          br
-          br
-          input.bg-green.white#comment-submit(type='submit')
-    else
-      .new-comment.bg-white-shade.align-center
-        .spacer-50
-        a(href='/login')
-          button.bg-green.white.inline-block Login to comment      
+    include ./commentbox      

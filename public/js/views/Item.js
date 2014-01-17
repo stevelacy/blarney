@@ -16,7 +16,8 @@
         var _this = this;
         console.log(this.id);
         this.model = new Item({
-          id: this.id
+          id: this.id,
+          author: true
         });
         this.model.fetch({
           success: function(data) {
@@ -41,28 +42,17 @@
       };
 
       View.prototype.events = {
-        "submit form": "saveData",
-        "click .delete": "destroyModel"
+        "submit form": "comment"
       };
 
-      View.prototype.saveData = function(e) {
+      View.prototype.comment = function(e) {
         var itemData;
         e.preventDefault();
         itemData = this.getFormData(this.$el.find("form"));
         console.log(itemData);
         return this.model.save(itemData, {
-          patch: true,
           success: function(data) {
             return console.log(data);
-          }
-        });
-      };
-
-      View.prototype.destroyModel = function(e) {
-        e.preventDefault();
-        return this.model.destroy({
-          success: function() {
-            return console.log("model destroyed");
           }
         });
       };

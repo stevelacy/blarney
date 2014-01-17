@@ -36,7 +36,7 @@ jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
 buf.push("<button type=\"submit\" class=\"btn btn-success margin\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
-buf.push("Save");
+buf.push("Post");
 jade.debug.shift();
 jade.debug.shift();
 buf.push("</button>");

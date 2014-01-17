@@ -19,6 +19,10 @@
           console.log("" + this.urlRoot + "?_id=" + (this.get('_id')));
           return "" + this.urlRoot + "?_id=" + (this.get('_id'));
         }
+        if (this.get('author')) {
+          console.log("" + this.urlRoot + "?populate=author");
+          return "" + this.urlRoot + "?populate=author";
+        }
         return this.urlRoot;
       };
 

@@ -5,7 +5,7 @@ define ["models/Item", "models/User", "templates/post/main", "app/auth"],(Item, 
 			
 		render: ->
 			console.log @.id
-			@model = new Item id: @id
+			@model = new Item id: @id, author:true
 			@model.fetch
 				success: (data) =>
 					@json = data.toJSON()
@@ -17,23 +17,17 @@ define ["models/Item", "models/User", "templates/post/main", "app/auth"],(Item, 
 							console.log user.toJSON()
 			return @
 		events:
-			"submit form": "saveData"
-			"click .delete": "destroyModel"
+			"submit form": "comment"
 
-		saveData: (e) ->
+		comment: (e) ->
 			e.preventDefault()
 			itemData = @getFormData(@$el.find("form"))
 			console.log itemData
 
 			@model.save itemData, 
-				patch: true
 				success: (data) ->
 					console.log data
-		destroyModel: (e) ->
-			e.preventDefault()
-			@model.destroy
-				success: ->
-					console.log "model destroyed"
+	
 			
 			
 

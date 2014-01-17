@@ -6,19 +6,18 @@
 .align-center
   .content.bg-white-shade.box-center.box-shadow.align-center.trans#content-index
 
-    - if (items){
-    - each post in items
-      .content-cards.bg-white-pure.box-shadow-light.align-left.trans
-        a(href='/item/#{post.id}').title
-          | #{post.title}
-        .user
-          a(href='/#{post.author}')
-            //img.icon(src='#{post._user[0].icon}')
-            .name.text-small
-              | name
-              //| #{post._user[0].name}
-        .stats
-          img.icon(src='images/like.png')
-          .likes.align-center.grey
-            | #{post.likes}
-    - }
+    if items
+      each post in items
+        .content-cards.bg-white-pure.box-shadow-light.align-left.trans
+          a(href='/item/#{post.id}').title
+            | #{post.title}
+          .user
+            a(href='/#{post.author}')
+              img.icon(src='#{post.author}')
+              .name.text-small
+                | #{post.author}
+          .stats
+            img.icon(src='images/like.png')
+            .likes.align-center.grey
+              | #{post.likes}
+    
