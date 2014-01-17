@@ -10,5 +10,14 @@
       each post in items
         .content-cards.bg-white-pure.box-shadow-light.align-left.trans
           a(href='/item/#{post.id}').title
-            | #{post.get('title')}
-         
+            | #{post.title}
+          .user
+            a(href='/#{post.author.handle}')
+              img.icon(src='#{post.author.image}')
+              .name.text-small
+                | #{post.author.name}
+          .stats
+            img.icon(src='images/like.png')
+            .likes.align-center.grey
+              | #{post.likes} 
+    
