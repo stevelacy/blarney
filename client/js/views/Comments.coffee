@@ -10,7 +10,7 @@ define ['collections/Comments','collections/Users' , 'templates/comments'], (Com
           console.log comments.models
           users.fetch
             success: (users) =>
-              @.$el.html templ comments:comments.toJSON(), users: users.toJSON()
+              @$el.html templ comments:comments.toJSON(), users: users.toJSON()
       return @
 
     events:

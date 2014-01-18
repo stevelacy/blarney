@@ -15,7 +15,7 @@
         return window.location.href = "/logout";
       },
       login: function() {
-        return dermis.router.show("/login");
+        return Backbone.history.navigate("/login");
       }
     };
     return auth;

@@ -1,6 +1,5 @@
 define ['collections/Posts','collections/Users' , 'templates/main'], (Posts, Users, templ) ->
 
-  users = new Users()
 
   class View extends Backbone.Marionette.View
 

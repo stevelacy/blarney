@@ -3,8 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(['collections/Posts', 'collections/Users', 'templates/main'], function(Posts, Users, templ) {
-    var View, users, _ref;
-    users = new Users();
+    var View, _ref;
     return View = (function(_super) {
       __extends(View, _super);
 

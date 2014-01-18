@@ -1,4 +1,4 @@
-define ["models/Post","app/Router", "templates/new/main"],(Post, Router, templ) ->
+define ["models/Post","app/Router", "templates/new/main", "app/auth"],(Post, Router, templ, auth) ->
 
 
 	class View extends Backbone.Marionette.View
@@ -6,6 +6,7 @@ define ["models/Post","app/Router", "templates/new/main"],(Post, Router, templ) 
 		render: ->
 			@model = new Post
 			@$el.html templ
+				auth: auth
 			return @
 		events:
 			"submit form": "saveData"

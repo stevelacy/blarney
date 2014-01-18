@@ -2,17 +2,17 @@
 .align-center
   .content.bg-white.box-center.box-shadow.align-left
     .post-author.bg-grey.z-index
-      a(href='/#{item.author.handle}')
-        img(src='#{item.author.image}').icon 
-        .name.white #{item.author.name}
-        .bio.white #{item.author.description}
+      a(href="/#{item.get('author').get('handle')}")
+        img.icon(src="#{item.get('author').get('image')}") 
+        .name.white #{item.get('author').get('name')}
+        .bio.white #{item.get('author').get('description')}
 
-    .post-title.text-med #{item.title}
-    .post-stats.grey#rating-post(data-id= '#{item.id}')
+    .post-title.text-med #{item.get('title')}
+    #rating-post.post-stats.grey(data-id= "#{item.get('id')}")
       img(src='/images/like.png') 
       span
         | likes
     br
-    .post-content #{item.content}
+    .post-content #{item.get('content')}
     .spacer
     include ./commentbox      

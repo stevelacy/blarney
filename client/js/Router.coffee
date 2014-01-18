@@ -7,12 +7,7 @@ define [
 	'app/auth'], (Main, Post, Banner, New, Profile, auth) ->
 
 
-
-
-
-
-
-	AppRouter = Backbone.Router.extend
+	class AppRouter extends Backbone.Router
 		routes:
 			"":"main"
 			"posts/:id":"getPost"
@@ -35,6 +30,7 @@ define [
 
 
 	appRouter.on 'route:new', () ->
+		return auth.login() unless auth.loggedIn()
 		console.log "new post"
 		view = new New
 		$("#content").html view.render().el
@@ -49,9 +45,6 @@ define [
 
 	bannerView = new Banner
 	$("#banner").html bannerView.render().el
-
-	unless window._loggedIn
-		console.log true
 
 
 	

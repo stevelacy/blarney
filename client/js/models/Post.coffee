@@ -1,6 +1,8 @@
-define ->
+define ['models/User'], (User) ->
   class Item extends Backbone.Model
     urlRoot: '/v1/items'
+    casts:
+      author: User
     url: ->
       if @get '_id'
         console.log "#{@urlRoot}?_id=#{@get '_id'}"
@@ -18,5 +20,11 @@ define ->
         console.log "#{@urlRoot}/#{@get 'post'}?populate=author"
         return "#{@urlRoot}/#{@get 'post'}?populate=author"        
       return @urlRoot
+
+    parse: (res) ->
+      return res unless @casts?
+      for k,v of @casts
+        res[k] = new v res[k], parse: true
+      return res
 
   return Item

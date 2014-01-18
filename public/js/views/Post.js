@@ -12,21 +12,24 @@
         return _ref;
       }
 
-      View.prototype.render = function() {
-        var _this = this;
-        console.log(this.id);
+      View.prototype.initialize = function() {
         this.model = new Post({
           post: this.id
         });
-        this.model.fetch({
-          success: function(data) {
-            _this.json = data.toJSON();
-            return _this.$el.html(templ({
-              item: _this.json,
-              auth: auth
-            }));
-          }
-        });
+        this.listenTo(this.model, "sync", this.render);
+        this.model.fetch();
+        return this;
+      };
+
+      View.prototype.render = function() {
+        if (!this.model.get('author')) {
+          return this;
+        }
+        this.$el.html(templ({
+          item: this.model,
+          auth: auth
+        }));
+        console.log(this.model);
         return this;
       };
 

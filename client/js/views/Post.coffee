@@ -2,15 +2,21 @@ define ["models/Post", "models/User", "templates/post/main", "app/auth"],(Post, 
 
 
 	class View extends Backbone.Marionette.View
-			
-		render: ->
-			console.log @.id
-			@model = new Post post:@id
-			@model.fetch
-				success: (data) =>
-					@json = data.toJSON()
-					@.$el.html templ item:@json, auth:auth
+		
+		initialize: ->
+			@model = new Post post: @id
+			@listenTo @model, "sync", @render
+			@model.fetch()
 			return @
+
+		render: ->
+			return @ unless @model.get('author')
+			@$el.html templ
+				item: @model
+				auth: auth
+			console.log @model
+			return @
+
 		events:
 			"submit form": "comment"
 

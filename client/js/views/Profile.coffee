@@ -12,7 +12,7 @@ define ["models/User", "models/Post", "templates/profile/main"],(User, Post ,tem
 					@itemModel = new Post author: @json[0]._id
 					@itemModel.fetch
 						success: (items) =>
-							@.$el.html templ profile:@json, posts: items.toJSON()
+							@$el.html templ profile:@json, posts: items.toJSON()
 							test = items.toJSON()
 							console.log test[0]
 			return @

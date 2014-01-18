@@ -1,16 +1,29 @@
 (function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
   define(['views/Main', 'views/Post', 'views/Banner', 'views/New', 'views/Profile', 'app/auth'], function(Main, Post, Banner, New, Profile, auth) {
-    var AppRouter, appRouter, bannerView;
-    AppRouter = Backbone.Router.extend({
-      routes: {
+    var AppRouter, appRouter, bannerView, _ref;
+    AppRouter = (function(_super) {
+      __extends(AppRouter, _super);
+
+      function AppRouter() {
+        _ref = AppRouter.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      AppRouter.prototype.routes = {
         "": "main",
         "posts/:id": "getPost",
         "p/:id": "post",
         "note/:id": "note",
         "new": "new",
         "*user": "profile"
-      }
-    });
+      };
+
+      return AppRouter;
+
+    })(Backbone.Router);
     appRouter = new AppRouter;
     appRouter.on('route:post', function(id) {
       var view;
@@ -28,6 +41,9 @@
     });
     appRouter.on('route:new', function() {
       var view;
+      if (!auth.loggedIn()) {
+        return auth.login();
+      }
       console.log("new post");
       view = new New;
       return $("#content").html(view.render().el);
@@ -41,10 +57,7 @@
       return $("#content").html(view.render().el);
     });
     bannerView = new Banner;
-    $("#banner").html(bannerView.render().el);
-    if (!window._loggedIn) {
-      return console.log(true);
-    }
+    return $("#banner").html(bannerView.render().el);
   });
 
 }).call(this);

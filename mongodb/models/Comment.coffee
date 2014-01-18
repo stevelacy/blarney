@@ -57,7 +57,7 @@ Comment.methods.authorize = (req) ->
   isAuthor = loggedIn and String(req.user._id) is String(this._id)
   perms =
     read: true
-    write: isAuthor
+    write: true
     delete: isAuthor
   return perms
 
@@ -65,7 +65,7 @@ Comment.statics.authorize = (req) ->
   loggedIn = req.user?
   perms =
     read: true
-    write: loggedIn
+    write: true
   return perms
 
 module.exports = Comment
