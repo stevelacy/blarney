@@ -1,6 +1,6 @@
 @import url(http//fonts.googleapis.com/css?family=Open\+Sans\:300)
 body
-  font-size 1.3em
+  font-size 1.1em
   font-family 'Open Sans', sans-serif
   font-weight light
 
@@ -23,7 +23,7 @@ button:focus
 .navbar
   padding-top 18px
   min-height 90px
-  font-size 1.2em
+  font-size 1.5em
   border-radius 0
   margin 0
 
@@ -93,7 +93,7 @@ nav .nav-user
   display inline-block
 
 .box-center
-  max-width 1200px
+  max-width 1600px
   width 90%
   margin-left 0
   display inline-block
@@ -160,7 +160,7 @@ nav .nav-user
     position absolute
     top 7px
     width 30px
-    font-size .5em
+    font-size 1em
 
 .post-title
   margin 1%
@@ -172,7 +172,7 @@ nav .nav-user
   height 40px
   margin-left 10px
   padding 10px
-  font-size .6em
+  font-size 1em
   img
     width 50px
     display block
@@ -196,26 +196,25 @@ nav .nav-user
   right 0
   width 20%
   height 100%
+  font-size 1.3em
   .icon
     position relative
     margin 10px 0 0 10px
     width 50px
     height 50px
-    overflow hidden
-    display block
-    float left
   .name
     margin 10px
     min-width 50px
     max-width 100%
-    display block
-    float left
-    word-wrap break-word
+    font-size 1.3em
   .bio
     margin 10px
+    max-width 90%
+  .icon, .name, .bio
+    word-wrap break-word
     display block
-    float left
-    font-size .7em
+    float left    
+    
 
 .comments-box
   position relative
@@ -405,6 +404,7 @@ nav .nav-user
     width 15%
     height 570px
     padding 20px
+    font-size 1.3em
   .post
     margin 1%
 
@@ -484,6 +484,28 @@ nav .nav-user
     margin 10px    
 
 
+  .post-author
+    position absolute
+    top 0
+    right 0
+    width 100%
+    height 73px
+
+    .bio
+      display block
+      float right
+      width 65%
+      height 60px
+      overflow hidden
+  
+  .post-title
+    margin-top 100px
+    margin-left 5%
+  
+  .post-content
+    max-width 95%
+    padding-left 5%
+
 @media all and (max-width: 500px)
 
   nav
@@ -499,9 +521,6 @@ nav .nav-user
     height 50px
     margin-left 1%
     padding 0
-   
-
-
 
   .content
     margin 0
@@ -511,25 +530,9 @@ nav .nav-user
     height 150px
     margin 2% 1% 0 1%
    
-  .post-author
-    position absolute
-    top 0
-    right 0
-    width 100%
-    height 73px
-  
+
   .post-author .bio
     display none
-  
-  .post-title
-    margin-top 100px
-    margin-left 5%
-  
-  .post-content
-    max-width 95%
-    padding-left 5%
-
-  
 
 
   .comments-box
@@ -542,7 +545,6 @@ nav .nav-user
     width 100%
     height 100px
   
-
 
   .profile .user
     position relative
@@ -565,7 +567,6 @@ nav .nav-user
     left 10%
     width 80%
   
-
 
   //New 
 
@@ -592,9 +593,6 @@ nav .nav-user
 
   .new .post
     margin 100px 0 0 20px
-
-
-
 
 
 

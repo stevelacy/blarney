@@ -1,4 +1,4 @@
-define ['collections/Posts','collections/Users' , 'templates/main'], (Posts, Users, templ) ->
+define ["collections/Posts", "collections/Users" , "templates/main", "app/auth"], (Posts, Users, templ, auth) ->
 
 
   class View extends Backbone.Marionette.View
@@ -15,6 +15,22 @@ define ['collections/Posts','collections/Users' , 'templates/main'], (Posts, Use
 
       return @
 
+    ###
+    initialize: ->
+      @model = new Posts
+        limit: 2
+      @listenTo @model, "sync", @render
+      @model.fetch()
+      return @
+
+    render: ->
+      return @ unless @model.get("author")
+      @$el.html templ
+        items: @model
+        auth: auth
+      console.log @model
+      return @
+    ###
     events:
       "click input[type=button]": "runTest"
 

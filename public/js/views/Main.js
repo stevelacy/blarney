@@ -2,7 +2,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['collections/Posts', 'collections/Users', 'templates/main'], function(Posts, Users, templ) {
+  define(["collections/Posts", "collections/Users", "templates/main", "app/auth"], function(Posts, Users, templ, auth) {
     var View, _ref;
     return View = (function(_super) {
       __extends(View, _super);
@@ -29,6 +29,24 @@
         });
         return this;
       };
+
+      /*
+      initialize: ->
+        @model = new Posts
+          limit: 2
+        @listenTo @model, "sync", @render
+        @model.fetch()
+        return @
+      
+      render: ->
+        return @ unless @model.get("author")
+        @$el.html templ
+          items: @model
+          auth: auth
+        console.log @model
+        return @
+      */
+
 
       View.prototype.events = {
         "click input[type=button]": "runTest"
