@@ -11,6 +11,9 @@
       image: function() {
         return window._image;
       },
+      handle: function() {
+        return window._handle;
+      },
       clearToken: function() {
         return window.location.href = "/logout";
       },

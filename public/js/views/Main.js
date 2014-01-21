@@ -16,7 +16,8 @@
         var items,
           _this = this;
         items = new Posts({
-          author: true
+          author: true,
+          limit: 2
         });
         items.fetch({
           success: function(items) {

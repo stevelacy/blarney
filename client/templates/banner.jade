@@ -10,14 +10,12 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav
         li
           a(href ="http://node.la/v1/items") API
-      ul.nav.navbar-nav.pull-right.position-relative
+      ul.nav.navbar-nav.right-nav
         if auth.loggedIn()
-          li.btn-success 
+          li.nav-user-pre
             a(href="/new") New
-          li 
-            a(href="profile") User
           .nav-user
-            a(href="/SteveDeLacy")
+            a(href="/#{auth.handle()}")
               img(src="#{auth.image()}" alt="")
         else
           li

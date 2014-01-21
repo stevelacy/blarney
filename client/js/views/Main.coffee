@@ -4,12 +4,14 @@ define ['collections/Posts','collections/Users' , 'templates/main'], (Posts, Use
   class View extends Backbone.Marionette.View
 
     render: ->
-      items = new Posts author:true
+      items = new Posts 
+        author: true
+        limit: 2
 
       items.fetch
         success: (items) =>
           console.log items.toJSON()
-          @.$el.html templ items:items.toJSON()
+          @.$el.html templ items: items.toJSON()
 
       return @
 

@@ -59,6 +59,7 @@ app.get '/js/loggedIn.js', (req, res) ->
   if req.user
     src += "\r\nwindow._loggedInId = \"#{req.user._id}\";"
     src += "\r\nwindow._image = \"#{req.user.image}\";"
+    src += "\r\nwindow._handle = \"#{req.user.handle}\";"
 
   res.set 'Content-Type', 'application/javascript'
   res.send 200, src  
