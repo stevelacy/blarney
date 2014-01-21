@@ -21,14 +21,14 @@ Comment = new Schema
     ref: 'User'
     authorize: noWrite
 
-  title:
+  content:
     type: String
     required: true
 
-  content:
-    type: String
-
-
+  post:
+    type: Schema.Types.ObjectId
+    ref: 'Post'
+    authorize: noWrite
 
   kind:
     type: String
@@ -57,7 +57,7 @@ Comment.methods.authorize = (req) ->
   isAuthor = loggedIn and String(req.user._id) is String(this._id)
   perms =
     read: true
-    write: true
+    write: isAuthor
     delete: isAuthor
   return perms
 
@@ -65,7 +65,7 @@ Comment.statics.authorize = (req) ->
   loggedIn = req.user?
   perms =
     read: true
-    write: true
+    write: isAuthor
   return perms
 
 module.exports = Comment

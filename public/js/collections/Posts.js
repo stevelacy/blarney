@@ -12,7 +12,7 @@
         return _ref;
       }
 
-      Items.prototype.url = '/v1/items?populate=author&limit=12';
+      Items.prototype.url = '/v1/posts?populate=author&limit=12';
 
       Items.prototype.model = Post;
 

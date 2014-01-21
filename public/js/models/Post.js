@@ -12,7 +12,7 @@
         return _ref;
       }
 
-      Item.prototype.urlRoot = '/v1/items';
+      Item.prototype.urlRoot = '/v1/posts';
 
       Item.prototype.casts = {
         author: User

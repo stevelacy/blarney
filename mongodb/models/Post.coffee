@@ -2,7 +2,6 @@ mongoose = require "mongoose"
 {Schema} = mongoose
 
 
-
 noWrite = ->
   perms =
     read: true
@@ -15,7 +14,7 @@ hidden = ->
     write: false
   return perms
 
-Item = new Schema
+Post = new Schema
   author:
     type: Schema.Types.ObjectId
     ref: 'User'
@@ -27,7 +26,6 @@ Item = new Schema
 
   content:
     type: String
-
 
 
   kind:
@@ -51,7 +49,7 @@ Item = new Schema
     default: Date.now
     authorize: noWrite
 
-Item.methods.authorize = (req) ->
+Post.methods.authorize = (req) ->
   isAuthor = false unless req.user?
   loggedIn = req.user?
   isAuthor = loggedIn and String(req.user._id) is String(this._id)
@@ -61,11 +59,11 @@ Item.methods.authorize = (req) ->
     delete: isAuthor
   return perms
 
-Item.statics.authorize = (req) ->
+Post.statics.authorize = (req) ->
   loggedIn = req.user?
   perms =
     read: true
     write: loggedIn
   return perms
 
-module.exports = Item
+module.exports = Post

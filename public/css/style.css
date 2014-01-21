@@ -1,4 +1,4 @@
-@import url("http//fonts.googleapis.com/css?family=Open+Sans:300");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300");
 body {
   font-size: 1.1em;
   font-family: 'Open Sans', sans-serif;
@@ -41,6 +41,10 @@ button:focus {
   color: #fff;
   background-color: #51891e !important;
   border-color: #398439;
+}
+textarea,
+input {
+  background: #fff;
 }
 .trans {
   -webkit-transition: all 0.4s ease;
@@ -86,6 +90,16 @@ nav .nav-user {
 }
 nav .nav-user img {
   height: 50px;
+}
+nav .nav-user ul {
+  position: absolute;
+  top: 60px;
+  left: -110px;
+}
+nav .nav-user .dropdown-menu {
+  border-radius: none !important;
+  -webkit-border-radius: none !important;
+  -moz-border-radius: none !important;
 }
 .position-relative {
   position: relative;

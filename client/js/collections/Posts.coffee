@@ -1,6 +1,6 @@
 define ["models/Post"],(Post) ->
   class Items extends Backbone.Collection
-    url: '/v1/items?populate=author&limit=12'
+    url: '/v1/posts?populate=author&limit=12'
     model: Post
     ###
     url: =>

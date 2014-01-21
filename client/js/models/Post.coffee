@@ -1,6 +1,6 @@
 define ['models/User'], (User) ->
   class Item extends Backbone.Model
-    urlRoot: '/v1/items'
+    urlRoot: '/v1/posts'
     casts:
       author: User
     url: ->

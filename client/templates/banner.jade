@@ -9,14 +9,20 @@ nav.navbar.navbar-default
     .navbar-collapse.collapse
       ul.nav.navbar-nav
         li
-          a(href ="http://node.la/v1/items") API
+          a(href ="http://node.la/v1/posts") API
       ul.nav.navbar-nav.right-nav
         if auth.loggedIn()
           li.nav-user-pre
             a(href="/new") New
           .nav-user
-            a(href="/#{auth.handle()}")
-              img(src="#{auth.image()}" alt="")
+            //a(href="/#{auth.handle()}")
+            .btn-group
+              img.dropdown-toggle(data-toggle='dropdown' src="#{auth.image()}" alt="")
+              ul.dropdown-menu
+                li
+                  a(href='#') Dropdown link
+                li
+                  a(href='#') Dropdown link
         else
           li
             a(href ="http://node.la/auth/twitter") Login with Twitter 
