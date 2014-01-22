@@ -1,6 +1,7 @@
 (function() {
-  define(['app/Router'], function(Router) {
-    var Claru;
+  define(function(require) {
+    var Claru, Router;
+    Router = require("app/Router");
     Claru = new Backbone.Marionette.Application;
     $(document).on('click', 'a[href^="/"]', function(evt) {
       var href, protocol;

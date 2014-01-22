@@ -1,4 +1,9 @@
-define ['collections/Comments','collections/Users' , 'templates/comments'], (Comments, Users, templ) ->
+define (require) ->
+  
+  Comments = require "collections/Comments"
+  Users = require "collections/Users"
+  templ = require "templates/comments"
+
   comments = new Comments()
   users = new Users()
 

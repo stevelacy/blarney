@@ -3,9 +3,6 @@ if auth.loggedIn()
     .spacer-50
     form
       textarea(name='content' placeholder="Message")
-      input(type='hidden' name='post' id='post' value='#{id}')
-      br
-      br
       button.btn.btn-success(type='submit') Comment
 else
   .new-comment.bg-white-shade.align-center

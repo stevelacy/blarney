@@ -2,8 +2,11 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['collections/Comments', 'collections/Users', 'templates/comments'], function(Comments, Users, templ) {
-    var View, comments, users, _ref;
+  define(function(require) {
+    var Comments, Users, View, comments, templ, users, _ref;
+    Comments = require("collections/Comments");
+    Users = require("collections/Users");
+    templ = require("templates/comments");
     comments = new Comments();
     users = new Users();
     return View = (function(_super) {

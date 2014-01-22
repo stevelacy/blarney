@@ -2,8 +2,14 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['views/Main', 'views/Post', 'views/Banner', 'views/New', 'views/Profile', 'app/auth'], function(Main, Post, Banner, New, Profile, auth) {
-    var AppRouter, appRouter, bannerView, _ref;
+  define(function(require) {
+    var AppRouter, Banner, Main, New, Post, Profile, appRouter, auth, bannerView, _ref;
+    Main = require('views/Main');
+    Post = require('views/Post');
+    Banner = require('views/Banner');
+    New = require('views/New');
+    Profile = require('views/Profile');
+    auth = require('app/auth');
     AppRouter = (function(_super) {
       __extends(AppRouter, _super);
 

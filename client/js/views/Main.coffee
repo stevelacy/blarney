@@ -1,4 +1,8 @@
-define ["collections/Posts", "collections/Users" , "templates/main", "app/auth"], (Posts, Users, templ, auth) ->
+define (require) ->
+  Posts = require "collections/Posts"
+  Users = require "collections/Users"
+  templ = require "templates/main"
+  auth = require "app/auth"
 
 
   class View extends Backbone.Marionette.View

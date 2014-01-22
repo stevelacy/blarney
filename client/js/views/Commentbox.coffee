@@ -1,4 +1,7 @@
-define ["models/Comment","app/Router", "templates/post/commentbox", "app/auth"],(Comment, Router, templ, auth) ->
+define (require) ->
+  Comment = require "models/Comment"
+  templ = require "templates/post/commentbox"
+  auth = require "app/auth"
 
 
   class View extends Backbone.Marionette.View

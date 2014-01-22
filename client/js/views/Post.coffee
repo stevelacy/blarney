@@ -1,5 +1,10 @@
-define ["models/Post", "models/User", "templates/post/main", "app/auth"],(Post, User, templ, auth) ->
+define (require) ->
 
+	Post    = require "models/Post" 
+	User    = require "models/User"
+	templ   = require "templates/post/main"
+	auth    = require "app/auth"
+	Comment = require "models/Comment"
 
 	class View extends Backbone.Marionette.View
 		
@@ -18,14 +23,15 @@ define ["models/Post", "models/User", "templates/post/main", "app/auth"],(Post, 
 			return @
 
 		events:
-			"submit form": "comment"
+			"submit form": "saveComment"
 
-		comment: (e) ->
-			e.preventDefault()
+		saveComment: (e) ->
+			e.preventDefault()			
+			comment = new Comment
+				post: @id
 			itemData = @getFormData(@$el.find("form"))
-			console.log itemData
 
-			@model.save itemData, 
+			comment.save itemData,
 				success: (data) ->
 					console.log data
 	

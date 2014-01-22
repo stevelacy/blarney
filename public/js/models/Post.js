@@ -2,8 +2,9 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(['models/User'], function(User) {
-    var Item, _ref;
+  define(function(require) {
+    var Item, User, _ref;
+    User = require("models/User");
     Item = (function(_super) {
       __extends(Item, _super);
 
@@ -19,10 +20,12 @@
       };
 
       Item.prototype.url = function() {
-        if (this.get('_id')) {
-          console.log("" + this.urlRoot + "?_id=" + (this.get('_id')));
-          return "" + this.urlRoot + "?_id=" + (this.get('_id'));
-        }
+        /*
+        if @get '_id'
+          console.log "#{@urlRoot}?_id=#{@get '_id'}"
+          return "#{@urlRoot}?_id=#{@get '_id'}"
+        */
+
         if (this.get('id')) {
           console.log("" + this.urlRoot + "/" + (this.get('id')));
           return "" + this.urlRoot + "/" + (this.get('id'));

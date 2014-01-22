@@ -1,4 +1,7 @@
-define ["models/User", "models/Post", "templates/profile/main"],(User, Post ,templ) ->
+define (require) ->
+	User = require "models/User"
+	Post = require "models/Post"
+	templ = require "templates/profile/main"
 
 
 	class View extends Backbone.Marionette.View

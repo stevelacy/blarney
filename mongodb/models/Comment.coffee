@@ -52,7 +52,6 @@ Comment = new Schema
     authorize: noWrite
 
 Comment.methods.authorize = (req) ->
-  isAuthor = false unless req.user?
   loggedIn = req.user?
   isAuthor = loggedIn and String(req.user._id) is String(this._id)
   perms =
@@ -65,7 +64,7 @@ Comment.statics.authorize = (req) ->
   loggedIn = req.user?
   perms =
     read: true
-    write: isAuthor
+    write: loggedIn
   return perms
 
 module.exports = Comment

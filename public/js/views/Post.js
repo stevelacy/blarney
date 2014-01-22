@@ -2,8 +2,13 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(["models/Post", "models/User", "templates/post/main", "app/auth"], function(Post, User, templ, auth) {
-    var View, _ref;
+  define(function(require) {
+    var Comment, Post, User, View, auth, templ, _ref;
+    Post = require("models/Post");
+    User = require("models/User");
+    templ = require("templates/post/main");
+    auth = require("app/auth");
+    Comment = require("models/Comment");
     return View = (function(_super) {
       __extends(View, _super);
 
@@ -34,15 +39,17 @@
       };
 
       View.prototype.events = {
-        "submit form": "comment"
+        "submit form": "saveComment"
       };
 
-      View.prototype.comment = function(e) {
-        var itemData;
+      View.prototype.saveComment = function(e) {
+        var comment, itemData;
         e.preventDefault();
+        comment = new Comment({
+          post: this.id
+        });
         itemData = this.getFormData(this.$el.find("form"));
-        console.log(itemData);
-        return this.model.save(itemData, {
+        return comment.save(itemData, {
           success: function(data) {
             return console.log(data);
           }

@@ -15,9 +15,9 @@
       Item.prototype.urlRoot = '/v1/comments';
 
       Item.prototype.url = function() {
-        if (this.get('_id')) {
-          console.log("" + this.urlRoot + "?_id=" + (this.get('_id')));
-          return "" + this.urlRoot + "?_id=" + (this.get('_id'));
+        if (this.get('post')) {
+          console.log("" + this.urlRoot + "/?populate=post");
+          return "" + this.urlRoot + "/?populate=post";
         }
         return this.urlRoot;
       };

@@ -1,13 +1,16 @@
-define ['models/User'], (User) ->
+define (require) ->
+  User = require "models/User"
+
   class Item extends Backbone.Model
     urlRoot: '/v1/posts'
     casts:
       author: User
     url: ->
+      ###
       if @get '_id'
         console.log "#{@urlRoot}?_id=#{@get '_id'}"
         return "#{@urlRoot}?_id=#{@get '_id'}"
-
+      ###
       if @get 'id'
         console.log "#{@urlRoot}/#{@get 'id'}"
         return "#{@urlRoot}/#{@get 'id'}"

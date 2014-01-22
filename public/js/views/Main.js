@@ -2,8 +2,12 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(["collections/Posts", "collections/Users", "templates/main", "app/auth"], function(Posts, Users, templ, auth) {
-    var View, _ref;
+  define(function(require) {
+    var Posts, Users, View, auth, templ, _ref;
+    Posts = require("collections/Posts");
+    Users = require("collections/Users");
+    templ = require("templates/main");
+    auth = require("app/auth");
     return View = (function(_super) {
       __extends(View, _super);
 

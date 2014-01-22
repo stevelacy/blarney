@@ -1,4 +1,5 @@
-define ['app/Router'], (Router) ->
+define (require) ->
+	Router = require "app/Router"
 
 	Claru = new Backbone.Marionette.Application
 
@@ -14,7 +15,8 @@ define ['app/Router'], (Router) ->
 		main: '#content'
 		footer: '#footer'
 	Claru.on 'initialize:after', ->
-		Backbone.history.start({ pushState: true })
+		Backbone.history.start
+			pushState: true
 	Claru.start()
 	
 
