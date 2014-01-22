@@ -13,4 +13,9 @@ crud.get('Post').pre 'handle', (req, res, next) ->
     req.body.author = req.user?._id
   next()
 
+crud.get('Comment').pre 'handle', (req, res, next) ->
+  if req.body and req.method is 'POST'
+    req.body.author = req.user?._id
+  next()
+
 module.exports = app

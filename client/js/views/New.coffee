@@ -22,7 +22,8 @@ define (require) ->
 
       @model.save itemData, 
         success: (data) ->
-          console.log data
+          Backbone.history.navigate "/p/#{data.id}", 
+            trigger: true
       
 
     getFormData: (form) ->

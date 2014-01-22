@@ -34,7 +34,9 @@
         console.log(itemData);
         return this.model.save(itemData, {
           success: function(data) {
-            return console.log(data);
+            return Backbone.history.navigate("/p/" + data.id, {
+              trigger: true
+            });
           }
         });
       };

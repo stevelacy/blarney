@@ -21,6 +21,7 @@ button:focus {
   font-size: 1.5em;
   border-radius: 0;
   margin: 0;
+  background: #fafafa;
 }
 .btn {
   border-radius: 0 !important;
@@ -96,10 +97,12 @@ nav .nav-user ul {
   top: 60px;
   left: -110px;
 }
-nav .nav-user .dropdown-menu {
-  border-radius: none !important;
-  -webkit-border-radius: none !important;
-  -moz-border-radius: none !important;
+nav .nav-user .navbar,
+nav .nav-user * {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border: none;
 }
 .position-relative {
   position: relative;
