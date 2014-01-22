@@ -7,12 +7,12 @@
         .name.white #{item.get('author').get('name')}
         .bio.white #{item.get('author').get('description')}
 
-    .post-title.text-med #{item.get('title')}
+    .post-title.text-huge #{item.get('title')}
     #rating-post.post-stats.grey(data-id= "#{item.get('id')}")
       img(src='/images/like.png') 
       span
         | likes
     br
-    .post-content #{item.get('content')}
+    .post-content.text-med #{item.get('content')}
     .spacer
     include ./commentbox

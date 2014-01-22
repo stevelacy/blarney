@@ -370,20 +370,22 @@ nav .nav-user
     right 10px
 
 .profile
+  font-size 1.5em
+  word-wrap break-word
   .user
     position relative
-    max-width 450px
-    height 100px
+    max-width 750px
+    max-height 400px
     margin 50px 0 0 5%
-  .icon
-    img
-      width 100px
-      height 100px
-  .name
-    position absolute
-    top 12px
-    left 105px
-    overflow hidden
+    .icon
+      img
+        width 100px
+        height 100px
+    .name
+      position absolute
+      top 18px
+      left 105px
+      overflow hidden
   .bio
     position relative
     width 90%
@@ -393,13 +395,12 @@ nav .nav-user
     width 60%
   .bio-right
     width 40%
-
-.profile .bio-left, .profile .bio-right
-  height 100%
-  padding 5%
-  display block
-  float left
-  overflow hidden
+  .bio-left, .bio-right
+    height 100%
+    padding 5%
+    display block
+    float left
+    overflow hidden
 
 .profile-content
   min-height 0px
@@ -508,6 +509,8 @@ nav .nav-user
     right 0
     width 100%
     height 73px
+    .name
+      width 20%
 
     .bio
       display block
@@ -523,6 +526,14 @@ nav .nav-user
   .post-content
     max-width 95%
     padding-left 5%
+
+@media all and (max-width: 690px)
+  .post-author
+    .name
+      width 80%
+      padding-top 10px
+    .bio
+      display none
 
 @media all and (max-width: 500px)
 
@@ -549,8 +560,11 @@ nav .nav-user
     margin 2% 1% 0 1%
    
 
-  .post-author .bio
-    display none
+  .post-author 
+    .bio
+      display none
+    .name
+      width 60%
 
 
   .comments-box
