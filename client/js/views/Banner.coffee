@@ -1,15 +1,18 @@
-define ['templates/banner', 'app/auth'],(templ, auth)->
-	class View extends Backbone.Marionette.View
+define (require) ->
+  templ = require "templates/banner"
+  auth = require "app/auth"
 
-		render: ->
-			@$el.html templ auth: auth
-			return @
+  class View extends Backbone.Marionette.View
 
-		events:
-			"click input[type=button]": "runTest"
+    render: ->
+      @$el.html templ auth: auth
+      return @
 
-		runTest: (e) ->
-			console.log $("#test").val()
+    events:
+      "click input[type=button]": "runTest"
 
-	
+    runTest: (e) ->
+      console.log $("#test").val()
+
+  
 
