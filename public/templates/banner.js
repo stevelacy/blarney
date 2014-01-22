@@ -106,7 +106,7 @@ jade.debug.unshift({ lineno: 19, filename: jade.debug[0].filename });
 buf.push("<img" + (jade.attrs({ 'data-toggle':('dropdown'), 'src':("" + (auth.image()) + ""), 'alt':(""), "class": [('dropdown-toggle')] }, {"data-toggle":true,"src":true,"alt":true})) + "/>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 20, filename: jade.debug[0].filename });
-buf.push("<ul class=\"dropdown-menu\">");
+buf.push("<ul class=\"dropdown-menu trans\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 22, filename: jade.debug[0].filename });
 buf.push("<li>");

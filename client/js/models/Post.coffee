@@ -6,18 +6,13 @@ define (require) ->
     casts:
       author: User
     url: ->
-      ###
-      if @get '_id'
-        console.log "#{@urlRoot}?_id=#{@get '_id'}"
-        return "#{@urlRoot}?_id=#{@get '_id'}"
-      ###
       if @get 'id'
         console.log "#{@urlRoot}/#{@get 'id'}"
         return "#{@urlRoot}/#{@get 'id'}"
 
       if @get 'author'
-        console.log "#{@urlRoot}?populate=author"
-        return "#{@urlRoot}?populate=author"
+        console.log "#{@urlRoot}?author=#{@get 'author'}"
+        return "#{@urlRoot}?author=#{@get 'author'}"
 
       if @get 'post'
         console.log "#{@urlRoot}/#{@get 'post'}?populate=author"

@@ -28,14 +28,14 @@
       - if (posts){
       - each post in posts
         .content-cards.bg-white-pure.box-shadow-light.align-left
-            a(href='/item/#{post.id}').title
+            a(href="/p/#{post.id}").title
               | #{post.title}
             .user
-              img.icon(src='#{profile[0].image}')
-              a(href='/#{profile[0].handle}').name.text-small
+              img.icon(src="#{profile[0].image}")
+              a(href="/#{profile[0].handle}").name.text-small
                 | #{profile[0].name}
             .stats
-              img.icon(src='/images/like.png')
+              img.icon(src="/images/like.png")
               .likes.align-center.grey
                 | #{post.likes}
       - }

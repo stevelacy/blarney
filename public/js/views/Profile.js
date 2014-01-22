@@ -29,13 +29,10 @@
             });
             return _this.itemModel.fetch({
               success: function(items) {
-                var test;
-                _this.$el.html(templ({
+                return _this.$el.html(templ({
                   profile: _this.json,
                   posts: items.toJSON()
                 }));
-                test = items.toJSON();
-                return console.log(test[0]);
               }
             });
           }
