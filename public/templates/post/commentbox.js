@@ -60,7 +60,7 @@ jade.debug.unshift({ lineno: 10, filename: jade.debug[0].filename });
 buf.push("<a href=\"/login\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
-buf.push("<button class=\"bg-green white inline-block\">");
+buf.push("<button class=\"bg-green btn-lg white inline-block\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
 buf.push("Login to comment");

@@ -9,7 +9,7 @@ a {
   color: #659d32 !important;
 }
 a:hover {
-  color: #51891e !important;
+  color: #507d28 !important;
   text-decoration: underline;
 }
 button:focus {
@@ -23,13 +23,22 @@ button:focus {
   margin: 0;
   background: #fafafa;
 }
-.btn {
+.btn,
+.btn-lg {
   border-radius: 0 !important;
+}
+.btn-elg {
+  font-size: 2em;
+  height: 55px !important;
+  padding: 10px !important;
 }
 .btn-success {
   color: #fff;
   background-color: #659d32 !important;
   border-color: #4cae4c;
+}
+.btn-success:hover {
+  background-color: #507d28 !important;
 }
 .btn-success a {
   color: #fff !important;
@@ -40,7 +49,7 @@ button:focus {
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
   color: #fff;
-  background-color: #51891e !important;
+  background-color: #507d28 !important;
   border-color: #398439;
 }
 textarea,
@@ -77,7 +86,7 @@ nav .right-nav {
 nav .nav-user-pre {
   position: relative;
   right: 75px;
-  background: #51891e;
+  background: #507d28;
 }
 nav .nav-user-pre a {
   color: #fff !important;
@@ -348,7 +357,8 @@ nav .nav-user * {
   top: 40px;
   left: 50px;
 }
-.edit-box {
+.edit-box,
+.login-box {
   display: none;
   position: absolute;
   top: 100px;
@@ -358,47 +368,80 @@ nav .nav-user * {
   height: 300px;
   overflow: hidden;
 }
-.edit-box .upload-box {
+.edit-box .upload-box,
+.login-box .upload-box {
   width: 80%;
   margin: 20% 10%;
 }
-.edit-box input[type='file'] {
+.edit-box input[type='file'],
+.login-box input[type='file'] {
   width: 100%;
   border: none;
 }
-.edit-box input[type='submit'] {
+.edit-box input[type='submit'],
+.login-box input[type='submit'] {
   margin: 8% 0 0 0;
   display: inline-block;
 }
-.edit-box .progress {
+.edit-box .progress,
+.login-box .progress {
   width: 80%;
   height: 30px;
   margin: 10% 10% 20% 10%;
 }
-.edit-box .bar {
+.edit-box .bar,
+.login-box .bar {
   height: 30px;
   width: 0%;
 }
-.edit-box .img-preview {
+.edit-box .img-preview,
+.login-box .img-preview {
   width: 80%;
   height: 90%;
   margin: 2.5% 0 0 10%;
   text-align: center;
 }
-.edit-box .img {
+.edit-box .img,
+.login-box .img {
   display: inline-block;
   max-width: 100%;
   max-height: 100%;
 }
-.edit-box .next-back {
+.edit-box .next-back,
+.login-box .next-back {
   display: none;
   position: absolute;
   bottom: 10px;
   left: 0;
   width: 100%;
 }
-.edit-box button {
+.edit-box button,
+.login-box button {
   margin: 10px;
+}
+.login-box {
+  display: block;
+  text-align: center;
+}
+.login-box .twitter {
+  min-width: 150px;
+  max-width: 50%;
+  height: 40px;
+  padding: 10px;
+  display: inline-block;
+  box-shadow: 0 0 1px #cdcdcd;
+}
+.close-div {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 30px;
+  width: 30px;
+  font-size: 2em;
+  cursor: pointer;
+}
+.close-div:hover {
+  background: #cdcdcd;
 }
 .edit .align-right {
   position: absolute;
@@ -537,7 +580,7 @@ nav .nav-user * {
     background: none;
   }
   nav .nav-user-pre a {
-    color: #51891e !important;
+    color: #507d28 !important;
   }
   nav .nav-user {
     display: inline-block;

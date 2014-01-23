@@ -6,7 +6,7 @@ body
 
 
 green-light = #659d32
-green-med = #51891e
+green-med = #507d28
 
 // Resets
 a
@@ -27,13 +27,19 @@ button:focus
   margin 0
   background #fafafa
 
-.btn
+.btn, .btn-lg
   border-radius 0 !important
+.btn-elg
+  font-size 2em
+  height 55px !important
+  padding 10px !important
 
 .btn-success
   color #fff
   background-color green-light !important
   border-color #4cae4c
+  &:hover
+    background-color green-med !important
   a
     color #fff !important
 
@@ -320,7 +326,7 @@ nav .nav-user
     top 40px
     left 50px
 
-.edit-box
+.edit-box, .login-box
   display none
   position absolute
   top 100px
@@ -362,6 +368,27 @@ nav .nav-user
     width 100%
   button
     margin 10px
+.login-box
+  display block
+  text-align: center
+  .twitter
+    min-width 150px
+    max-width 50%
+    height 40px
+    padding 10px
+    display inline-block
+    box-shadow: 0 0 1px #cdcdcd
+
+.close-div
+  position absolute
+  right 5px
+  top 5px
+  height 30px
+  width 30px
+  font-size 2em
+  cursor pointer
+  &:hover
+    background #cdcdcd
 
 .edit
   .align-right

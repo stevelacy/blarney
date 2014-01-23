@@ -9,10 +9,11 @@ define (require) ->
       return @
 
     events:
-      "click input[type=button]": "runTest"
+      "click #login": "openLogin"
 
-    runTest: (e) ->
-      console.log $("#test").val()
+    openLogin: ->
+      $("#aux").fadeIn()
+
 
   
 
