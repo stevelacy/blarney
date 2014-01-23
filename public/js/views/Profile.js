@@ -8,6 +8,8 @@
     Post = require("models/Post");
     templ = require("templates/profile/main");
     return View = (function(_super) {
+      var setFile;
+
       __extends(View, _super);
 
       function View() {
@@ -38,6 +40,76 @@
           }
         });
         return this;
+      };
+
+      View.prototype.events = {
+        "click #edit-cover-button": "editBoxToggle",
+        "change #file": "fileChange",
+        "click #sub-cover": "fileLoad"
+      };
+
+      View.prototype.editBoxToggle = function() {
+        return $("#edit-cover-box").fadeToggle();
+      };
+
+      setFile = function(input) {
+        var reader;
+        if (input.files && input.files[0]) {
+          reader = new FileReader();
+          console.log(input.files);
+          console.log(input.files[0]);
+          reader.onload = function(e) {
+            return $("#profile-img").attr("src", e.target.result);
+          };
+          return reader.readAsDataURL(input.files[0]);
+        }
+      };
+
+      View.prototype.fileChange = function() {
+        var file, fileArray;
+        file = $("#file");
+        fileArray = file.val().split(".").pop().toLowerCase();
+        console.log(file);
+        if ($.inArray(fileArray, ["png", "jpg", "jpeg"]) === -1) {
+          return $("#status").text("Error, incorrect file type  .jpg, .jpeg, .png only");
+        } else {
+          $("#status").text(".jpg, .jpeg, .png only");
+          return setFile(file);
+        }
+      };
+
+      View.prototype.fileLoad = function() {
+        var file, formData, xhr;
+        e.preventDefault();
+        file = $("#file").val().split(".").pop().toLowerCase();
+        if ($("#file").val() < 1) {
+
+        } else if ($.inArray(file, ["png", "jpg", "jpeg"]) === -1) {
+          return $("#status").text("Error, incorrect file type  .jpg, .jpeg, .png only");
+        } else {
+          formData = new FormData($("#form-cover")[0]);
+          xhr = new XMLHttpRequest();
+          xhr.open("post", "/upload", true);
+          xhr.upload.onprogress = function(e) {
+            var percentage;
+            if (e.lengthComputable) {
+              percentage = (e.loaded / e.total) * 100;
+              return $(".progress .bar").css("width", percentage + "%");
+            }
+          };
+          xhr.onerror = function(e) {
+            return console.log(xhr.responseText);
+          };
+          xhr.onload = function() {
+            var result;
+            result = xhr.responseText;
+            console.log(result);
+            slideUpload();
+            return showEditBox();
+          };
+          xhr.send(formData);
+          return slideUpload();
+        }
       };
 
       return View;

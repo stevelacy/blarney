@@ -1,6 +1,20 @@
 .wrapper
   .profile-background
-    img.img(src='#{profile[0].background}')
+    img.img#profile-img(src='#{profile[0].background}')
+    button.edit.bg-white-trans.box-shadow.white#edit-cover-button
+      | Change Cover
+  .edit-box.bg-white-trans-light#edit-cover-box.z-index.box-shadow
+    #upload-box.upload-box.align-center
+      form(action='/upload' name='form-cover' id='form-cover' method='post' enctype='multipart/form-data')
+        input.bg-white-trans-light(type='file' name='image' id='file')
+        input.white.bg-green(type='submit' name='sub-cover' id='sub-cover' value='Save')  
+        br
+      #status.text-small
+        | .jpg, .jpeg, .png only
+    #progress.progress.bg-white-trans
+      .bar.bg-dark-grey
+      .percent
+
   .spacer
   .align-center.z-index
     .content.bg-white-trans.box-center.box-shadow.align-left
