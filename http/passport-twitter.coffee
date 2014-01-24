@@ -19,7 +19,7 @@ handleFunction = (token, tokenSecret, profile, cb) ->
       description: profile._json.description
       followers: profile._json.followers_count
       location: profile._json.location
-      banner: profile._json.profile_banner_url
+      background: profile._json.profile_banner_url
       image: profile._json.profile_image_url_https.replace('_normal', '')
       website: profile._json.url
       verified: profile._json.verified
