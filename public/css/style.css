@@ -593,10 +593,17 @@ nav .nav-user * {
   nav .nav-user {
     display: inline-block;
     position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
+    text-align: center;
+    height: 150px;
     margin: 10px;
+  }
+  nav .nav-user img {
+    margin-left: 10px;
+  }
+  nav .nav-user li {
+    height: 40px;
+    font-size: 1.3em;
   }
   .post-author {
     position: absolute;
