@@ -6,8 +6,6 @@
     var View, templ, _ref;
     templ = require("templates/login");
     return View = (function(_super) {
-      var closeView;
-
       __extends(View, _super);
 
       function View() {
@@ -16,7 +14,7 @@
       }
 
       View.prototype.initialize = function() {
-        return $('body').keyup(closeView);
+        return $('body').keyup(this.closeView);
       };
 
       View.prototype.render = function() {
@@ -29,15 +27,15 @@
         "click #close-div": "closeViewClick"
       };
 
-      closeView = function(e) {
+      View.prototype.closeView = function(e) {
         if (e.keyCode !== 27) {
           return true;
         }
-        return $("#aux").fadeOut();
+        return this.$el.fadeOut();
       };
 
       View.prototype.closeViewClick = function() {
-        return $("#aux").fadeOut();
+        return this.$el.fadeOut();
       };
 
       return View;

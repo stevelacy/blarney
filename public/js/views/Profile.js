@@ -1,18 +1,20 @@
 (function() {
-  var __hasProp = {}.hasOwnProperty,
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Post, User, View, templ, _ref;
+    var Post, User, View, auth, templ, _ref;
     User = require("models/User");
     Post = require("models/Post");
     templ = require("templates/profile/main");
+    auth = require("app/auth");
     return View = (function(_super) {
-      var setFile;
-
       __extends(View, _super);
 
       function View() {
+        this.setFile = __bind(this.setFile, this);
+        this.editBoxToggle = __bind(this.editBoxToggle, this);
         _ref = View.__super__.constructor.apply(this, arguments);
         return _ref;
       }
@@ -33,7 +35,8 @@
               success: function(items) {
                 return _this.$el.html(templ({
                   profile: _this.json,
-                  posts: items.toJSON()
+                  posts: items.toJSON(),
+                  auth: auth
                 }));
               }
             });
@@ -44,72 +47,54 @@
 
       View.prototype.events = {
         "click #edit-cover-button": "editBoxToggle",
-        "change #file": "fileChange",
+        "change #file": "setFile",
         "click #sub-cover": "fileLoad"
       };
 
       View.prototype.editBoxToggle = function() {
-        return $("#edit-cover-box").fadeToggle();
+        return this.$el.find("#edit-cover-box").fadeToggle();
       };
 
-      setFile = function(input) {
-        var reader;
+      View.prototype.setFile = function(e) {
+        var input, reader,
+          _this = this;
+        input = e.currentTarget;
         if (input.files && input.files[0]) {
           reader = new FileReader();
-          console.log(input.files);
           console.log(input.files[0]);
           reader.onload = function(e) {
-            return $("#profile-img").attr("src", e.target.result);
+            return _this.$el.find("#profile-img").attr("src", e.target.result);
           };
           return reader.readAsDataURL(input.files[0]);
         }
       };
 
-      View.prototype.fileChange = function() {
-        var file, fileArray;
-        file = $("#file");
-        fileArray = file.val().split(".").pop().toLowerCase();
-        console.log(file);
-        if ($.inArray(fileArray, ["png", "jpg", "jpeg"]) === -1) {
-          return $("#status").text("Error, incorrect file type  .jpg, .jpeg, .png only");
-        } else {
-          $("#status").text(".jpg, .jpeg, .png only");
-          return setFile(file);
-        }
-      };
-
-      View.prototype.fileLoad = function() {
-        var file, formData, xhr;
+      View.prototype.fileLoad = function(e) {
+        var formData, xhr,
+          _this = this;
         e.preventDefault();
-        file = $("#file").val().split(".").pop().toLowerCase();
-        if ($("#file").val() < 1) {
-
-        } else if ($.inArray(file, ["png", "jpg", "jpeg"]) === -1) {
-          return $("#status").text("Error, incorrect file type  .jpg, .jpeg, .png only");
-        } else {
-          formData = new FormData($("#form-cover")[0]);
-          xhr = new XMLHttpRequest();
-          xhr.open("post", "/upload", true);
-          xhr.upload.onprogress = function(e) {
-            var percentage;
-            if (e.lengthComputable) {
-              percentage = (e.loaded / e.total) * 100;
-              return $(".progress .bar").css("width", percentage + "%");
-            }
-          };
-          xhr.onerror = function(e) {
-            return console.log(xhr.responseText);
-          };
-          xhr.onload = function() {
-            var result;
-            result = xhr.responseText;
-            console.log(result);
-            slideUpload();
-            return showEditBox();
-          };
-          xhr.send(formData);
-          return slideUpload();
-        }
+        formData = new FormData(this.$el.find("#form-cover")[0]);
+        xhr = new XMLHttpRequest();
+        xhr.open("post", "/upload", true);
+        xhr.upload.onprogress = function(e) {
+          var percentage;
+          if (e.lengthComputable) {
+            percentage = (e.loaded / e.total) * 100;
+            return _this.$el.find(".progress .bar").css("width", percentage + "%");
+          }
+        };
+        xhr.onerror = function(e) {
+          return console.log(xhr.responseText);
+        };
+        xhr.onload = function() {
+          var result;
+          result = JSON.parse(xhr.responseText);
+          if (result.result === "success") {
+            _this.$el.find('#upload-box').slideToggle();
+            return _this.$el.find("#edit-cover-box").fadeToggle();
+          }
+        };
+        return xhr.send(formData);
       };
 
       return View;

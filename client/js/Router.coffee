@@ -14,6 +14,7 @@ define (require) ->
       "new": "new"
       "p/:id": "post"
       "login": "login"
+      "logout":"logout"
       "note/:id": "note"
       "*user": "profile"
 
@@ -22,29 +23,28 @@ define (require) ->
   appRouter.on 'route:post', (id) ->
     view = new Post id:id
     $("#content").html view.render().el
-    $("#aux").html ''
 
   appRouter.on 'route:main', ->
     view = new Main
     $("#content").html view.render().el
-    $("#aux").html ''
 
 
   appRouter.on 'route:new', ->
     return auth.login() unless auth.loggedIn()
     view = new New
     $("#content").html view.render().el
-    $("#aux").html ''
 
  
   appRouter.on 'route:profile', (id) ->
     view = new Profile id:id
     $("#content").html view.render().el
-    $("#aux").html ''
 
+  appRouter.on 'route:logout', ->
+    window.location.href = "/logout?server=true"
+    
   appRouter.on 'route:login', ->
     loginView = new Login
-    $("#aux").html loginView.render().el
+    $("#content").html loginView.render().el
 
 
   bannerView = new Banner

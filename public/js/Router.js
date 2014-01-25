@@ -24,6 +24,7 @@
         "new": "new",
         "p/:id": "post",
         "login": "login",
+        "logout": "logout",
         "note/:id": "note",
         "*user": "profile"
       };
@@ -37,14 +38,12 @@
       view = new Post({
         id: id
       });
-      $("#content").html(view.render().el);
-      return $("#aux").html('');
+      return $("#content").html(view.render().el);
     });
     appRouter.on('route:main', function() {
       var view;
       view = new Main;
-      $("#content").html(view.render().el);
-      return $("#aux").html('');
+      return $("#content").html(view.render().el);
     });
     appRouter.on('route:new', function() {
       var view;
@@ -52,21 +51,22 @@
         return auth.login();
       }
       view = new New;
-      $("#content").html(view.render().el);
-      return $("#aux").html('');
+      return $("#content").html(view.render().el);
     });
     appRouter.on('route:profile', function(id) {
       var view;
       view = new Profile({
         id: id
       });
-      $("#content").html(view.render().el);
-      return $("#aux").html('');
+      return $("#content").html(view.render().el);
+    });
+    appRouter.on('route:logout', function() {
+      return window.location.href = "/logout?server=true";
     });
     appRouter.on('route:login', function() {
       var loginView;
       loginView = new Login;
-      return $("#aux").html(loginView.render().el);
+      return $("#content").html(loginView.render().el);
     });
     bannerView = new Banner;
     return $("#banner").html(bannerView.render().el);

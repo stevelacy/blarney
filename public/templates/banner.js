@@ -127,7 +127,7 @@ jade.debug.unshift({ lineno: 24, filename: jade.debug[0].filename });
 buf.push("<li>");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 24, filename: jade.debug[0].filename });
-buf.push("<a href=\"logout\">");
+buf.push("<a href=\"/logout\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 24, filename: jade.debug[0].filename });
 buf.push("Logout");
