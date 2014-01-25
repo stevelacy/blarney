@@ -3,7 +3,7 @@ define (require) ->
 
   class View extends Backbone.Marionette.View
     initialize: ->
-      $('body').keyup closeView
+      $('body').keyup @closeView
 
     render: ->
       @$el.html templ
@@ -12,9 +12,9 @@ define (require) ->
       "keyup": "closeView"
       "click #close-div": "closeViewClick"
 
-    closeView = (e) ->
+    closeView: (e) ->
       return true unless e.keyCode == 27
-      $("#aux").fadeOut()
+      @$el.fadeOut()
 
     closeViewClick: ->
-      $("#aux").fadeOut()
+      @$el.fadeOut()

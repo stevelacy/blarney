@@ -2,6 +2,7 @@ define (require) ->
   User = require "models/User"
   Post = require "models/Post"
   templ = require "templates/profile/main"
+  auth = require "app/auth"
 
 
   class View extends Backbone.Marionette.View
@@ -16,69 +17,53 @@ define (require) ->
           @itemModel = new Post author: @json[0]._id
           @itemModel.fetch
             success: (items) =>
-              @$el.html templ profile:@json, posts: items.toJSON()
+              @$el.html templ 
+                profile:@json
+                posts: items.toJSON()
+                auth: auth
       return @
 
     events:
       "click #edit-cover-button": "editBoxToggle"
-      "change #file": "fileChange"
+      "change #file": "setFile"
       "click #sub-cover": "fileLoad"
 
 
 
-    editBoxToggle: ->
-      $("#edit-cover-box").fadeToggle()
+    editBoxToggle: =>
+      @$el.find("#edit-cover-box").fadeToggle()
 
 
     ## functions
 
-    setFile = (input) ->
+    setFile: (e) =>
+      input = e.currentTarget
       if input.files and input.files[0]
         reader = new FileReader()
-        console.log input.files
         console.log input.files[0]
-        reader.onload = (e) ->
-          $("#profile-img").attr "src", e.target.result
+        reader.onload = (e) =>
+          @$el.find("#profile-img").attr "src", e.target.result
 
         reader.readAsDataURL input.files[0]
 
-    #$("#file").change ->
-    fileChange: ->
-      file = $("#file")
-      fileArray = file.val().split(".").pop().toLowerCase()
-      console.log file
-      if $.inArray(fileArray, ["png", "jpg", "jpeg"]) is -1
-        $("#status").text "Error, incorrect file type  .jpg, .jpeg, .png only"
-      else
-        $("#status").text ".jpg, .jpeg, .png only"
-        setFile file
-
-    #$("#sub-cover").on "click", (e) ->
-    fileLoad: ->
+    fileLoad: (e) ->
       e.preventDefault()
+      formData = new FormData @$el.find("#form-cover")[0]
+      xhr = new XMLHttpRequest()
+      xhr.open "post", "/upload", true
+      xhr.upload.onprogress = (e) =>
+        if e.lengthComputable
+          percentage = (e.loaded / e.total) * 100
+          @$el.find(".progress .bar").css "width", percentage + "%"
 
-      file = $("#file").val().split(".").pop().toLowerCase()
-      if $("#file").val() < 1
+      xhr.onerror = (e) ->
+        console.log xhr.responseText
 
-      else if $.inArray(file, ["png", "jpg", "jpeg"]) is -1
-        $("#status").text "Error, incorrect file type  .jpg, .jpeg, .png only"
-      else
-        formData = new FormData($("#form-cover")[0])
-        xhr = new XMLHttpRequest()
-        xhr.open "post", "/upload", true
-        xhr.upload.onprogress = (e) ->
-          if e.lengthComputable
-            percentage = (e.loaded / e.total) * 100
-            $(".progress .bar").css "width", percentage + "%"
-
-        xhr.onerror = (e) ->
-          console.log xhr.responseText
-
-        xhr.onload = ->
-          result = xhr.responseText
-          console.log result
-          slideUpload()
-          showEditBox()
-
-        xhr.send formData
-        slideUpload()
+      xhr.onload = =>
+        result = JSON.parse xhr.responseText
+        if result.result == "success"
+          @$el.find('#upload-box').slideToggle()
+          @$el.find("#edit-cover-box").fadeToggle()
+          
+      xhr.send formData
+      
