@@ -201,7 +201,8 @@ nav .nav-user * {
 }
 .post-title {
   margin: 1%;
-  max-width: 80%;
+  max-width: 78%;
+  word-wrap: break-word;
 }
 .post-stats {
   position: relative;
@@ -615,6 +616,7 @@ nav .nav-user * {
     overflow: hidden;
   }
   .post-title {
+    max-width: 90%;
     margin-top: 100px;
     margin-left: 5%;
   }
