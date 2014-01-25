@@ -28,7 +28,9 @@ app.post "/upload", (req, res) ->
   ,(err, result) ->
     return res.render "error/500" if err?
     console.log put.url
-    console.log req.user._id
-    User.findOneAndUpdate {_id:req.user._id},{background: put.url}, (err, user) ->
+    User.findById req.user._id, (err, user) ->
       return res.render "error/500" if err?
-      res.send result:"success"
+      user.background = put.url
+      user.save (err, user) ->
+        return res.render 'error/500' if err?
+        res.send result:'success' 
