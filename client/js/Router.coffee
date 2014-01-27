@@ -19,36 +19,39 @@ define (require) ->
       "*user": "profile"
 
   appRouter = new AppRouter
+  region = new Backbone.Marionette.Region el: "#content"
+  banner = new Backbone.Marionette.Region el: "#banner"
 
   appRouter.on 'route:post', (id) ->
     view = new Post id:id
-    $("#content").html view.render().el
+    region.show view
 
   appRouter.on 'route:main', ->
     view = new Main
-    $("#content").html view.render().el
+    #$("#content").html view.render().el
+    region.show view
 
 
   appRouter.on 'route:new', ->
     return auth.login() unless auth.loggedIn()
     view = new New
-    $("#content").html view.render().el
+    region.show view
 
  
   appRouter.on 'route:profile', (id) ->
     view = new Profile id:id
-    $("#content").html view.render().el
+    region.show view
 
   appRouter.on 'route:logout', ->
     window.location.href = "/logout?server=true"
     
   appRouter.on 'route:login', ->
     loginView = new Login
-    $("#content").html loginView.render().el
+    region.show view
 
 
   bannerView = new Banner
-  $("#banner").html bannerView.render().el
+  banner.show bannerView
 
 
   
