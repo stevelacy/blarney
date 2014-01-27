@@ -6,7 +6,11 @@ define (require) ->
 
 
   class View extends Backbone.Marionette.View
-        
+
+    initialize: ->
+      $('body').keyup @closeView
+
+
     render: ->
       console.log "handle #{@id}"
       @model = new User 
@@ -27,14 +31,19 @@ define (require) ->
       "click #edit-cover-button": "editBoxToggle"
       "change #file": "setFile"
       "click #sub-cover": "fileLoad"
+      "keyup": "closeView"
 
+
+
+    ## functions
 
 
     editBoxToggle: =>
       @$el.find("#edit-cover-box").fadeToggle()
 
-
-    ## functions
+    closeView: (e) ->
+      return true unless e.keyCode == 27
+      @$el.find("#edit-cover-box").fadeOut()      
 
     setFile: (e) =>
       input = e.currentTarget
@@ -43,7 +52,6 @@ define (require) ->
         console.log input.files[0]
         reader.onload = (e) =>
           @$el.find("#profile-img").attr "src", e.target.result
-
         reader.readAsDataURL input.files[0]
 
     fileLoad: (e) ->
@@ -64,6 +72,6 @@ define (require) ->
         if result.result == "success"
           @$el.find('#upload-box').slideToggle()
           @$el.find("#edit-cover-box").fadeToggle()
-          
+
       xhr.send formData
-      
+

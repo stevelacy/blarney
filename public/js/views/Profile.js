@@ -19,6 +19,10 @@
         return _ref;
       }
 
+      View.prototype.initialize = function() {
+        return $('body').keyup(this.closeView);
+      };
+
       View.prototype.render = function() {
         var _this = this;
         console.log("handle " + this.id);
@@ -48,11 +52,19 @@
       View.prototype.events = {
         "click #edit-cover-button": "editBoxToggle",
         "change #file": "setFile",
-        "click #sub-cover": "fileLoad"
+        "click #sub-cover": "fileLoad",
+        "keyup": "closeView"
       };
 
       View.prototype.editBoxToggle = function() {
         return this.$el.find("#edit-cover-box").fadeToggle();
+      };
+
+      View.prototype.closeView = function(e) {
+        if (e.keyCode !== 27) {
+          return true;
+        }
+        return this.$el.find("#edit-cover-box").fadeOut();
       };
 
       View.prototype.setFile = function(e) {

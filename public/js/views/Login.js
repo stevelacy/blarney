@@ -13,29 +13,9 @@
         return _ref;
       }
 
-      View.prototype.initialize = function() {
-        return $('body').keyup(this.closeView);
-      };
-
       View.prototype.render = function() {
         this.$el.html(templ);
         return this;
-      };
-
-      View.prototype.events = {
-        "keyup": "closeView",
-        "click #close-div": "closeViewClick"
-      };
-
-      View.prototype.closeView = function(e) {
-        if (e.keyCode !== 27) {
-          return true;
-        }
-        return this.$el.fadeOut();
-      };
-
-      View.prototype.closeViewClick = function() {
-        return this.$el.fadeOut();
       };
 
       return View;
