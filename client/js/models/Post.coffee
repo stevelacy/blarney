@@ -7,15 +7,12 @@ define (require) ->
       author: User
     url: ->
       if @get 'id'
-        console.log "#{@urlRoot}/#{@get 'id'}"
         return "#{@urlRoot}/#{@get 'id'}"
 
       if @get 'author'
-        console.log "#{@urlRoot}?author=#{@get 'author'}"
         return "#{@urlRoot}?author=#{@get 'author'}"
 
       if @get 'post'
-        console.log "#{@urlRoot}/#{@get 'post'}?populate=author"
         return "#{@urlRoot}/#{@get 'post'}?populate=author"        
       return @urlRoot
 

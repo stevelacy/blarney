@@ -19,7 +19,7 @@ handleFunction = (token, tokenSecret, profile, cb) ->
       description: profile._json.description
       followers: profile._json.followers_count
       location: profile._json.location
-      background: profile._json.profile_banner_url
+      #background: profile._json.profile_banner_url
       image: profile._json.profile_image_url_https.replace('_normal', '')
       website: profile._json.url
       verified: profile._json.verified
@@ -57,7 +57,7 @@ app.get '/logout', (req, res) ->
 app.get '/js/loggedIn.js', (req, res) ->
   src = "window._loggedIn = #{req.isAuthenticated()};"
   if req.user
-    src += "\r\nwindow._loggedInId = \"#{req.user._id}\";"
+    src += "\r\nwindow._id = \"#{req.user._id}\";"
     src += "\r\nwindow._image = \"#{req.user.image}\";"
     src += "\r\nwindow._handle = \"#{req.user.handle}\";"
 

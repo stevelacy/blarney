@@ -34,32 +34,6 @@
         return this;
       };
 
-      /*
-      initialize: ->
-        @model = new Posts
-          limit: 2
-        @listenTo @model, "sync", @render
-        @model.fetch()
-        return @
-      
-      render: ->
-        return @ unless @model.get("author")
-        @$el.html templ
-          items: @model
-          auth: auth
-        console.log @model
-        return @
-      */
-
-
-      View.prototype.events = {
-        "click input[type=button]": "runTest"
-      };
-
-      View.prototype.runTest = function(e) {
-        return console.log($("#test").val());
-      };
-
       return View;
 
     })(Backbone.Marionette.View);

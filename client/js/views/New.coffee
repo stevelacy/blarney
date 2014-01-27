@@ -18,7 +18,6 @@ define (require) ->
     saveData: (e) ->
       e.preventDefault()
       itemData = @getFormData(@$el.find("form"))
-      console.log itemData
 
       @model.save itemData, 
         success: (data) ->

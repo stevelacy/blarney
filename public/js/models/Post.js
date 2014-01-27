@@ -21,15 +21,12 @@
 
       Item.prototype.url = function() {
         if (this.get('id')) {
-          console.log("" + this.urlRoot + "/" + (this.get('id')));
           return "" + this.urlRoot + "/" + (this.get('id'));
         }
         if (this.get('author')) {
-          console.log("" + this.urlRoot + "?author=" + (this.get('author')));
           return "" + this.urlRoot + "?author=" + (this.get('author'));
         }
         if (this.get('post')) {
-          console.log("" + this.urlRoot + "/" + (this.get('post')) + "?populate=author");
           return "" + this.urlRoot + "/" + (this.get('post')) + "?populate=author";
         }
         return this.urlRoot;

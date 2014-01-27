@@ -19,27 +19,5 @@ define (require) ->
 
       return @
 
-    ###
-    initialize: ->
-      @model = new Posts
-        limit: 2
-      @listenTo @model, "sync", @render
-      @model.fetch()
-      return @
-
-    render: ->
-      return @ unless @model.get("author")
-      @$el.html templ
-        items: @model
-        auth: auth
-      console.log @model
-      return @
-    ###
-    events:
-      "click input[type=button]": "runTest"
-
-    runTest: (e) ->
-      console.log $("#test").val()
-
   
 

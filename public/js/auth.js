@@ -6,7 +6,7 @@
         return window._loggedIn;
       },
       id: function() {
-        return window._loggedInId;
+        return window._id;
       },
       image: function() {
         return window._image;

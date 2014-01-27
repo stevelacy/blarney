@@ -16,11 +16,9 @@
 
       User.prototype.url = function() {
         if (this.get('handle')) {
-          console.log("" + this.urlRoot + "?handle=" + (this.get('handle')));
           return "" + this.urlRoot + "?handle=" + (this.get('handle'));
         }
         if (this.get('_id')) {
-          console.log("" + this.urlRoot + "?_id=" + (this.get('_id')));
           return "" + this.urlRoot + "?_id=" + (this.get('_id'));
         }
         return this.urlRoot;

@@ -31,7 +31,6 @@
         var itemData;
         e.preventDefault();
         itemData = this.getFormData(this.$el.find("form"));
-        console.log(itemData);
         return this.model.save(itemData, {
           success: function(data) {
             return Backbone.history.navigate("/p/" + data.id, {
