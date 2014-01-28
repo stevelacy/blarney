@@ -1,0 +1,12 @@
+.content-cards.bg-white-pure.box-shadow-light.align-left.trans
+  a(href='/p/#{post.id}').title
+    | #{post.title}
+  .user
+    a(href='/#{post.author.attributes.handle}')
+      img.icon(src='#{post.author.attributes.image}')
+      .name.text-small
+        | #{post.author.attributes.name}
+  .stats
+    img.icon(src='images/like.png')
+    .likes.align-center.grey
+      | #{post.likes} 

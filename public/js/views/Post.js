@@ -3,12 +3,13 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Comment, Post, User, View, auth, templ, _ref;
+    var Comment, Comments, Post, User, View, auth, templ, _ref;
     Post = require("models/Post");
     User = require("models/User");
     templ = require("templates/post/main");
     auth = require("app/auth");
     Comment = require("models/Comment");
+    Comments = require("collections/Comments");
     return View = (function(_super) {
       __extends(View, _super);
 

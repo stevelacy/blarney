@@ -3,24 +3,22 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Items, Post, _ref;
-    Post = require("models/Post");
-    Items = (function(_super) {
-      __extends(Items, _super);
+    var Item, User, _ref;
+    User = require("models/User");
+    Item = (function(_super) {
+      __extends(Item, _super);
 
-      function Items() {
-        _ref = Items.__super__.constructor.apply(this, arguments);
+      function Item() {
+        _ref = Item.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Items.prototype.url = '/v1/posts?populate=author&limit=12';
+      Item.prototype.urlRoot = '/v1/posts';
 
-      Items.prototype.model = Post;
+      return Item;
 
-      return Items;
-
-    })(Backbone.Collection);
-    return Items;
+    })(Backbone.Model);
+    return Item;
   });
 
 }).call(this);

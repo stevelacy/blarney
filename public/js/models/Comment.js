@@ -16,7 +16,7 @@
 
       Item.prototype.url = function() {
         if (this.get('post')) {
-          return "" + this.urlRoot + "/?populate=post";
+          return "" + this.urlRoot + "/?populate=post&populate=author";
         }
         return this.urlRoot;
       };

@@ -5,6 +5,7 @@ define (require) ->
   templ   = require "templates/post/main"
   auth    = require "app/auth"
   Comment = require "models/Comment"
+  Comments = require "collections/Comments"
 
   class View extends Backbone.Marionette.View
     
@@ -26,7 +27,7 @@ define (require) ->
       "submit form": "saveComment"
 
     saveComment: (e) ->
-      e.preventDefault()      
+      e.preventDefault()
       comment = new Comment
         post: @id
       itemData = @getFormData(@$el.find("form"))
@@ -35,8 +36,6 @@ define (require) ->
         success: (data) ->
           console.log data
   
-      
-      
 
     getFormData: (form) ->
       unindexed_array = form.serializeArray()
