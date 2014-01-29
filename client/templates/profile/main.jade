@@ -1,6 +1,6 @@
 .wrapper
   .profile-background
-    img.img#profile-img(src='#{profile[0].background}')
+    img.img#profile-img(src='#{profile[0].background}?d=#{Date.now()}')
     if auth.handle() == profile[0].handle
       button.edit.bg-white-trans.box-shadow.white#edit-cover-button
         | Change Cover

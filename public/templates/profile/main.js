@@ -12,7 +12,7 @@ jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
 buf.push("<div class=\"profile-background\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
-buf.push("<img" + (jade.attrs({ 'id':('profile-img'), 'src':('' + (profile[0].background) + ''), "class": [('img')] }, {"src":true})) + "/>");
+buf.push("<img" + (jade.attrs({ 'id':('profile-img'), 'src':('' + (profile[0].background) + '?d=' + (Date.now()) + ''), "class": [('img')] }, {"src":true})) + "/>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
 if ( auth.handle() == profile[0].handle)
