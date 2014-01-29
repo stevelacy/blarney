@@ -58,6 +58,7 @@ app.get '/js/loggedIn.js', (req, res) ->
   src = "window._loggedIn = #{req.isAuthenticated()};"
   if req.user
     src += "\r\nwindow._id = \"#{req.user._id}\";"
+    src += "\r\nwindow._name = \"#{req.user.name}\";"
     src += "\r\nwindow._image = \"#{req.user.image}\";"
     src += "\r\nwindow._handle = \"#{req.user.handle}\";"
 

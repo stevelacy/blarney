@@ -12,7 +12,6 @@ define (require) ->
 
 
     render: ->
-      console.log "handle #{@id}"
       @model = new User 
         handle: @id
       @model.fetch

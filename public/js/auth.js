@@ -8,6 +8,9 @@
       id: function() {
         return window._id;
       },
+      name: function() {
+        return window._name;
+      },
       image: function() {
         return window._image;
       },

@@ -4,15 +4,24 @@ define (require) ->
   User    = require "models/User"
   templ   = require "templates/post/main"
   auth    = require "app/auth"
-  Comment = require "models/Comment"
+  CommentsView = require "views/Comments"
   Comments = require "collections/Comments"
+  Comment = require "models/Comment"
 
   class View extends Backbone.Marionette.View
     
     initialize: ->
+      # main model
       @model = new Post post: @id
       @listenTo @model, "sync", @render
       @model.fetch()
+
+      # submodel (comments)
+      @comments = new Comments
+      @comments.post = @id
+      @commentsView = new CommentsView
+        collection: @comments
+      @comments.fetch()
       return @
 
     render: ->
@@ -20,7 +29,8 @@ define (require) ->
       @$el.html templ
         item: @model
         auth: auth
-      console.log @model
+      commentDiv = @$el.find '.comments-box'
+      commentDiv.html @commentsView.el
       return @
 
     events:
@@ -28,13 +38,19 @@ define (require) ->
 
     saveComment: (e) ->
       e.preventDefault()
-      comment = new Comment
-        post: @id
       itemData = @getFormData(@$el.find("form"))
-
-      comment.save itemData,
-        success: (data) ->
+      @comment = new Comment
+        post: @id
+      @comment.save itemData,
+        success: (data) =>
           console.log data
+          @comment.set 'author', new User
+            _id: auth.id()
+            handle: auth.handle()
+            name: auth.name()
+            image: auth.image()
+          @comments.push @comment
+          @$el.find("#content").val ""
   
 
     getFormData: (form) ->

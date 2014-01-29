@@ -1,28 +1,13 @@
 define (require) ->
   
-  Comments = require "collections/Comments"
-  Users = require "collections/Users"
-  templ = require "templates/comments"
+  templ = require "templates/post/comments"
+  itemView = require "views/sub/commentItemView"
 
-  comments = new Comments()
-  users = new Users()
 
-  class View extends Backbone.Marionette.View
+  class View extends Backbone.Marionette.CompositeView
+    itemView: itemView
+    template: templ
 
-    render: ->
-      comments.fetch
-        success: (comments) =>
-          console.log comments.models
-          users.fetch
-            success: (users) =>
-              @$el.html templ comments:comments.toJSON(), users: users.toJSON()
+    initialize: ->
+      @listenTo @collection, "sync", @render
       return @
-
-    events:
-      "click input[type=button]": "runTest"
-
-    runTest: (e) ->
-      console.log $("#test").val()
-
-  
-

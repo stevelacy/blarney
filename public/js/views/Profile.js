@@ -25,7 +25,6 @@
 
       View.prototype.render = function() {
         var _this = this;
-        console.log("handle " + this.id);
         this.model = new User({
           handle: this.id
         });

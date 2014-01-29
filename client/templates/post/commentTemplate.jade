@@ -1,0 +1,7 @@
+.comment.bg-white
+  .user
+    a(href="/#{item.get('author').get('handle')}")
+      img.icon(src="#{item.get('author').get('image')}") 
+      .name #{item.get('author').get('name')}
+  .message.bg-white-pure.box-shadow-light
+    | #{item.get('content')}

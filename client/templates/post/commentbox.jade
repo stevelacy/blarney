@@ -1,8 +1,11 @@
 if auth.loggedIn()
   .new-comment.bg-white-shade
     .spacer-50
+      h2.grey Comment
+
     form
-      textarea(name='content' placeholder="Message")
+      textarea(name='content' id="content" placeholder="Message")
+      .spacer-50
       button.btn.btn-success(type='submit') Comment
 else
   .new-comment.bg-white-shade.align-center
