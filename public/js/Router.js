@@ -72,7 +72,7 @@
     appRouter.on('route:login', function() {
       var loginView;
       loginView = new Login;
-      return region.show(view);
+      return region.show(loginView);
     });
     bannerView = new Banner;
     return banner.show(bannerView);

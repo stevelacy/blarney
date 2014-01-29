@@ -47,7 +47,7 @@ define (require) ->
     
   appRouter.on 'route:login', ->
     loginView = new Login
-    region.show view
+    region.show loginView
 
 
   bannerView = new Banner
