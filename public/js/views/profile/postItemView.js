@@ -3,12 +3,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Posts, User, View, auth, postsView, templ, _ref;
-    Posts = require("collections/Posts");
-    User = require("models/User");
-    templ = require("templates/main");
-    auth = require("app/auth");
-    postsView = require("views/main/Posts");
+    var View, templ, _ref;
+    templ = require("templates/profile/itemView");
     return View = (function(_super) {
       __extends(View, _super);
 
@@ -17,30 +13,16 @@
         return _ref;
       }
 
-      View.prototype.initialize = function() {
-        this.posts = new Posts;
-        this.postsView = new postsView({
-          collection: this.posts
-        });
-        this.listenTo(this.posts, "sync", this.render);
-        this.posts.fetch();
-        return this;
-      };
-
       View.prototype.render = function() {
-        var postDiv;
         this.$el.html(templ({
-          item: this.posts,
-          auth: auth
+          item: this.model
         }));
-        postDiv = this.$el.find('.content');
-        postDiv.html(this.postsView.el);
         return this;
       };
 
       return View;
 
-    })(Backbone.Marionette.View);
+    })(Backbone.Marionette.ItemView);
   });
 
 }).call(this);

@@ -73,4 +73,3 @@ define (require) ->
           @$el.find("#edit-cover-box").fadeToggle()
 
       xhr.send formData
-

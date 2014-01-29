@@ -9,7 +9,7 @@
     Post = require('views/Post');
     Login = require('views/Login');
     Banner = require('views/Banner');
-    Profile = require('views/Profile');
+    Profile = require('views/profile/Profile');
     auth = require('app/auth');
     AppRouter = (function(_super) {
       __extends(AppRouter, _super);
