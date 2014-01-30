@@ -138,6 +138,28 @@ jade.debug.shift();
 jade.debug.shift();
 buf.push("</li>");
 jade.debug.shift();
+jade.debug.unshift({ lineno: 25, filename: jade.debug[0].filename });
+if ( auth.level() == "5")
+{
+jade.debug.unshift({ lineno: 26, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
+buf.push("<li>");
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
+buf.push("<a href=\"/admin\">");
+jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
+buf.push("Admin");
+jade.debug.shift();
+jade.debug.shift();
+buf.push("</a>");
+jade.debug.shift();
+jade.debug.shift();
+buf.push("</li>");
+jade.debug.shift();
+jade.debug.shift();
+}
+jade.debug.shift();
 jade.debug.shift();
 buf.push("</ul>");
 jade.debug.shift();
@@ -151,14 +173,14 @@ jade.debug.shift();
 }
 else
 {
-jade.debug.unshift({ lineno: 26, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 29, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 30, filename: jade.debug[0].filename });
 buf.push("<li>");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 30, filename: jade.debug[0].filename });
 buf.push("<a id=\"login\" href=\"/login\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
+jade.debug.unshift({ lineno: 30, filename: jade.debug[0].filename });
 buf.push("Login");
 jade.debug.shift();
 jade.debug.shift();

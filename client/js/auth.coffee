@@ -1,6 +1,7 @@
 define ->
   auth =
     loggedIn: -> window._loggedIn
+    level: -> window._level
     id: -> window._id
     name: -> window._name
     image: -> window._image

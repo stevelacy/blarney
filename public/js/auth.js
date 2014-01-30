@@ -5,6 +5,9 @@
       loggedIn: function() {
         return window._loggedIn;
       },
+      level: function() {
+        return window._level;
+      },
       id: function() {
         return window._id;
       },

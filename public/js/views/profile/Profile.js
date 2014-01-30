@@ -30,6 +30,7 @@
         this.model.fetch();
         this.posts = new Posts;
         this.posts.author = this.model.get("handle");
+        console.log(this.model);
         this.postsView = new PostsView({
           collection: this.posts
         });

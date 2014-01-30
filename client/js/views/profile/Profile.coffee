@@ -20,6 +20,7 @@ define (require) ->
       # submodel (posts)
       @posts = new Posts
       @posts.author = @model.get "handle"
+      console.log @model
       @postsView = new PostsView
         collection: @posts
       @posts.fetch()

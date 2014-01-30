@@ -59,6 +59,7 @@ app.get '/js/loggedIn.js', (req, res) ->
   if req.user
     src += "\r\nwindow._id = \"#{req.user._id}\";"
     src += "\r\nwindow._name = \"#{req.user.name}\";"
+    src += "\r\nwindow._level = \"#{req.user.level}\";"
     src += "\r\nwindow._image = \"#{req.user.image}\";"
     src += "\r\nwindow._handle = \"#{req.user.handle}\";"
 

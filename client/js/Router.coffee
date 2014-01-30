@@ -8,6 +8,9 @@ define (require) ->
   auth = require 'app/auth'
 
 
+  # Admin
+  Admin = require 'views/admin/Main'
+
   class AppRouter extends Backbone.Router
     routes:
       "": "main"
@@ -16,6 +19,7 @@ define (require) ->
       "login": "login"
       "logout":"logout"
       "note/:id": "note"
+      "admin": "admin"
       "*user": "profile"
 
   appRouter = new AppRouter
@@ -48,6 +52,10 @@ define (require) ->
   appRouter.on 'route:login', ->
     loginView = new Login
     region.show loginView
+
+  appRouter.on 'route:admin', ->
+    view = new Admin
+    region.show view
 
 
   bannerView = new Banner

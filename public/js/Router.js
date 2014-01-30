@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var AppRouter, Banner, Login, Main, New, Post, Profile, appRouter, auth, banner, bannerView, region, _ref;
+    var Admin, AppRouter, Banner, Login, Main, New, Post, Profile, appRouter, auth, banner, bannerView, region, _ref;
     New = require('views/New');
     Main = require('views/Main');
     Post = require('views/Post');
@@ -11,6 +11,7 @@
     Banner = require('views/Banner');
     Profile = require('views/profile/Profile');
     auth = require('app/auth');
+    Admin = require('views/admin/Main');
     AppRouter = (function(_super) {
       __extends(AppRouter, _super);
 
@@ -26,6 +27,7 @@
         "login": "login",
         "logout": "logout",
         "note/:id": "note",
+        "admin": "admin",
         "*user": "profile"
       };
 
@@ -73,6 +75,11 @@
       var loginView;
       loginView = new Login;
       return region.show(loginView);
+    });
+    appRouter.on('route:admin', function() {
+      var view;
+      view = new Admin;
+      return region.show(view);
     });
     bannerView = new Banner;
     return banner.show(bannerView);

@@ -44,7 +44,7 @@ User = new Schema
       unique: true
     authorize: noWrite
 
-  auth:
+  level:
     type: String
     required: true
     default: 0
