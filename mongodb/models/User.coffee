@@ -45,10 +45,10 @@ User = new Schema
     authorize: noWrite
 
   auth:
-    type String
+    type: String
     required: true
     default: 0
-    authorize: noWrite
+    authorize: noWrite  
 
   token:
     type: String
@@ -78,7 +78,7 @@ User = new Schema
   description:
     type: String
     authorize: noWrite
-    
+
   website:
     type: String
     authorize: noWrite
