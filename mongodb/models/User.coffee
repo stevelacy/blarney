@@ -2,11 +2,11 @@
 
 
 profileBackgrounds = [
-        'bg1.jpg'
-        'bg2.jpg'
-        'bg3.jpg'
-        'bg4.jpg'
-      ]
+    'bg1.jpg'
+    'bg2.jpg'
+    'bg3.jpg'
+    'bg4.jpg'
+  ]
 randIndex = Math.floor(Math.random() * profileBackgrounds.length)
 randBG = profileBackgrounds[randIndex]
 
@@ -44,6 +44,12 @@ User = new Schema
       unique: true
     authorize: noWrite
 
+  auth:
+    type String
+    required: true
+    default: 0
+    authorize: noWrite
+
   token:
     type: String
     required: true
@@ -72,9 +78,11 @@ User = new Schema
   description:
     type: String
     authorize: noWrite
+    
   website:
     type: String
     authorize: noWrite
+
   location: 
     type: String
     authorize: noWrite
