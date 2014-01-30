@@ -1,7 +1,7 @@
 .wrapper
   .profile-background
-    img.img#profile-img(src='#{profile[0].background}?d=#{Date.now()}')
-    if auth.handle() == profile[0].handle
+    img.img#profile-img(src="#{item.get('background')}?d=#{Date.now()}")
+    if auth.handle() == item.get('handle')
       button.edit.bg-white-trans.box-shadow.white#edit-cover-button
         | Change Cover
   .edit-box.bg-white-trans-light#edit-cover-box.z-index.box-shadow
@@ -22,38 +22,18 @@
       .profile
         .user
           .icon
-            img(src='#{profile[0].image}')
+            img(src="#{item.get('image')}")
           //.name.text-large.white(class='#{profile.colors.name}')
           .name.text-large.white
-            | #{profile[0].name}
+            | #{item.get('name')}
         .bio.bg.bg-white-pure
           //.bio-left(class='#{profile.colors.bio}')
           .bio-left
-            | #{profile[0].description}
+            | #{item.get('description')}
           .bio-right
-            a(href="https://twitter.com/#{profile[0].handle}") Twitter  @#{profile[0].handle}
+            a(href="https://twitter.com/#{item.get('handle')}") Twitter  @#{item.get('handle')}
 
   .align-center.z-index
     .spacer
     .spacer
-    .content.bg-white-shade.box-center.box-shadow-light.align-center.profile-content
-      
-      if posts
-      each post in posts
-        .content-cards.bg-white-pure.box-shadow-light.align-left
-            a(href="/p/#{post.id}").title
-              | #{post.title}
-            .user
-              img.icon(src="#{profile[0].image}")
-              a(href="/#{profile[0].handle}").name.text-small
-                | #{profile[0].name}
-            .stats
-              img.icon(src="/images/like.png")
-              .likes.align-center.grey
-                | #{post.likes}
-      
-      else
-        h2 
-          span.green #{profile[0].name} 
-          | has not posted yet
-      
+    .content.bg-white-shade.box-center.box-shadow-light.align-center.posts-box

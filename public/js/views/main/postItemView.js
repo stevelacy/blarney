@@ -19,7 +19,6 @@
         this.$el.html(templ({
           item: this.model
         }));
-        console.log(this.model);
         return this;
       };
 

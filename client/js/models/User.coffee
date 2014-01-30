@@ -3,8 +3,7 @@ define ->
     urlRoot: '/v1/users'
     url: ->
       if @get 'handle'
-        return "#{@urlRoot}?handle=#{@get 'handle'}"
-      if @get '_id'
-        return "#{@urlRoot}?_id=#{@get '_id'}"
+        console.log  "#{@urlRoot}?handle=#{@get 'handle'}&populate=author"
+        return "#{@urlRoot}?handle=#{@get 'handle'}&populate=author"
       return @urlRoot
   return User

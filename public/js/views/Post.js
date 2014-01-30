@@ -3,12 +3,13 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Comment, Comments, CommentsView, Post, User, View, auth, templ, _ref;
+    var Comment, Comments, CommentsView, Notify, Post, User, View, auth, templ, _ref;
     Post = require("models/Post");
     User = require("models/User");
     templ = require("templates/post/main");
     auth = require("app/auth");
-    CommentsView = require("views/Comments");
+    Notify = require("app/notify");
+    CommentsView = require("views/post/Comments");
     Comments = require("collections/Comments");
     Comment = require("models/Comment");
     return View = (function(_super) {
@@ -71,6 +72,13 @@
             }));
             _this.comments.push(_this.comment);
             return _this.$el.find("#content").val("");
+          },
+          error: function(data) {
+            var notify;
+            console.log(data);
+            return notify = new Notify({
+              message: "Comment error"
+            });
           }
         });
       };

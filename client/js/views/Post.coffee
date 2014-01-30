@@ -4,7 +4,8 @@ define (require) ->
   User    = require "models/User"
   templ   = require "templates/post/main"
   auth    = require "app/auth"
-  CommentsView = require "views/Comments"
+  Notify    = require "app/notify"
+  CommentsView = require "views/post/Comments"
   Comments = require "collections/Comments"
   Comment = require "models/Comment"
 
@@ -25,7 +26,7 @@ define (require) ->
       return @
 
     render: ->
-      return @ unless @model.get('author')
+      return @ unless @model.get 'author'
       @$el.html templ
         item: @model
         auth: auth
@@ -38,7 +39,7 @@ define (require) ->
 
     saveComment: (e) ->
       e.preventDefault()
-      itemData = @getFormData(@$el.find("form"))
+      itemData = @getFormData @$el.find "form"
       @comment = new Comment
         post: @id
       @comment.save itemData,
@@ -51,6 +52,10 @@ define (require) ->
             image: auth.image()
           @comments.push @comment
           @$el.find("#content").val ""
+        error: (data) =>
+          console.log data
+          notify = new Notify
+            message: "Comment error"
   
 
     getFormData: (form) ->

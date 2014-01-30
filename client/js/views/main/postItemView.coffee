@@ -7,7 +7,6 @@ define (require) ->
     render: ->
       @$el.html templ
         item: @model
-      console.log @model
       return @
 
   

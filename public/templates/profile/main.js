@@ -4,7 +4,7 @@ return function anonymous(locals) {
 jade.debug = [{ lineno: 1, filename: "/www/node/blarney-marionette/client/templates/profile/main.jade" }];
 try {
 var buf = [];
-var locals_ = (locals || {}),profile = locals_.profile,auth = locals_.auth,posts = locals_.posts;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
+var locals_ = (locals || {}),item = locals_.item,auth = locals_.auth;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
 buf.push("<div class=\"wrapper\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
@@ -12,10 +12,10 @@ jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
 buf.push("<div class=\"profile-background\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
-buf.push("<img" + (jade.attrs({ 'id':('profile-img'), 'src':('' + (profile[0].background) + '?d=' + (Date.now()) + ''), "class": [('img')] }, {"src":true})) + "/>");
+buf.push("<img" + (jade.attrs({ 'id':('profile-img'), 'src':("" + (item.get('background')) + "?d=" + (Date.now()) + ""), "class": [('img')] }, {"src":true})) + "/>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-if ( auth.handle() == profile[0].handle)
+if ( auth.handle() == item.get('handle'))
 {
 jade.debug.unshift({ lineno: 5, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 5, filename: jade.debug[0].filename });
@@ -109,7 +109,7 @@ jade.debug.unshift({ lineno: 24, filename: jade.debug[0].filename });
 buf.push("<div class=\"icon\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 25, filename: jade.debug[0].filename });
-buf.push("<img" + (jade.attrs({ 'src':('' + (profile[0].image) + '') }, {"src":true})) + "/>");
+buf.push("<img" + (jade.attrs({ 'src':("" + (item.get('image')) + "") }, {"src":true})) + "/>");
 jade.debug.shift();
 jade.debug.shift();
 buf.push("</div>");
@@ -121,7 +121,7 @@ jade.debug.unshift({ lineno: 27, filename: jade.debug[0].filename });
 buf.push("<div class=\"name text-large white\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 28, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = profile[0].name) == null ? '' : jade.interp)) + "");
+buf.push("" + (jade.escape((jade.interp = item.get('name')) == null ? '' : jade.interp)) + "");
 jade.debug.shift();
 jade.debug.shift();
 buf.push("</div>");
@@ -139,7 +139,7 @@ jade.debug.unshift({ lineno: 31, filename: jade.debug[0].filename });
 buf.push("<div class=\"bio-left\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 32, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = profile[0].description) == null ? '' : jade.interp)) + "");
+buf.push("" + (jade.escape((jade.interp = item.get('description')) == null ? '' : jade.interp)) + "");
 jade.debug.shift();
 jade.debug.shift();
 buf.push("</div>");
@@ -148,10 +148,10 @@ jade.debug.unshift({ lineno: 33, filename: jade.debug[0].filename });
 buf.push("<div class=\"bio-right\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 34, filename: jade.debug[0].filename });
-buf.push("<a" + (jade.attrs({ 'href':("https://twitter.com/" + (profile[0].handle) + "") }, {"href":true})) + ">");
+buf.push("<a" + (jade.attrs({ 'href':("https://twitter.com/" + (item.get('handle')) + "") }, {"href":true})) + ">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 34, filename: jade.debug[0].filename });
-buf.push("Twitter  @" + (jade.escape((jade.interp = profile[0].handle) == null ? '' : jade.interp)) + "");
+buf.push("Twitter  @" + (jade.escape((jade.interp = item.get('handle')) == null ? '' : jade.interp)) + "");
 jade.debug.shift();
 jade.debug.shift();
 buf.push("</a>");
@@ -187,190 +187,8 @@ jade.debug.shift();
 buf.push("</div>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 39, filename: jade.debug[0].filename });
-buf.push("<div class=\"content bg-white-shade box-center box-shadow-light align-center profile-content\">");
+buf.push("<div class=\"content bg-white-shade box-center box-shadow-light align-center posts-box\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 41, filename: jade.debug[0].filename });
-if ( posts)
-jade.debug.shift();
-jade.debug.unshift({ lineno: 42, filename: jade.debug[0].filename });
-// iterate posts
-;(function(){
-  var $$obj = posts;
-  if ('number' == typeof $$obj.length) {
-
-  if ($$obj.length) {
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var post = $$obj[$index];
-
-jade.debug.unshift({ lineno: 42, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 43, filename: jade.debug[0].filename });
-buf.push("<div class=\"content-cards bg-white-pure box-shadow-light align-left\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 44, filename: jade.debug[0].filename });
-buf.push("<a" + (jade.attrs({ 'href':("/p/" + (post.id) + ""), "class": [('title')] }, {"href":true})) + ">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 45, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = post.title) == null ? '' : jade.interp)) + "");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</a>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 46, filename: jade.debug[0].filename });
-buf.push("<div class=\"user\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 47, filename: jade.debug[0].filename });
-buf.push("<img" + (jade.attrs({ 'src':("" + (profile[0].image) + ""), "class": [('icon')] }, {"src":true})) + "/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 48, filename: jade.debug[0].filename });
-buf.push("<a" + (jade.attrs({ 'href':("/" + (profile[0].handle) + ""), "class": [('name'),('text-small')] }, {"href":true})) + ">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 49, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = profile[0].name) == null ? '' : jade.interp)) + "");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</a>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 50, filename: jade.debug[0].filename });
-buf.push("<div class=\"stats\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 51, filename: jade.debug[0].filename });
-buf.push("<img src=\"/images/like.png\" class=\"icon\"/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 52, filename: jade.debug[0].filename });
-buf.push("<div class=\"likes align-center grey\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 53, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = post.likes) == null ? '' : jade.interp)) + "");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-    }
-
-  } else {
-jade.debug.unshift({ lineno: 55, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 56, filename: jade.debug[0].filename });
-buf.push("<h2>");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 56, filename: jade.debug[0].filename });
-buf.push(" ");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 57, filename: jade.debug[0].filename });
-buf.push("<span class=\"green\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 57, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = profile[0].name) == null ? '' : jade.interp)) + " ");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</span>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 58, filename: jade.debug[0].filename });
-buf.push("has not posted yet");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</h2>");
-jade.debug.shift();
-jade.debug.shift();
-  }
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var post = $$obj[$index];
-
-jade.debug.unshift({ lineno: 42, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 43, filename: jade.debug[0].filename });
-buf.push("<div class=\"content-cards bg-white-pure box-shadow-light align-left\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 44, filename: jade.debug[0].filename });
-buf.push("<a" + (jade.attrs({ 'href':("/p/" + (post.id) + ""), "class": [('title')] }, {"href":true})) + ">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 45, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = post.title) == null ? '' : jade.interp)) + "");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</a>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 46, filename: jade.debug[0].filename });
-buf.push("<div class=\"user\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 47, filename: jade.debug[0].filename });
-buf.push("<img" + (jade.attrs({ 'src':("" + (profile[0].image) + ""), "class": [('icon')] }, {"src":true})) + "/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 48, filename: jade.debug[0].filename });
-buf.push("<a" + (jade.attrs({ 'href':("/" + (profile[0].handle) + ""), "class": [('name'),('text-small')] }, {"href":true})) + ">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 49, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = profile[0].name) == null ? '' : jade.interp)) + "");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</a>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 50, filename: jade.debug[0].filename });
-buf.push("<div class=\"stats\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 51, filename: jade.debug[0].filename });
-buf.push("<img src=\"/images/like.png\" class=\"icon\"/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 52, filename: jade.debug[0].filename });
-buf.push("<div class=\"likes align-center grey\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 53, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = post.likes) == null ? '' : jade.interp)) + "");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-    }
-
-    if ($$l === 0) {
-jade.debug.unshift({ lineno: 55, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 56, filename: jade.debug[0].filename });
-buf.push("<h2>");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 56, filename: jade.debug[0].filename });
-buf.push(" ");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 57, filename: jade.debug[0].filename });
-buf.push("<span class=\"green\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 57, filename: jade.debug[0].filename });
-buf.push("" + (jade.escape((jade.interp = profile[0].name) == null ? '' : jade.interp)) + " ");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</span>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 58, filename: jade.debug[0].filename });
-buf.push("has not posted yet");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</h2>");
-jade.debug.shift();
-jade.debug.shift();
-    }
-  }
-}).call(this);
-
-jade.debug.shift();
 jade.debug.shift();
 buf.push("</div>");
 jade.debug.shift();

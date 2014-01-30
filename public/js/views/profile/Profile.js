@@ -4,11 +4,13 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Post, User, View, auth, templ, _ref;
+    var Post, Posts, PostsView, User, View, auth, templ, _ref;
     User = require("models/User");
     Post = require("models/Post");
+    Posts = require("collections/Posts");
     templ = require("templates/profile/main");
     auth = require("app/auth");
+    PostsView = require("views/profile/Posts");
     return View = (function(_super) {
       __extends(View, _super);
 
@@ -20,31 +22,32 @@
       }
 
       View.prototype.initialize = function() {
-        return $('body').keyup(this.closeView);
-      };
-
-      View.prototype.render = function() {
-        var _this = this;
+        $('body').keyup(this.closeView);
         this.model = new User({
           handle: this.id
         });
-        this.model.fetch({
-          success: function(data) {
-            _this.json = data.toJSON();
-            _this.itemModel = new Post({
-              author: _this.json[0]._id
-            });
-            return _this.itemModel.fetch({
-              success: function(items) {
-                return _this.$el.html(templ({
-                  profile: _this.json,
-                  posts: items.toJSON(),
-                  auth: auth
-                }));
-              }
-            });
-          }
+        this.listenTo(this.model, "sync", this.render);
+        this.model.fetch();
+        this.posts = new Posts;
+        this.posts.author = this.model.get("handle");
+        this.postsView = new PostsView({
+          collection: this.posts
         });
+        this.posts.fetch();
+        return this;
+      };
+
+      View.prototype.render = function() {
+        var postDiv;
+        if (!this.model.get('handle')) {
+          return this;
+        }
+        this.$el.html(templ({
+          item: this.model,
+          auth: auth
+        }));
+        postDiv = this.$el.find('.posts-box');
+        postDiv.html(this.postsView.el);
         return this;
       };
 

@@ -13,6 +13,8 @@
         return _ref;
       }
 
+      View.prototype.className = "content-cards bg-white-pure box-shadow-light align-left";
+
       View.prototype.render = function() {
         this.$el.html(templ({
           item: this.model

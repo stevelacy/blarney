@@ -1,7 +1,7 @@
 define (require) ->
   
   templ = require "templates/post/comments"
-  itemView = require "views/sub/commentItemView"
+  itemView = require "views/post/commentItemView"
 
 
   class View extends Backbone.Marionette.CompositeView

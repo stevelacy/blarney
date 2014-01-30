@@ -1,8 +1,11 @@
 define (require) ->
+
   User = require "models/User"
   Post = require "models/Post"
+  Posts = require "collections/Posts"
   templ = require "templates/profile/main"
   auth = require "app/auth"
+  PostsView = require "views/profile/Posts"
 
 
   class View extends Backbone.Marionette.View
@@ -10,20 +13,26 @@ define (require) ->
     initialize: ->
       $('body').keyup @closeView
 
+      @model = new User handle: @id
+      @listenTo @model, "sync", @render
+      @model.fetch()
+
+      # submodel (posts)
+      @posts = new Posts
+      @posts.author = @model.get "handle"
+      @postsView = new PostsView
+        collection: @posts
+      @posts.fetch()
+      return @      
+
 
     render: ->
-      @model = new User 
-        handle: @id
-      @model.fetch
-        success: (data) =>
-          @json = data.toJSON()
-          @itemModel = new Post author: @json[0]._id
-          @itemModel.fetch
-            success: (items) =>
-              @$el.html templ 
-                profile:@json
-                posts: items.toJSON()
-                auth: auth
+      return @ unless @model.get 'handle'
+      @$el.html templ
+        item: @model
+        auth: auth
+      postDiv = @$el.find '.posts-box'
+      postDiv.html @postsView.el
       return @
 
     events:
