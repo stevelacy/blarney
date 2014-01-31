@@ -15,7 +15,7 @@ jade.debug.shift();
 buf.push("</div>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
-buf.push("<div class=\"content box-center bg-white-trans-light z-index box-shadow\">");
+buf.push("<div class=\"content bg-white-shade box-center box-shadow\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
 buf.push("<div class=\"spacer-50\">");
