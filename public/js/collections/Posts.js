@@ -13,9 +13,14 @@
         return _ref;
       }
 
-      Items.prototype.url = '/v1/posts?populate=author&limit=12';
-
       Items.prototype.model = Post;
+
+      Items.prototype.url = function() {
+        if (this.author) {
+          return "/v1/posts?populate=author&limit=12&author=" + this.author;
+        }
+        return "/v1/posts?populate=author&limit=12";
+      };
 
       return Items;
 

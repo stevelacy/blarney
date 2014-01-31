@@ -22,6 +22,13 @@
         return this.urlRoot;
       };
 
+      User.prototype.parse = function(res) {
+        if (Array.isArray(res)) {
+          return res[0];
+        }
+        return res;
+      };
+
       return User;
 
     })(Backbone.Model);

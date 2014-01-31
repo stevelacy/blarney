@@ -6,4 +6,10 @@ define ->
         console.log  "#{@urlRoot}?handle=#{@get 'handle'}&populate=author"
         return "#{@urlRoot}?handle=#{@get 'handle'}&populate=author"
       return @urlRoot
+
+    parse: (res) ->
+      if Array.isArray res
+        return res[0]
+      return res
+
   return User

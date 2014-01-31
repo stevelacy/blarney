@@ -15,15 +15,16 @@ define (require) ->
 
       @model = new User handle: @options.user
       @listenTo @model, "sync", @render
-      @model.fetch()
 
       # submodel (posts)
       @posts = new Posts
-      @posts.author = @model.get "handle"
-      console.log @model
       @postsView = new PostsView
         collection: @posts
-      @posts.fetch()
+
+      @model.fetch
+        success: (data) =>
+          @posts.author = @model.get "_id"
+          @posts.fetch()
       return @      
 
 

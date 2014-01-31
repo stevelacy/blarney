@@ -14,7 +14,6 @@
       }
 
       View.prototype.initialize = function() {
-        console.log(this.$el);
         this.query = this.options.query;
         if (this.query == null) {
           this.query = '';

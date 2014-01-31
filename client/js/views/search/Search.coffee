@@ -4,7 +4,6 @@ define (require) ->
   class View extends Backbone.Marionette.View
 
     initialize: ->
-      console.log  @$el
       @query = @options.query
       @query ?= ''
       return @

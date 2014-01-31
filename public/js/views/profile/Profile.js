@@ -22,19 +22,22 @@
       }
 
       View.prototype.initialize = function() {
+        var _this = this;
         $('body').keyup(this.closeView);
         this.model = new User({
           handle: this.options.user
         });
         this.listenTo(this.model, "sync", this.render);
-        this.model.fetch();
         this.posts = new Posts;
-        this.posts.author = this.model.get("handle");
-        console.log(this.model);
         this.postsView = new PostsView({
           collection: this.posts
         });
-        this.posts.fetch();
+        this.model.fetch({
+          success: function(data) {
+            _this.posts.author = _this.model.get("_id");
+            return _this.posts.fetch();
+          }
+        });
         return this;
       };
 

@@ -3,6 +3,11 @@ define (require) ->
   Post = require "models/Post"
   
   class Items extends Backbone.Collection
-    url: '/v1/posts?populate=author&limit=12'
     model: Post
+    #url: '/v1/posts?populate=author&limit=12'
+
+    url: -> 
+      return "/v1/posts?populate=author&limit=12&author=#{@author}" if @author
+      return "/v1/posts?populate=author&limit=12"
+    
   return Items
