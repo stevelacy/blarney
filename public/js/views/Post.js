@@ -22,12 +22,12 @@
 
       View.prototype.initialize = function() {
         this.model = new Post({
-          post: this.id
+          post: this.options.post
         });
         this.listenTo(this.model, "sync", this.render);
         this.model.fetch();
         this.comments = new Comments;
-        this.comments.post = this.id;
+        this.comments.post = this.options.post;
         this.commentsView = new CommentsView({
           collection: this.comments
         });
@@ -59,7 +59,7 @@
         e.preventDefault();
         itemData = this.getFormData(this.$el.find("form"));
         this.comment = new Comment({
-          post: this.id
+          post: this.options.post
         });
         return this.comment.save(itemData, {
           success: function(data) {

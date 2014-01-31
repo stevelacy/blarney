@@ -49,6 +49,9 @@ Post = new Schema
     default: Date.now
     authorize: noWrite
 
+Post.methods.search = (opt, cb) ->
+  cb null, {query: opt.q}
+
 Post.methods.authorize = (req) ->
   isAuthor = false unless req.user?
   loggedIn = req.user?

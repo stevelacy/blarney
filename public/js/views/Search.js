@@ -3,12 +3,11 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Posts, User, View, auth, postsView, searchView, templ, _ref;
-    Posts = require("collections/Posts");
-    User = require("models/User");
-    templ = require("templates/main");
+    var Search, View, auth, postsView, searchView, templ, _ref;
+    Search = require("collections/Search");
+    templ = require("templates/search/main");
     auth = require("app/auth");
-    postsView = require("views/main/Posts");
+    postsView = require("views/search/Posts");
     searchView = require("views/search/Search");
     return View = (function(_super) {
       __extends(View, _super);
@@ -19,19 +18,27 @@
       }
 
       View.prototype.initialize = function() {
-        this.posts = new Posts;
+        this.query = this.options.query;
+        if (this.query == null) {
+          this.query = '';
+        }
+        this.posts = new Search;
+        this.posts.query = this.query;
         this.postsView = new postsView({
           collection: this.posts
         });
         this.listenTo(this.posts, "sync", this.render);
         this.posts.fetch();
-        this.searchView = new searchView;
+        this.searchView = new searchView({
+          query: this.query
+        });
         return this;
       };
 
       View.prototype.render = function() {
         var postDiv, searchDiv;
         this.$el.html(templ({
+          query: this.query,
           item: this.posts,
           auth: auth
         }));

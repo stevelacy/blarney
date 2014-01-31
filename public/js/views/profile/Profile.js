@@ -24,7 +24,7 @@
       View.prototype.initialize = function() {
         $('body').keyup(this.closeView);
         this.model = new User({
-          handle: this.id
+          handle: this.options.user
         });
         this.listenTo(this.model, "sync", this.render);
         this.model.fetch();

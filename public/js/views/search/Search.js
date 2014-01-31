@@ -3,13 +3,8 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Posts, User, View, auth, postsView, searchView, templ, _ref;
-    Posts = require("collections/Posts");
-    User = require("models/User");
-    templ = require("templates/main");
-    auth = require("app/auth");
-    postsView = require("views/main/Posts");
-    searchView = require("views/search/Search");
+    var View, templ, _ref;
+    templ = require("templates/search/search");
     return View = (function(_super) {
       __extends(View, _super);
 
@@ -19,27 +14,33 @@
       }
 
       View.prototype.initialize = function() {
-        this.posts = new Posts;
-        this.postsView = new postsView({
-          collection: this.posts
-        });
-        this.listenTo(this.posts, "sync", this.render);
-        this.posts.fetch();
-        this.searchView = new searchView;
+        console.log(this.$el);
+        this.query = this.options.query;
+        if (this.query == null) {
+          this.query = '';
+        }
         return this;
       };
 
       View.prototype.render = function() {
-        var postDiv, searchDiv;
         this.$el.html(templ({
-          item: this.posts,
-          auth: auth
+          query: this.query
         }));
-        postDiv = this.$el.find('.content');
-        postDiv.html(this.postsView.el);
-        searchDiv = this.$el.find('.search');
-        searchDiv.html(this.searchView.render().el);
         return this;
+      };
+
+      View.prototype.events = {
+        "click .search-button": "search"
+      };
+
+      View.prototype.search = function(e) {
+        var query;
+        console.log("called");
+        e.preventDefault();
+        query = this.$el.find(".search-term").val();
+        return Backbone.history.navigate("/search/" + query, {
+          trigger: true
+        });
       };
 
       return View;

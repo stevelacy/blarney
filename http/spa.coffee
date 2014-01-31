@@ -7,6 +7,12 @@ amazon = require "./amazon"
 
 rootFile = path.join "public", "index.html"
 User = db.model "User"
+Post = db.model "Post"
+
+app.get "/s/:query", (req, res) ->
+  Post.find({title: {$regex: req.params.query, $options: "i"}}).populate('author').exec (err, posts) ->
+    res.json posts
+
 
 
 app.get "/*", (req, res) ->

@@ -75,6 +75,7 @@ input {
 .search input {
   width: 80%;
   height: 50px;
+  color: #000;
 }
 .search button {
   width: 19%;
