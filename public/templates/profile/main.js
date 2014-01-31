@@ -5,9 +5,6 @@ jade.debug = [{ lineno: 1, filename: "/www/node/blarney-marionette/client/templa
 try {
 var buf = [];
 var locals_ = (locals || {}),item = locals_.item,auth = locals_.auth;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-buf.push("<div class=\"wrapper\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
 buf.push("<div class=\"profile-background\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
@@ -181,17 +178,8 @@ jade.debug.shift();
 buf.push("</div>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 38, filename: jade.debug[0].filename });
-buf.push("<div class=\"spacer\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 39, filename: jade.debug[0].filename });
 buf.push("<div class=\"content bg-white-shade box-center box-shadow-light align-center posts-box\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
 jade.debug.shift();
 buf.push("</div>");
 jade.debug.shift();

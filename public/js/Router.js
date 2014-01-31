@@ -3,13 +3,14 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Admin, AppRouter, Banner, Login, Main, New, Post, Profile, Search, appRouter, auth, banner, bannerView, region, _ref;
+    var Admin, AppRouter, Banner, Footer, Login, Main, New, Post, Profile, Search, appRouter, auth, banner, bannerView, footer, footerView, region, _ref;
     New = require('views/New');
     Main = require('views/Main');
     Post = require('views/Post');
     Login = require('views/Login');
     Search = require('views/Search');
     Banner = require('views/Banner');
+    Footer = require('views/Footer');
     Profile = require('views/profile/Profile');
     auth = require('app/auth');
     Admin = require('views/admin/Main');
@@ -18,6 +19,9 @@
     });
     banner = new Backbone.Marionette.Region({
       el: "#banner"
+    });
+    footer = new Backbone.Marionette.Region({
+      el: "#footer"
     });
     AppRouter = (function(_super) {
       __extends(AppRouter, _super);
@@ -99,7 +103,9 @@
     })(Backbone.Router);
     appRouter = new AppRouter;
     bannerView = new Banner;
-    return banner.show(bannerView);
+    banner.show(bannerView);
+    footerView = new Footer;
+    return footer.show(footerView);
   });
 
 }).call(this);

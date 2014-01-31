@@ -5,6 +5,7 @@ define (require) ->
   Login = require 'views/Login'
   Search = require 'views/Search'
   Banner = require 'views/Banner'
+  Footer = require 'views/Footer'
   Profile = require 'views/profile/Profile'
   auth = require 'app/auth'
 
@@ -13,6 +14,7 @@ define (require) ->
   Admin = require 'views/admin/Main'
   region = new Backbone.Marionette.Region el: "#content"
   banner = new Backbone.Marionette.Region el: "#banner"
+  footer = new Backbone.Marionette.Region el: "#footer"
   class AppRouter extends Backbone.Router
     routes:
       "": "main"
@@ -67,6 +69,9 @@ define (require) ->
 
   bannerView = new Banner
   banner.show bannerView
+  
+  footerView = new Footer
+  footer.show footerView
 
 
   
