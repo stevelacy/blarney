@@ -1,5 +1,4 @@
 define (require) ->
-  User = require "models/User"
   Post = require "models/Post"
 
   class Items extends Backbone.Collection
@@ -8,5 +7,4 @@ define (require) ->
       return "/s/#{@query}"
 
     model: Post
-
   return Items

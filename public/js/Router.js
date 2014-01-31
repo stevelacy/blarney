@@ -11,9 +11,11 @@
     Search = require('views/Search');
     Banner = require('views/Banner');
     Footer = require('views/Footer');
-    Profile = require('views/profile/Profile');
+    Profile = require('views/Profile');
     auth = require('app/auth');
-    Admin = require('views/admin/Main');
+    if (auth.level() === "5") {
+      Admin = require('views/admin/Main');
+    }
     region = new Backbone.Marionette.Region({
       el: "#content"
     });

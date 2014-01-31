@@ -12,11 +12,6 @@
         return Backbone.history.navigate(href, true);
       }
     });
-    Claru.addRegions({
-      banner: '#banner',
-      main: '#content',
-      footer: '#footer'
-    });
     Claru.on('initialize:after', function() {
       return Backbone.history.start({
         pushState: true

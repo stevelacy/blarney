@@ -3,10 +3,9 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Search, View, auth, postsView, searchView, templ, _ref;
+    var Search, View, postsView, searchView, templ, _ref;
     Search = require("collections/Search");
     templ = require("templates/search/main");
-    auth = require("app/auth");
     postsView = require("views/search/Posts");
     searchView = require("views/search/Search");
     return View = (function(_super) {
@@ -39,8 +38,7 @@
         var postDiv, searchDiv;
         this.$el.html(templ({
           query: this.query,
-          item: this.posts,
-          auth: auth
+          item: this.posts
         }));
         postDiv = this.$el.find('.content');
         postDiv.html(this.postsView.el);

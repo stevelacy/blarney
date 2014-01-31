@@ -6,9 +6,10 @@ define (require) ->
     initialize: ->
       @query = @options.query
       @query ?= ''
+      @setElement @$el
       return @
 
-    render: ->
+    render: ->   
       @$el.html templ
         query: @query
       return @

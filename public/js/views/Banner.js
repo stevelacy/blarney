@@ -21,14 +21,6 @@
         return this;
       };
 
-      View.prototype.events = {
-        "click #login": "openLogin"
-      };
-
-      View.prototype.openLogin = function() {
-        return $("#aux").fadeIn();
-      };
-
       return View;
 
     })(Backbone.Marionette.View);

@@ -18,6 +18,7 @@
         if (this.query == null) {
           this.query = '';
         }
+        this.setElement(this.$el);
         return this;
       };
 

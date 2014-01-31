@@ -44,7 +44,6 @@ define (require) ->
         post: @options.post
       @comment.save itemData,
         success: (data) =>
-          console.log data
           @comment.set 'author', new User
             _id: auth.id()
             handle: auth.handle()
@@ -53,7 +52,6 @@ define (require) ->
           @comments.push @comment
           @$el.find("#content").val ""
         error: (data) =>
-          console.log data
           notify = new Notify
             message: "Comment error"
   

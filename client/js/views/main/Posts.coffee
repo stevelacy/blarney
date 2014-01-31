@@ -11,3 +11,4 @@ define (require) ->
     initialize: ->
       @listenTo @collection, "sync", @render
       return @
+  

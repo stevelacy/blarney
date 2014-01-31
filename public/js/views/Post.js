@@ -63,7 +63,6 @@
         });
         return this.comment.save(itemData, {
           success: function(data) {
-            console.log(data);
             _this.comment.set('author', new User({
               _id: auth.id(),
               handle: auth.handle(),
@@ -75,7 +74,6 @@
           },
           error: function(data) {
             var notify;
-            console.log(data);
             return notify = new Notify({
               message: "Comment error"
             });

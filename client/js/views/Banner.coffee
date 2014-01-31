@@ -8,12 +8,5 @@ define (require) ->
       @$el.html templ auth: auth
       return @
 
-    events:
-      "click #login": "openLogin"
-
-    openLogin: ->
-      $("#aux").fadeIn()
-
-
   
 

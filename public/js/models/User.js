@@ -16,7 +16,6 @@
 
       User.prototype.url = function() {
         if (this.get('handle')) {
-          console.log("" + this.urlRoot + "?handle=" + (this.get('handle')) + "&populate=author");
           return "" + this.urlRoot + "?handle=" + (this.get('handle')) + "&populate=author";
         }
         return this.urlRoot;

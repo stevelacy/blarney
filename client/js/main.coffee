@@ -10,10 +10,6 @@ define (require) ->
       evt.preventDefault()
       Backbone.history.navigate href, true
 
-  Claru.addRegions
-    banner: '#banner'
-    main: '#content'
-    footer: '#footer'
   Claru.on 'initialize:after', ->
     Backbone.history.start
       pushState: true

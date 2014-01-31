@@ -2,7 +2,6 @@ define (require) ->
 
   Search = require "collections/Search"
   templ = require "templates/search/main"
-  auth = require "app/auth"
   postsView = require "views/search/Posts"
   searchView = require "views/search/Search"  
 
@@ -26,11 +25,9 @@ define (require) ->
       return @
 
     render: ->
-      #return @ unless @posts.get('author')
       @$el.html templ
         query: @query
         item: @posts
-        auth: auth
       postDiv = @$el.find '.content'
       postDiv.html @postsView.el
 
