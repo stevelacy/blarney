@@ -13,13 +13,13 @@ define (require) ->
     
     initialize: ->
       # main model
-      @model = new Post post: @id
+      @model = new Post post: @options.post
       @listenTo @model, "sync", @render
       @model.fetch()
 
       # submodel (comments)
       @comments = new Comments
-      @comments.post = @id
+      @comments.post = @options.post
       @commentsView = new CommentsView
         collection: @comments
       @comments.fetch()
@@ -41,7 +41,7 @@ define (require) ->
       e.preventDefault()
       itemData = @getFormData @$el.find "form"
       @comment = new Comment
-        post: @id
+        post: @options.post
       @comment.save itemData,
         success: (data) =>
           console.log data

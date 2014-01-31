@@ -13,7 +13,7 @@ define (require) ->
     initialize: ->
       $('body').keyup @closeView
 
-      @model = new User handle: @id
+      @model = new User handle: @options.user
       @listenTo @model, "sync", @render
       @model.fetch()
 
