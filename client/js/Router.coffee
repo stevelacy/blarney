@@ -3,6 +3,7 @@ define (require) ->
   Main = require 'views/Main'
   Post = require 'views/Post'
   Login = require 'views/Login'
+  Search = require 'views/Search'
   Banner = require 'views/Banner'
   Profile = require 'views/profile/Profile'
   auth = require 'app/auth'
@@ -10,7 +11,8 @@ define (require) ->
 
   # Admin
   Admin = require 'views/admin/Main'
-
+  region = new Backbone.Marionette.Region el: "#content"
+  banner = new Backbone.Marionette.Region el: "#banner"
   class AppRouter extends Backbone.Router
     routes:
       "": "main"
@@ -18,45 +20,50 @@ define (require) ->
       "p/:id": "post"
       "login": "login"
       "logout":"logout"
+      "search/:term": "search"
       "note/:id": "note"
       "admin": "admin"
       "*user": "profile"
 
+
+
+    post: (id) ->
+      view = new Post post:id
+      region.show view
+
+    main: ->
+      view = new Main
+      #$("#content").html view.render().el
+      region.show view
+
+
+    new: ->
+      return auth.login() unless auth.loggedIn()
+      view = new New
+      region.show view
+
+   
+    profile: (id) ->
+      view = new Profile user:id
+      region.show view
+
+    logout: ->
+      window.location.href = "/logout?server=true"
+      
+    login: ->
+      loginView = new Login
+      region.show loginView
+
+    admin: ->
+      view = new Admin
+      region.show view
+
+    search: (term) ->
+      view = new Search
+        query: term
+      region.show view
+
   appRouter = new AppRouter
-  region = new Backbone.Marionette.Region el: "#content"
-  banner = new Backbone.Marionette.Region el: "#banner"
-
-  appRouter.on 'route:post', (id) ->
-    view = new Post id:id
-    region.show view
-
-  appRouter.on 'route:main', ->
-    view = new Main
-    #$("#content").html view.render().el
-    region.show view
-
-
-  appRouter.on 'route:new', ->
-    return auth.login() unless auth.loggedIn()
-    view = new New
-    region.show view
-
- 
-  appRouter.on 'route:profile', (id) ->
-    view = new Profile id:id
-    region.show view
-
-  appRouter.on 'route:logout', ->
-    window.location.href = "/logout?server=true"
-    
-  appRouter.on 'route:login', ->
-    loginView = new Login
-    region.show loginView
-
-  appRouter.on 'route:admin', ->
-    view = new Admin
-    region.show view
-
 
   bannerView = new Banner
   banner.show bannerView
