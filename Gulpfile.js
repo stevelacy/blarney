@@ -6,6 +6,7 @@ var coffee = require("gulp-coffee");
 var reload = require("gulp-livereload");
 var stylus = require("gulp-stylus");
 require("coffee-script");
+require("coffee-script/register");
 
 server = lr();
 
