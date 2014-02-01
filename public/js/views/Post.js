@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Comment, Comments, CommentsView, Notify, Post, User, View, auth, templ, _ref;
+    var Comment, Comments, CommentsView, Notify, Post, User, View, auth, templ;
     Post = require("models/Post");
     User = require("models/User");
     templ = require("templates/post/main");
@@ -16,8 +16,7 @@
       __extends(View, _super);
 
       function View() {
-        _ref = View.__super__.constructor.apply(this, arguments);
-        return _ref;
+        return View.__super__.constructor.apply(this, arguments);
       }
 
       View.prototype.initialize = function() {
@@ -54,30 +53,33 @@
       };
 
       View.prototype.saveComment = function(e) {
-        var itemData,
-          _this = this;
+        var itemData;
         e.preventDefault();
         itemData = this.getFormData(this.$el.find("form"));
         this.comment = new Comment({
           post: this.options.post
         });
         return this.comment.save(itemData, {
-          success: function(data) {
-            _this.comment.set('author', new User({
-              _id: auth.id(),
-              handle: auth.handle(),
-              name: auth.name(),
-              image: auth.image()
-            }));
-            _this.comments.push(_this.comment);
-            return _this.$el.find("#content").val("");
-          },
-          error: function(data) {
-            var notify;
-            return notify = new Notify({
-              message: "Comment error"
-            });
-          }
+          success: (function(_this) {
+            return function(data) {
+              _this.comment.set('author', new User({
+                _id: auth.id(),
+                handle: auth.handle(),
+                name: auth.name(),
+                image: auth.image()
+              }));
+              _this.comments.push(_this.comment);
+              return _this.$el.find("#content").val("");
+            };
+          })(this),
+          error: (function(_this) {
+            return function(data) {
+              var notify;
+              return notify = new Notify({
+                message: "Comment error"
+              });
+            };
+          })(this)
         });
       };
 

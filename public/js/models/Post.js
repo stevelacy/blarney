@@ -3,14 +3,13 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Item, User, _ref;
+    var Item, User;
     User = require("models/User");
     Item = (function(_super) {
       __extends(Item, _super);
 
       function Item() {
-        _ref = Item.__super__.constructor.apply(this, arguments);
-        return _ref;
+        return Item.__super__.constructor.apply(this, arguments);
       }
 
       Item.prototype.urlRoot = '/v1/posts';
@@ -33,13 +32,13 @@
       };
 
       Item.prototype.parse = function(res) {
-        var k, v, _ref1;
+        var k, v, _ref;
         if (this.casts == null) {
           return res;
         }
-        _ref1 = this.casts;
-        for (k in _ref1) {
-          v = _ref1[k];
+        _ref = this.casts;
+        for (k in _ref) {
+          v = _ref[k];
           res[k] = new v(res[k], {
             parse: true
           });

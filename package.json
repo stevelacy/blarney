@@ -1,8 +1,8 @@
 {
-  "name": "api-boiler",
-  "version": "0.0.3",
+  "name": "Blarney",
+  "version": "0.0.5",
   "dependencies": {
-    "coffee-script": "*",
+    "coffee-script": "1.6.3",
     "crudify": "*",
     "passport": "*",
     "passport-twitter": "*",
@@ -18,22 +18,19 @@
     "require-dir": "*",
     "request": "*",
     "try-parse": "*",
+    "nib": "*",
+    "knox": "~0.8.8",
+    "gulp-jade": "~0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
     "gulp": "*",
-    "gulp-jade": "*",
+    "gulp-jade": "0.2.0",
     "gulp-wrap-amd": "*",
     "gulp-livereload": "~0.1.0",
     "tiny-lr": "0.0.5",
     "gulp-coffee": "*",
-    "gulp-stylus": "*",
-    "nib": "*",
-    "knox": "~0.8.8"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "grunt-contrib-copy": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-coffee": "*"
+    "gulp-stylus": "*"
   },
   "scripts": {
     "test": "NODE_ENV=testing mocha --reporter spec",

@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Admin, AppRouter, Banner, Footer, Login, Main, New, Post, Profile, Search, appRouter, auth, banner, bannerView, footer, footerView, region, _ref;
+    var Admin, AppRouter, Banner, Footer, Login, Main, New, Post, Profile, Search, appRouter, auth, banner, bannerView, footer, footerView, region;
     New = require('views/New');
     Main = require('views/Main');
     Post = require('views/Post');
@@ -29,8 +29,7 @@
       __extends(AppRouter, _super);
 
       function AppRouter() {
-        _ref = AppRouter.__super__.constructor.apply(this, arguments);
-        return _ref;
+        return AppRouter.__super__.constructor.apply(this, arguments);
       }
 
       AppRouter.prototype.routes = {

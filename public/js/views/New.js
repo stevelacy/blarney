@@ -3,7 +3,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Post, View, auth, templ, _ref;
+    var Post, View, auth, templ;
     Post = require("models/Post");
     templ = require("templates/new/main");
     auth = require("app/auth");
@@ -11,8 +11,7 @@
       __extends(View, _super);
 
       function View() {
-        _ref = View.__super__.constructor.apply(this, arguments);
-        return _ref;
+        return View.__super__.constructor.apply(this, arguments);
       }
 
       View.prototype.render = function() {
