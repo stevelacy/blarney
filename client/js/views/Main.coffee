@@ -27,7 +27,7 @@ define (require) ->
       @$el.html templ
         item: @posts
         auth: auth
-      postDiv = @$el.find '.content'
+      postDiv = @$el.find '.main-box'
       postDiv.html @postsView.el
 
       searchDiv = @$el.find '.search'
