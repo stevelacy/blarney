@@ -1,6 +1,6 @@
 @import url(http\://fonts.googleapis.com/css?family=Open\+Sans\:300)
 body
-  font-size 1.4em
+  font-size 1.3em
   font-family 'Open Sans', sans-serif
   font-weight light
 
@@ -160,17 +160,18 @@ nav .nav-user
 .z-index
   z-index 5
 
-.content
+.main-box
   min-height 700px
   margin-right 1%
 
-.content-cards
+.main-box-cards
   position relative
   width 350px
   height 150px
   margin 1% 1% 2% 1%
   display inline-block
   font-size 2em
+  overflow hidden
   .title
     position absolute
     top 20px
@@ -192,6 +193,7 @@ nav .nav-user
     position absolute
     left 35px
     top 10px
+    font-size .5em
   .stats
     position absolute
     right 20px
@@ -497,7 +499,7 @@ nav .nav-user
   .spacer
     height 75px
   
-  .content-cards
+  .main-box-cards
     width 80%
     height 150px
   
@@ -638,10 +640,10 @@ nav .nav-user
     margin-left 1%
     padding 0
 
-  .content
+  .main-box
     margin 0
   
-  .content-cards
+  .main-box-cards
     width 98%
     height 150px
     margin 2% 1% 0 1%
@@ -746,4 +748,3 @@ nav .nav-user
 ::selection 
   background #000
   color #fff
-
