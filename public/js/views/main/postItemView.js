@@ -12,7 +12,7 @@
         return View.__super__.constructor.apply(this, arguments);
       }
 
-      View.prototype.className = " content-cards bg-white-pure box-shadow-light align-left trans";
+      View.prototype.className = "main-box-cards bg-white-pure box-shadow-light align-left trans";
 
       View.prototype.render = function() {
         this.$el.html(templ({

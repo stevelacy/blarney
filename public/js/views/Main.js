@@ -34,7 +34,7 @@
           item: this.posts,
           auth: auth
         }));
-        postDiv = this.$el.find('.content');
+        postDiv = this.$el.find('.main-box');
         postDiv.html(this.postsView.el);
         searchDiv = this.$el.find('.search');
         searchDiv.html(this.searchView.render().el);

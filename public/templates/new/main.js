@@ -18,7 +18,7 @@ jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
 buf.push("<div class=\"align-center\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-buf.push("<div class=\"content new bg-white box-center box-shadow align-left\">");
+buf.push("<div class=\"main-box new bg-white box-center box-shadow align-left\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 6, filename: jade.debug[0].filename });
 buf.push("<form>");

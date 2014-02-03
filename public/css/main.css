@@ -117,7 +117,7 @@ h6 {
 .box-width {
   padding: 1%;
 }
-.content {
+.main-box {
   position: relative;
   padding: 1%;
   box-shadow: 0 0 1px #bebebe;
@@ -311,7 +311,7 @@ h6 {
   textarea {
     min-width: 80%;
   }
-  .content {
+  .main-box {
     overflow-x: hidden;
   }
   .box {

@@ -28,7 +28,7 @@ define (require) ->
       @$el.html templ
         query: @query
         item: @posts
-      postDiv = @$el.find '.content'
+      postDiv = @$el.find '.main-box'
       postDiv.html @postsView.el
 
       searchDiv = @$el.find '.search'

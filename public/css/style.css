@@ -1,6 +1,6 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300");
 body {
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-family: 'Open Sans', sans-serif;
   font-weight: light;
 }
@@ -166,19 +166,20 @@ nav .nav-user * {
 .z-index {
   z-index: 5;
 }
-.content {
+.main-box {
   min-height: 700px;
   margin-right: 1%;
 }
-.content-cards {
+.main-box-cards {
   position: relative;
   width: 350px;
   height: 150px;
   margin: 1% 1% 2% 1%;
   display: inline-block;
   font-size: 2em;
+  overflow: hidden;
 }
-.content-cards .title {
+.main-box-cards .title {
   position: absolute;
   top: 20px;
   left: 18px;
@@ -186,31 +187,32 @@ nav .nav-user * {
   max-height: 85px;
   overflow: hidden;
 }
-.content-cards .user {
+.main-box-cards .user {
   position: absolute;
   bottom: 20px;
   left: 18px;
   width: 200px;
   height: 30px;
 }
-.content-cards .icon {
+.main-box-cards .icon {
   width: 30px;
   height: 30px;
   overflow: hidden;
 }
-.content-cards .name {
+.main-box-cards .name {
   position: absolute;
   left: 35px;
   top: 10px;
+  font-size: 0.5em;
 }
-.content-cards .stats {
+.main-box-cards .stats {
   position: absolute;
   right: 20px;
   bottom: 10px;
   width: 30px;
   height: 30px;
 }
-.content-cards .likes {
+.main-box-cards .likes {
   position: absolute;
   top: 7px;
   width: 30px;
@@ -556,7 +558,7 @@ nav .nav-user * {
   .spacer {
     height: 75px;
   }
-  .content-cards {
+  .main-box-cards {
     width: 80%;
     height: 150px;
   }
@@ -697,10 +699,10 @@ nav .nav-user * {
     margin-left: 1%;
     padding: 0;
   }
-  .content {
+  .main-box {
     margin: 0;
   }
-  .content-cards {
+  .main-box-cards {
     width: 98%;
     height: 150px;
     margin: 2% 1% 0 1%;

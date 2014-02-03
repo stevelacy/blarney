@@ -33,7 +33,7 @@ jade.debug.shift();
 buf.push("</div>");
 jade.debug.shift();
 jade.debug.unshift({ lineno: 6, filename: jade.debug[0].filename });
-buf.push("<div class=\"message bg-white-pure box-shadow-light\">");
+buf.push("<div class=\"message\">");
 jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
 jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
 buf.push("" + (jade.escape((jade.interp = item.get('content')) == null ? '' : jade.interp)) + "");
