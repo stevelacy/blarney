@@ -638,9 +638,9 @@ nav .nav-user * {
   }
   .post-author .bio {
     display: block;
-    float: right;
-    width: 65%;
+    width: 60%;
     height: 60px;
+    font-size: 0.7em;
     overflow: hidden;
   }
   .post-title {
