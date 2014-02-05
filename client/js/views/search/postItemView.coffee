@@ -3,7 +3,7 @@ define (require) ->
   templ = require "templates/search/card"
 
   class View extends Backbone.Marionette.ItemView
-    className: " content-cards bg-white-pure box-shadow-light align-left trans"
+    className: " main-box-cards bg-white-pure box-shadow-light align-left trans"
     render: ->
       console.log @model
       @$el.html templ
