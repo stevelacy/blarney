@@ -31,7 +31,8 @@
         .bio-left
           | #{item.get('description')}
         .bio-right
-          a(href="https://twitter.com/#{item.get('handle')}") Twitter  @#{item.get('handle')}
+          if item.get('provider') == "twitter"
+            a(href="https://twitter.com/#{item.get('handle')}") Twitter  @#{item.get('handle')}
 
 .align-center.z-index
   .spacer
