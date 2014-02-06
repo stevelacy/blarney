@@ -23,7 +23,9 @@ handleFunction = (token, tokenSecret, profile, cb) ->
       image: profile._json.profile_image_url_https.replace('_normal', '')
       website: profile._json.url
       verified: profile._json.verified
+      provider: "twitter"
     if user?
+      console.log profileUpdate
       user.set profileUpdate
       user.save cb
     else
