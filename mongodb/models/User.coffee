@@ -107,6 +107,9 @@ User = new Schema
     type: Date
     default: Date.now
     authorize: noWrite
+    
+  provider:
+    type: String
 
 
 User.methods.authorize = (req) ->
