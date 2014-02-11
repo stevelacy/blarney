@@ -25,7 +25,6 @@ handleFunction = (token, tokenSecret, profile, cb) ->
       verified: profile._json.verified
       provider: "twitter"
     if user?
-      console.log profileUpdate
       user.set profileUpdate
       user.save cb
     else

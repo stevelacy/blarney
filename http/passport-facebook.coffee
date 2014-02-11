@@ -10,7 +10,6 @@ app = require './express'
 handleFunction = (token, tokenSecret, profile, cb) ->
   User.findOne {handle:profile.username}, (err, user) ->
     return cb err if err?
-    console.log profile
     profileUpdate =
       id: String profile._json.id
       token: token
@@ -25,12 +24,10 @@ handleFunction = (token, tokenSecret, profile, cb) ->
       verified: profile._json.verified
       provider: "facebook"
     if user?
-      console.log profileUpdate
       user.set profileUpdate
       user.save cb
     else
       User.create profileUpdate, (err, doc) ->
-        console.log profileUpdate
         return cb err if err?
         cb null, doc
 
