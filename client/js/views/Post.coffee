@@ -4,7 +4,6 @@ define (require) ->
   User    = require "models/User"
   templ   = require "templates/post/main"
   auth    = require "app/auth"
-  Notify    = require "app/notify"
   CommentsView = require "views/post/Comments"
   Comments = require "collections/Comments"
   Comment = require "models/Comment"
@@ -51,9 +50,9 @@ define (require) ->
             image: auth.image()
           @comments.push @comment
           @$el.find("#content").val ""
-        error: (data) =>
-          notify = new Notify
-            message: "Comment error"
+        error: (model, data) ->
+          Object.keys(data.responseJSON.error.errors).forEach (data) ->
+            $("[name='#{data}']").addClass "error"
   
 
     getFormData: (form) ->

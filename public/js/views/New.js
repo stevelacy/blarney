@@ -35,6 +35,11 @@
             return Backbone.history.navigate("/p/" + data.id, {
               trigger: true
             });
+          },
+          error: function(model, data) {
+            return Object.keys(data.responseJSON.error.errors).forEach(function(data) {
+              return $("[name='" + data + "']").addClass("error");
+            });
           }
         });
       };

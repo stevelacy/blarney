@@ -133,6 +133,9 @@ nav .nav-user * {
   -moz-border-radius: 0;
   border: none;
 }
+.error {
+  border: 1px solid #c0392b;
+}
 .position-relative {
   position: relative;
 }

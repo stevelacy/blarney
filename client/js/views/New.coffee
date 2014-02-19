@@ -23,6 +23,9 @@ define (require) ->
         success: (data) ->
           Backbone.history.navigate "/p/#{data.id}", 
             trigger: true
+        error: (model, data) ->
+          Object.keys(data.responseJSON.error.errors).forEach (data) ->
+            $("[name='#{data}']").addClass "error"
       
 
     getFormData: (form) ->

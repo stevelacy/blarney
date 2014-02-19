@@ -3,12 +3,11 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Comment, Comments, CommentsView, Notify, Post, User, View, auth, templ;
+    var Comment, Comments, CommentsView, Post, User, View, auth, templ;
     Post = require("models/Post");
     User = require("models/User");
     templ = require("templates/post/main");
     auth = require("app/auth");
-    Notify = require("app/notify");
     CommentsView = require("views/post/Comments");
     Comments = require("collections/Comments");
     Comment = require("models/Comment");
@@ -72,14 +71,11 @@
               return _this.$el.find("#content").val("");
             };
           })(this),
-          error: (function(_this) {
-            return function(data) {
-              var notify;
-              return notify = new Notify({
-                message: "Comment error"
-              });
-            };
-          })(this)
+          error: function(model, data) {
+            return Object.keys(data.responseJSON.error.errors).forEach(function(data) {
+              return $("[name='" + data + "']").addClass("error");
+            });
+          }
         });
       };
 

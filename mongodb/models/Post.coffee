@@ -26,6 +26,7 @@ Post = new Schema
 
   content:
     type: String
+    required: true
 
 
   kind:
