@@ -83,4 +83,6 @@ define (require) ->
           @$el.find('#upload-box').slideToggle()
           @$el.find("#edit-cover-box").fadeToggle()
 
-      xhr.send formData
+      xhr.send formData, (err, res) ->
+        console.log err if err?
+

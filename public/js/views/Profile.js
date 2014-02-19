@@ -116,7 +116,11 @@
             }
           };
         })(this);
-        return xhr.send(formData);
+        return xhr.send(formData, function(err, res) {
+          if (err != null) {
+            return console.log(err);
+          }
+        });
       };
 
       return View;
