@@ -28,6 +28,8 @@ define (require) ->
       "search/:term": "search"
       "note/:id": "note"
       "admin": "admin"
+      "_=_": "navigate"
+      "#_=_": "navigate"
       "*user": "profile"
 
 
@@ -56,8 +58,8 @@ define (require) ->
       window.location.href = "/logout?server=true"
       
     login: ->
-      loginView = new Login
-      region.show loginView
+      view = new Login
+      region.show view
 
     admin: ->
       view = new Admin
@@ -67,6 +69,9 @@ define (require) ->
       view = new Search
         query: term
       region.show view
+    navigate: ->
+      Backbone.history.navigate '/',
+        trigger: true
 
   appRouter = new AppRouter
 

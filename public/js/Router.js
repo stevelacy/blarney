@@ -41,6 +41,8 @@
         "search/:term": "search",
         "note/:id": "note",
         "admin": "admin",
+        "_=_": "navigate",
+        "#_=_": "navigate",
         "*user": "profile"
       };
 
@@ -80,9 +82,9 @@
       };
 
       AppRouter.prototype.login = function() {
-        var loginView;
-        loginView = new Login;
-        return region.show(loginView);
+        var view;
+        view = new Login;
+        return region.show(view);
       };
 
       AppRouter.prototype.admin = function() {
@@ -97,6 +99,12 @@
           query: term
         });
         return region.show(view);
+      };
+
+      AppRouter.prototype.navigate = function() {
+        return Backbone.history.navigate('/', {
+          trigger: true
+        });
       };
 
       return AppRouter;
