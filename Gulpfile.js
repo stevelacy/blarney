@@ -8,7 +8,7 @@ var stylus = require("gulp-stylus");
 require("coffee-script");
 require("coffee-script/register");
 
-server = lr();
+var server = lr();
 
 gulp.task("templates", function(){
   gulp.src("./client/templates/**/*.jade")

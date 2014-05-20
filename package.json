@@ -9,7 +9,7 @@
     "passport-twitter": "*",
     "connect": "*",
     "connect-mongo": "*",
-    "express": "*",
+    "express": "3.x",
     "mongoose": "*",
     "goosestrap": "*",
     "config-chain": "*",
@@ -21,12 +21,11 @@
     "try-parse": "*",
     "nib": "*",
     "knox": "~0.8.8",
-    "gulp-jade": "~0.2.0",
     "passport-facebook": "~1.0.2"
   },
   "devDependencies": {
     "mocha": "*",
-    "gulp": "*",
+    "gulp": "^3.5.2",
     "gulp-jade": "*",
     "gulp-wrap-amd": "*",
     "gulp-livereload": "~0.1.0",
