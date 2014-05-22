@@ -16,6 +16,7 @@
 
       function View() {
         this.setFile = __bind(this.setFile, this);
+        this.closeView = __bind(this.closeView, this);
         this.editBoxToggle = __bind(this.editBoxToggle, this);
         return View.__super__.constructor.apply(this, arguments);
       }
@@ -57,8 +58,8 @@
 
       View.prototype.events = {
         "click #edit-cover-button": "editBoxToggle",
-        "change #file": "setFile",
         "click #sub-cover": "fileLoad",
+        "change #file": "setFile",
         "keyup": "closeView"
       };
 
@@ -68,6 +69,9 @@
 
       View.prototype.closeView = function(e) {
         if (e.keyCode !== 27) {
+          return true;
+        }
+        if (!this.$el.find("#edit-cover-box").is(":visible")) {
           return true;
         }
         return this.$el.find("#edit-cover-box").fadeOut();

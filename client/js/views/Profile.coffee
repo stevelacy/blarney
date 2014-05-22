@@ -39,20 +39,19 @@ define (require) ->
 
     events:
       "click #edit-cover-button": "editBoxToggle"
-      "change #file": "setFile"
       "click #sub-cover": "fileLoad"
+      "change #file": "setFile"
       "keyup": "closeView"
-
 
 
     ## functions
 
-
     editBoxToggle: =>
       @$el.find("#edit-cover-box").fadeToggle()
 
-    closeView: (e) ->
+    closeView: (e) =>
       return true unless e.keyCode == 27
+      return true unless @$el.find("#edit-cover-box").is ":visible"
       @$el.find("#edit-cover-box").fadeOut()
 
     setFile: (e) =>
