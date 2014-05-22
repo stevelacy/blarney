@@ -9,7 +9,7 @@ define (require) ->
       @setElement @$el
       return @
 
-    render: ->   
+    render: ->
       @$el.html templ
         query: @query
       return @
@@ -18,10 +18,9 @@ define (require) ->
       "click .search-button": "search"
 
     search: (e) ->
-      console.log "called"
       e.preventDefault()
       query = @$el.find(".search-term").val()
       Backbone.history.navigate "/search/#{query}",
-        trigger: true      
+        trigger: true
   
 

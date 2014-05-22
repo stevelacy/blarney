@@ -3,7 +3,7 @@ define (require) ->
   Search = require "collections/Search"
   templ = require "templates/search/main"
   postsView = require "views/search/Posts"
-  searchView = require "views/search/Search"  
+  searchView = require "views/search/Search"
 
 
   class View extends Backbone.Marionette.View
@@ -20,11 +20,14 @@ define (require) ->
       @posts.fetch()
       
       # search view
-      @searchView = new searchView
-        query: @query
       return @
 
+    events:
+      "click .search-button": "search"
+
     render: ->
+      @searchView = new searchView
+        query: @query
       @$el.html templ
         query: @query
         item: @posts
@@ -32,5 +35,5 @@ define (require) ->
       postDiv.html @postsView.el
 
       searchDiv = @$el.find '.search'
-      searchDiv.html @searchView.render().el    
+      searchDiv.html @searchView.render().el
       return @
