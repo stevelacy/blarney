@@ -25,6 +25,7 @@ define (require) ->
       "p/:id": "post"
       "login": "login"
       "logout":"logout"
+      "search": "search"
       "search/:term": "search"
       "note/:id": "note"
       "admin": "admin"

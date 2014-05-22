@@ -1,12 +1,13 @@
-a(href="/p/#{item.get('id')}").title
-  | #{item.get('title')}
-.user
-  a(href="/#{item.get('author').get('handle')}")
-    img.icon(src="#{item.get('author').get('image')}")
-    .name.text-small
-      | #{item.get('author').get('name')}
-.stats
-  img.icon(src='images/like.png')
-  .likes.align-center.grey
-    | 
-  
+if item
+  a(href="/p/#{item.get('id')}").title
+    | #{item.get('title')}
+  .user
+    a(href="/#{item.get('author').get('handle')}")
+      img.icon(src="#{item.get('author').get('image')}")
+      .name.text-small
+        | #{item.get('author').get('name')}
+  .stats
+    img.icon(src='images/like.png')
+    .likes.align-center.grey
+      | 
+    

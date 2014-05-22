@@ -1,26 +1,11 @@
 define(["vendor/jade"],function(jade){
 
-return function anonymous(locals) {
-jade.debug = [{ lineno: 1, filename: "/www/node/blarney-marionette/client/templates/search/search.jade" }];
-try {
+return function template(locals) {
 var buf = [];
-var locals_ = (locals || {}),query = locals_.query;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-buf.push("<input" + (jade.attrs({ 'type':('text'), 'placeholder':('Search'), 'value':("" + (query) + ""), "class": [('block'),('search-term')] }, {"type":true,"placeholder":true,"value":true})) + "/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
-buf.push("<button class=\"block green search-button\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
-buf.push("Search");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</button>");
-jade.debug.shift();
-jade.debug.shift();;return buf.join("");
-} catch (err) {
-  jade.rethrow(err, jade.debug[0].filename, jade.debug[0].lineno);
-}
+var jade_mixins = {};
+var jade_interp;
+;var locals_for_with = (locals || {});(function (query) {
+buf.push("<form><input type=\"text\" placeholder=\"Search\"" + (jade.attr("value", "" + (query) + "", true, false)) + " class=\"block search-term\"/><button class=\"block green search-button\">Search</button></form>");}("query" in locals_for_with?locals_for_with.query:typeof query!=="undefined"?query:undefined));;return buf.join("");
 };
 
 });

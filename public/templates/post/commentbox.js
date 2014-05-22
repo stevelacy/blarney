@@ -1,101 +1,18 @@
 define(["vendor/jade"],function(jade){
 
-return function anonymous(locals) {
-jade.debug = [{ lineno: 1, filename: "/www/node/blarney-marionette/client/templates/post/commentbox.jade" }];
-try {
+return function template(locals) {
 var buf = [];
-var locals_ = (locals || {}),auth = locals_.auth;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-if ( auth.loggedIn())
+var jade_mixins = {};
+var jade_interp;
+;var locals_for_with = (locals || {});(function (auth) {
+if ( auth && auth.loggedIn())
 {
-jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
-buf.push("<div class=\"new-comment bg-white-shade\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
-buf.push("<div class=\"spacer-50\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-buf.push("<h2 class=\"grey\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-buf.push("Comment");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</h2>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
-buf.push("<form>");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
-buf.push("<textarea name=\"content\" id=\"content\" placeholder=\"Message\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</textarea>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 8, filename: jade.debug[0].filename });
-buf.push("<div class=\"spacer-50\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
-buf.push("<button type=\"submit\" class=\"btn btn-success\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
-buf.push("Comment");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</button>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</form>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
+buf.push("<div class=\"new-comment bg-white-shade\"><div class=\"spacer-50\"><h2 class=\"grey\">Comment</h2></div><form><textarea name=\"content\" id=\"content\" placeholder=\"Message\"></textarea><div class=\"spacer-50\"></div><button type=\"submit\" class=\"btn btn-success\">Comment</button></form></div>");
 }
 else
 {
-jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
-buf.push("<div class=\"new-comment bg-white-shade align-center\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 12, filename: jade.debug[0].filename });
-buf.push("<div class=\"spacer-50\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
-buf.push("<a href=\"/login\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 14, filename: jade.debug[0].filename });
-buf.push("<button class=\"bg-green btn-lg white inline-block\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 14, filename: jade.debug[0].filename });
-buf.push("Login to comment");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</button>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</a>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-}
-jade.debug.shift();
-jade.debug.shift();;return buf.join("");
-} catch (err) {
-  jade.rethrow(err, jade.debug[0].filename, jade.debug[0].lineno);
-}
+buf.push("<div class=\"new-comment bg-white-shade align-center\"><div class=\"spacer-50\"></div><a href=\"/login\"><button class=\"bg-green btn-lg white inline-block\">Login to comment</button></a></div>");
+}}("auth" in locals_for_with?locals_for_with.auth:typeof auth!=="undefined"?auth:undefined));;return buf.join("");
 };
 
 });

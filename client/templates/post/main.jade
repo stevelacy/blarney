@@ -1,22 +1,23 @@
-.spacer
-.align-center
-  .main-box.bg-white.box-center.box-shadow.align-left.trans
-    .post
-      .post-author.bg-grey.z-index
-        a(href="/#{item.get('author').get('handle')}")
-          img.icon(src="#{item.get('author').get('image')}") 
-          .name.white #{item.get('author').get('name')}
-          .bio.white #{item.get('author').get('description')}
+if item  
+  .spacer
+  .align-center
+    .main-box.bg-white.box-center.box-shadow.align-left.trans
+      .post
+        .post-author.bg-grey.z-index
+          a(href="/#{item.get('author').get('handle')}")
+            img.icon(src="#{item.get('author').get('image')}") 
+            .name.white #{item.get('author').get('name')}
+            .bio.white #{item.get('author').get('description')}
 
-      .post-title.text-huge #{item.get('title')}
-      .date(data-livestamp="#{item.get('created_at')}")
-      #rating-post.post-stats.grey(data-id= "#{item.get('id')}")
-        img(src='/images/like.png') 
-        span
-          | likes
-      br
-      .post-content.text-med #{item.get('content')}
+        .post-title.text-huge #{item.get('title')}
+        .date(data-livestamp="#{item.get('created_at')}")
+        #rating-post.post-stats.grey(data-id= "#{item.get('id')}")
+          img(src='/images/like.png') 
+          span
+            | likes
+        br
+        .post-content.text-med #{item.get('content')}
 
-    .spacer
-    .comments-box
-    include ./commentbox
+      .spacer
+      .comments-box
+      include ./commentbox

@@ -1,39 +1,39 @@
+if item
+  .profile-background
+    img.img#profile-img(src="#{item.get('background')}?d=#{Date.now()}")
+    if auth.handle() == item.get('handle')
+      button.edit.bg-white-trans.box-shadow.white#edit-cover-button
+        | Change Cover
+  .edit-box.bg-white-trans-light#edit-cover-box.z-index.box-shadow
+    #upload-box.upload-box.align-center
+      form(action='/upload' name='form-cover' id='form-cover' method='post' enctype='multipart/form-data')
+        input.bg-white-trans-light(type='file' accept="image/*" name='image' id='file')
+        input.white.bg-green(type='submit' name='sub-cover' id='sub-cover' value='Save')  
+        br
+      #status.text-small
+        | .jpg, .jpeg, .png only
+    #progress.progress.bg-white-trans
+      .bar.bg-dark-grey
+      .percent
 
-.profile-background
-  img.img#profile-img(src="#{item.get('background')}?d=#{Date.now()}")
-  if auth.handle() == item.get('handle')
-    button.edit.bg-white-trans.box-shadow.white#edit-cover-button
-      | Change Cover
-.edit-box.bg-white-trans-light#edit-cover-box.z-index.box-shadow
-  #upload-box.upload-box.align-center
-    form(action='/upload' name='form-cover' id='form-cover' method='post' enctype='multipart/form-data')
-      input.bg-white-trans-light(type='file' accept="image/*" name='image' id='file')
-      input.white.bg-green(type='submit' name='sub-cover' id='sub-cover' value='Save')  
-      br
-    #status.text-small
-      | .jpg, .jpeg, .png only
-  #progress.progress.bg-white-trans
-    .bar.bg-dark-grey
-    .percent
-
-.spacer
-.align-center.z-index
-  .main-box.bg-white-trans.box-center.box-shadow.align-left
-    .profile
-      .user
-        .icon
-          img(src="#{item.get('image')}")
-        //.name.text-large.white(class='#{profile.colors.name}')
-        .name.text-large.white
-          | #{item.get('name')}
-      .bio.bg.bg-white-pure
-        //.bio-left(class='#{profile.colors.bio}')
-        .bio-left
-          | #{item.get('description')}
-        .bio-right
-          if item.get('provider') == "twitter"
-            a(href="https://twitter.com/#{item.get('handle')}") Twitter  @#{item.get('handle')}
-
-.align-center.z-index
   .spacer
-  .main-box.bg-white-shade.box-center.box-shadow-light.align-center.posts-box
+  .align-center.z-index
+    .main-box.bg-white-trans.box-center.box-shadow.align-left
+      .profile
+        .user
+          .icon
+            img(src="#{item.get('image')}")
+          //.name.text-large.white(class='#{profile.colors.name}')
+          .name.text-large.white
+            | #{item.get('name')}
+        .bio.bg.bg-white-pure
+          //.bio-left(class='#{profile.colors.bio}')
+          .bio-left
+            | #{item.get('description')}
+          .bio-right
+            if item.get('provider') == "twitter"
+              a(href="https://twitter.com/#{item.get('handle')}") Twitter  @#{item.get('handle')}
+
+  .align-center.z-index
+    .spacer
+    .main-box.bg-white-shade.box-center.box-shadow-light.align-center.posts-box

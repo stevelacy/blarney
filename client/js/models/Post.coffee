@@ -13,7 +13,7 @@ define (require) ->
         return "#{@urlRoot}?author=#{@get 'author'}"
 
       if @get 'post'
-        return "#{@urlRoot}/#{@get 'post'}?populate=author"        
+        return "#{@urlRoot}/#{@get 'post'}?populate=author"
       return @urlRoot
 
     parse: (res) ->

@@ -25,7 +25,7 @@ define (require) ->
         success: (data) =>
           @posts.author = @model.get "_id"
           @posts.fetch()
-      return @      
+      return @
 
 
     render: ->
@@ -53,7 +53,7 @@ define (require) ->
 
     closeView: (e) ->
       return true unless e.keyCode == 27
-      @$el.find("#edit-cover-box").fadeOut()      
+      @$el.find("#edit-cover-box").fadeOut()
 
     setFile: (e) =>
       input = e.currentTarget

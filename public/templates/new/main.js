@@ -1,95 +1,14 @@
 define(["vendor/jade"],function(jade){
 
-return function anonymous(locals) {
-jade.debug = [{ lineno: 1, filename: "/www/node/blarney-marionette/client/templates/new/main.jade" }];
-try {
+return function template(locals) {
 var buf = [];
-var locals_ = (locals || {}),auth = locals_.auth;jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-if ( auth.loggedIn())
-jade.debug.shift();
-jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
-buf.push("<div class=\"spacer\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
-buf.push("<div class=\"align-center\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-buf.push("<div class=\"main-box new bg-white box-center box-shadow align-left\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 6, filename: jade.debug[0].filename });
-buf.push("<form>");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 6, filename: jade.debug[0].filename });
-buf.push("<input id=\"title\" type=\"text\" name=\"title\" placeholder=\"Title\" class=\"title box-shadow-thin\"/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 7, filename: jade.debug[0].filename });
-buf.push("<textarea id=\"message\" name=\"content\" placeholder=\"Message\" class=\"message box-shadow-thin\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</textarea>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
-buf.push("<br/>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
-buf.push("<button type=\"submit\" class=\"btn btn-success margin\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 9, filename: jade.debug[0].filename });
-buf.push("Post");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</button>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</form>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 10, filename: jade.debug[0].filename });
-buf.push("<div class=\"sidebar bg-grey white\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
-buf.push("<h3>");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 11, filename: jade.debug[0].filename });
-buf.push("Tips");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</h3>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 12, filename: jade.debug[0].filename });
-buf.push("<li class=\"text-small\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 12, filename: jade.debug[0].filename });
-buf.push("Do this for that");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</li>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
-buf.push("<li class=\"text-small\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 13, filename: jade.debug[0].filename });
-buf.push("And this for that");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</li>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();;return buf.join("");
-} catch (err) {
-  jade.rethrow(err, jade.debug[0].filename, jade.debug[0].lineno);
+var jade_mixins = {};
+var jade_interp;
+;var locals_for_with = (locals || {});(function (auth) {
+if ( auth && auth.loggedIn())
+{
 }
+buf.push("<div class=\"spacer\"></div><div class=\"align-center\"><div class=\"main-box new bg-white box-center box-shadow align-left\"><form><input id=\"title\" type=\"text\" name=\"title\" placeholder=\"Title\" class=\"title box-shadow-thin\"/><textarea id=\"message\" name=\"content\" placeholder=\"Message\" class=\"message box-shadow-thin\"></textarea><br/><button type=\"submit\" class=\"btn btn-success margin\">Post</button></form><div class=\"sidebar bg-grey white\"><h3>Tips</h3><li class=\"text-small\">Do this for that</li><li class=\"text-small\">And this for that</li></div></div></div>");}("auth" in locals_for_with?locals_for_with.auth:typeof auth!=="undefined"?auth:undefined));;return buf.join("");
 };
 
 });

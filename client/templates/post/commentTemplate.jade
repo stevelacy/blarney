@@ -1,8 +1,9 @@
-.comment.bg-white-trans-med
-  .date(data-livestamp="#{item.get('created_at')}")
-  .user
-    a(href="/#{item.get('author').get('handle')}")
-      img.icon(src="#{item.get('author').get('image')}") 
-      .name #{item.get('author').get('name')}
-  .message
-    | #{item.get('content')}
+if item
+  .comment.bg-white-trans-med
+    .date(data-livestamp="#{item.get('created_at')}")
+    .user
+      a(href="/#{item.get('author').get('handle')}")
+        img.icon(src="#{item.get('author').get('image')}") 
+        .name #{item.get('author').get('name')}
+    .message
+      | #{item.get('content')}

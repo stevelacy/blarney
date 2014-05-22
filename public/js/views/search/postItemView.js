@@ -15,7 +15,6 @@
       View.prototype.className = " main-box-cards bg-white-pure box-shadow-light align-left trans";
 
       View.prototype.render = function() {
-        console.log(this.model);
         this.$el.html(templ({
           item: this.model
         }));

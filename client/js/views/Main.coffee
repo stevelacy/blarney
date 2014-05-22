@@ -19,11 +19,11 @@ define (require) ->
       @posts.fetch()
 
       # search view
-      @searchView = new searchView
       return @
 
     render: ->
       #return @ unless @posts.get('author')
+      @searchView = new searchView
       @$el.html templ
         item: @posts
         auth: auth

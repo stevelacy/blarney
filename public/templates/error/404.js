@@ -1,41 +1,11 @@
 define(["vendor/jade"],function(jade){
 
-return function anonymous(locals) {
-jade.debug = [{ lineno: 1, filename: "/www/node/blarney-marionette/client/templates/error/404.jade" }];
-try {
+return function template(locals) {
 var buf = [];
-jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 1, filename: jade.debug[0].filename });
-buf.push("<div class=\"spacer\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.unshift({ lineno: 2, filename: jade.debug[0].filename });
-buf.push("<div class=\"align-center\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 3, filename: jade.debug[0].filename });
-buf.push("<div class=\"main-box bg-white-shade box-center box-shadow\">");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-buf.push("<h1>");
-jade.debug.unshift({ lineno: undefined, filename: jade.debug[0].filename });
-jade.debug.unshift({ lineno: 4, filename: jade.debug[0].filename });
-buf.push("404 not found");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</h1>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();
-buf.push("</div>");
-jade.debug.shift();
-jade.debug.shift();;return buf.join("");
-} catch (err) {
-  jade.rethrow(err, jade.debug[0].filename, jade.debug[0].lineno);
-}
+var jade_mixins = {};
+var jade_interp;
+
+buf.push("<div class=\"spacer\"></div><div class=\"align-center\"><div class=\"main-box bg-white-shade box-center box-shadow\"><h1>404 not found</h1></div></div>");;return buf.join("");
 };
 
 });

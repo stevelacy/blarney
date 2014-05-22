@@ -1,6 +1,6 @@
 define (require) ->
 
-  Post    = require "models/Post" 
+  Post    = require "models/Post"
   User    = require "models/User"
   templ   = require "templates/post/main"
   auth    = require "app/auth"

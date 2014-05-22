@@ -24,12 +24,12 @@
         });
         this.listenTo(this.posts, "sync", this.render);
         this.posts.fetch();
-        this.searchView = new searchView;
         return this;
       };
 
       View.prototype.render = function() {
         var postDiv, searchDiv;
+        this.searchView = new searchView;
         this.$el.html(templ({
           item: this.posts,
           auth: auth

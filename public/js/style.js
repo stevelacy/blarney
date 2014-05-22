@@ -1,8 +1,4 @@
 (function() {
-  $(document).ready(function() {
-    if (window.location.pathname == "/_=_") {
-      return window.location = "/";
-    }
-  });
+  $(document).ready(function() {});
 
 }).call(this);

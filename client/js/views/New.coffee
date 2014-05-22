@@ -19,9 +19,9 @@ define (require) ->
       e.preventDefault()
       itemData = @getFormData(@$el.find("form"))
 
-      @model.save itemData, 
+      @model.save itemData,
         success: (data) ->
-          Backbone.history.navigate "/p/#{data.id}", 
+          Backbone.history.navigate "/p/#{data.id}",
             trigger: true
         error: (model, data) ->
           Object.keys(data.responseJSON.error.errors).forEach (data) ->

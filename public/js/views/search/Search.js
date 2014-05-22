@@ -34,7 +34,6 @@
 
       View.prototype.search = function(e) {
         var query;
-        console.log("called");
         e.preventDefault();
         query = this.$el.find(".search-term").val();
         return Backbone.history.navigate("/search/" + query, {

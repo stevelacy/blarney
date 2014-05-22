@@ -27,14 +27,18 @@
         });
         this.listenTo(this.posts, "sync", this.render);
         this.posts.fetch();
-        this.searchView = new searchView({
-          query: this.query
-        });
         return this;
+      };
+
+      View.prototype.events = {
+        "click .search-button": "search"
       };
 
       View.prototype.render = function() {
         var postDiv, searchDiv;
+        this.searchView = new searchView({
+          query: this.query
+        });
         this.$el.html(templ({
           query: this.query,
           item: this.posts

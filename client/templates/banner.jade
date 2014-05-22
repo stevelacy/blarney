@@ -11,7 +11,7 @@ nav.navbar.navbar-default
         li
           a(href ="v1/posts") API
       ul.nav.navbar-nav.right-nav
-        if auth.loggedIn()
+        if auth && auth.loggedIn()
           li.nav-user-pre
             a(href="/new") New
           .nav-user

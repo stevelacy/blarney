@@ -5,7 +5,7 @@ define (require) ->
     urlRoot: '/v1/comments'
     url: ->
       if @get 'post'
-        return "#{@urlRoot}/?populate=post&populate=author"   
+        return "#{@urlRoot}/?populate=post&populate=author"
       return @urlRoot
       
     casts:
