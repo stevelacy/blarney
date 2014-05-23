@@ -28,7 +28,7 @@
     "gulp": "^3.5.2",
     "gulp-jade": "*",
     "gulp-wrap-amd": "*",
-    "gulp-livereload": "~0.1.0",
+    "gulp-livereload": "*",
     "tiny-lr": "0.0.5",
     "gulp-coffee": "*",
     "gulp-stylus": "*",
