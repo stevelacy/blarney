@@ -16,7 +16,8 @@ if item
           span
             | likes
         br
-        .post-content.text-med #{item.get('content')}
+        .post-content.text-med
+          - // content set via Marked in the view
 
       .spacer
       .comments-box

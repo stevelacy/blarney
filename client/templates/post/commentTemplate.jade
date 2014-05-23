@@ -6,4 +6,4 @@ if item
         img.icon(src="#{item.get('author').get('image')}") 
         .name #{item.get('author').get('name')}
     .message
-      | #{item.get('content')}
+      - // content set via Marked in view
