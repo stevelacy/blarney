@@ -39,6 +39,7 @@
         "login": "login",
         "logout": "logout",
         "search": "search",
+        "search/": "search",
         "search/:term": "search",
         "note/:id": "note",
         "admin": "admin",
