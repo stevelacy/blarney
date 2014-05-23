@@ -13,6 +13,17 @@ app.get "/s/:query", (req, res) ->
   Post.find({title: {$regex: req.params.query, $options: "i"}}).populate('author').exec (err, posts) ->
     res.json posts
 
+app.get '/js/loggedIn.js', (req, res) ->
+  src = "window._loggedIn = #{req.isAuthenticated()};"
+  if req.user
+    src += "\r\nwindow._id = \"#{req.user._id}\";"
+    src += "\r\nwindow._name = \"#{req.user.name}\";"
+    src += "\r\nwindow._level = \"#{req.user.level}\";"
+    src += "\r\nwindow._image = \"#{req.user.image}\";"
+    src += "\r\nwindow._handle = \"#{req.user.handle}\";"
+
+  res.set 'Content-Type', 'application/javascript'
+  res.send 200, src  
 
 
 app.get "/*", (req, res) ->
@@ -39,4 +50,4 @@ app.post "/upload", (req, res) ->
       user.background = put.url
       user.save (err, user) ->
         return res.render 'error/500' if err?
-        res.send result:'success' 
+        res.send result:'success'
