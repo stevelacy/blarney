@@ -30,7 +30,7 @@ gulp.task('jade', function(){
 });
 
 gulp.task('stylus', function(){
-  gulp.src('./client/css/**/*.styl')
+  gulp.src('./client/css/style.styl') // Note: style.styl is the root
   .pipe(stylus())
   .pipe(gulp.dest('./public/css'))
   .pipe(reload(server));

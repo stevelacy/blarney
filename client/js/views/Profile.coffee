@@ -4,9 +4,9 @@ define (require) ->
   Post = require "models/Post"
   Posts = require "collections/Posts"
   templ = require "templates/profile/main"
+  templ404 = require "templates/error/404"
   auth = require "app/auth"
   PostsView = require "views/profile/Posts"
-
 
   class View extends Backbone.Marionette.View
 
@@ -15,6 +15,7 @@ define (require) ->
 
       @model = new User handle: @options.user
       @listenTo @model, "sync", @render
+      @modalOpen = 0
 
       # submodel (posts)
       @posts = new Posts
@@ -30,6 +31,9 @@ define (require) ->
 
     render: ->
       return @ unless @model.get 'handle'
+      if not @model.get("_id")?
+        @$el.html templ404
+        return @
       @$el.html templ
         item: @model
         auth: auth
@@ -41,18 +45,17 @@ define (require) ->
       "click #edit-cover-button": "editBoxToggle"
       "click #sub-cover": "fileLoad"
       "change #file": "setFile"
-      "keyup": "closeView"
 
 
     ## functions
 
     editBoxToggle: =>
-      @$el.find("#edit-cover-box").fadeToggle()
-
-    closeView: (e) =>
-      return true unless e.keyCode == 27
-      return true unless @$el.find("#edit-cover-box").is ":visible"
-      @$el.find("#edit-cover-box").fadeOut()
+      if @modalOpen == 0
+        @$el.find("#edit-cover-box").modalify()
+        @modalOpen = 1
+      else
+        @$el.find("#edit-cover-box").modalify("close")
+        @modalOpen = 0
 
     setFile: (e) =>
       input = e.currentTarget

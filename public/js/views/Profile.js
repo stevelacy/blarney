@@ -4,11 +4,12 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Post, Posts, PostsView, User, View, auth, templ;
+    var Post, Posts, PostsView, User, View, auth, templ, templ404;
     User = require("models/User");
     Post = require("models/Post");
     Posts = require("collections/Posts");
     templ = require("templates/profile/main");
+    templ404 = require("templates/error/404");
     auth = require("app/auth");
     PostsView = require("views/profile/Posts");
     return View = (function(_super) {
@@ -16,7 +17,6 @@
 
       function View() {
         this.setFile = __bind(this.setFile, this);
-        this.closeView = __bind(this.closeView, this);
         this.editBoxToggle = __bind(this.editBoxToggle, this);
         return View.__super__.constructor.apply(this, arguments);
       }
@@ -27,6 +27,7 @@
           handle: this.options.user
         });
         this.listenTo(this.model, "sync", this.render);
+        this.modalOpen = 0;
         this.posts = new Posts;
         this.postsView = new PostsView({
           collection: this.posts
@@ -47,6 +48,10 @@
         if (!this.model.get('handle')) {
           return this;
         }
+        if (this.model.get("_id") == null) {
+          this.$el.html(templ404);
+          return this;
+        }
         this.$el.html(templ({
           item: this.model,
           auth: auth
@@ -59,22 +64,17 @@
       View.prototype.events = {
         "click #edit-cover-button": "editBoxToggle",
         "click #sub-cover": "fileLoad",
-        "change #file": "setFile",
-        "keyup": "closeView"
+        "change #file": "setFile"
       };
 
       View.prototype.editBoxToggle = function() {
-        return this.$el.find("#edit-cover-box").fadeToggle();
-      };
-
-      View.prototype.closeView = function(e) {
-        if (e.keyCode !== 27) {
-          return true;
+        if (this.modalOpen === 0) {
+          this.$el.find("#edit-cover-box").modalify();
+          return this.modalOpen = 1;
+        } else {
+          this.$el.find("#edit-cover-box").modalify("close");
+          return this.modalOpen = 0;
         }
-        if (!this.$el.find("#edit-cover-box").is(":visible")) {
-          return true;
-        }
-        return this.$el.find("#edit-cover-box").fadeOut();
       };
 
       View.prototype.setFile = function(e) {

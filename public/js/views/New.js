@@ -3,10 +3,19 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Post, View, auth, templ;
+    var Post, View, auth, marked, templ;
     Post = require("models/Post");
     templ = require("templates/new/main");
     auth = require("app/auth");
+    marked = require("vendor/marked");
+    marked.setOptions({
+      gfm: true,
+      sanitize: true,
+      pedantic: true,
+      highlight: function(code, lang) {
+        return prettyPrintOne(code, lang, true);
+      }
+    });
     return View = (function(_super) {
       __extends(View, _super);
 
@@ -23,7 +32,8 @@
       };
 
       View.prototype.events = {
-        "submit form": "saveData"
+        "submit form": "saveData",
+        "keyup #message": "changed"
       };
 
       View.prototype.saveData = function(e) {
@@ -42,6 +52,12 @@
             });
           }
         });
+      };
+
+      View.prototype.changed = function(e) {
+        var markdown;
+        markdown = marked($(e.target).val());
+        return this.$el.find(".preview").html(markdown);
       };
 
       View.prototype.getFormData = function(form) {

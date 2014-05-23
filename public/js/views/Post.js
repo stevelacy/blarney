@@ -3,14 +3,23 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(function(require) {
-    var Comment, Comments, CommentsView, Post, User, View, auth, templ;
+    var Comment, Comments, CommentsView, Post, User, View, auth, marked, templ;
     Post = require("models/Post");
     User = require("models/User");
     templ = require("templates/post/main");
     auth = require("app/auth");
+    marked = require("vendor/marked");
     CommentsView = require("views/post/Comments");
     Comments = require("collections/Comments");
     Comment = require("models/Comment");
+    marked.setOptions({
+      gfm: true,
+      sanitize: true,
+      pedantic: true,
+      highlight: function(code, lang) {
+        return prettyPrintOne(code, lang, true);
+      }
+    });
     return View = (function(_super) {
       __extends(View, _super);
 
@@ -34,7 +43,7 @@
       };
 
       View.prototype.render = function() {
-        var commentDiv;
+        var commentDiv, markdown;
         if (!this.model.get('author')) {
           return this;
         }
@@ -42,6 +51,8 @@
           item: this.model,
           auth: auth
         }));
+        markdown = marked(this.model.get("content"));
+        this.$el.find(".post-content").html(markdown);
         commentDiv = this.$el.find('.comments-box');
         commentDiv.html(this.commentsView.el);
         return this;

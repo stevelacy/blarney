@@ -4,9 +4,18 @@ define (require) ->
   User    = require "models/User"
   templ   = require "templates/post/main"
   auth    = require "app/auth"
+  marked = require "vendor/marked"
   CommentsView = require "views/post/Comments"
   Comments = require "collections/Comments"
   Comment = require "models/Comment"
+
+  marked.setOptions
+    gfm: true
+    sanitize: true
+    pedantic: true
+    highlight: (code, lang) ->
+      return prettyPrintOne code, lang, true
+
 
   class View extends Backbone.Marionette.View
     
@@ -29,6 +38,8 @@ define (require) ->
       @$el.html templ
         item: @model
         auth: auth
+      markdown = marked @model.get "content"
+      @$el.find(".post-content").html markdown
       commentDiv = @$el.find '.comments-box'
       commentDiv.html @commentsView.el
       return @

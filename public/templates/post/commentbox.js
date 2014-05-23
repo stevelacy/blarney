@@ -7,7 +7,7 @@ var jade_interp;
 ;var locals_for_with = (locals || {});(function (auth) {
 if ( auth && auth.loggedIn())
 {
-buf.push("<div class=\"new-comment bg-white-shade\"><div class=\"spacer-50\"><h2 class=\"grey\">Comment</h2></div><form><textarea name=\"content\" id=\"content\" placeholder=\"Message\"></textarea><div class=\"spacer-50\"></div><button type=\"submit\" class=\"btn btn-success\">Comment</button></form></div>");
+buf.push("<div class=\"new-comment bg-white-shade\"><div class=\"spacer-50\"><h2 class=\"grey\">Comment</h2></div><form><textarea name=\"content\" id=\"content\" placeholder=\"Message - parsed with markdown\"></textarea><div class=\"spacer-50\"></div><button type=\"submit\" class=\"btn btn-success\">Comment</button></form></div>");
 }
 else
 {
