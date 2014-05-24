@@ -13,7 +13,6 @@
       }
 
       Items.prototype.url = function() {
-        console.log("/s/" + this.query);
         return "/s/" + this.query;
       };
 

@@ -22,9 +22,6 @@ define (require) ->
       # search view
       return @
 
-    events:
-      "click .search-button": "search"
-
     render: ->
       @searchView = new searchView
         query: @query

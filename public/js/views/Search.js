@@ -30,10 +30,6 @@
         return this;
       };
 
-      View.prototype.events = {
-        "click .search-button": "search"
-      };
-
       View.prototype.render = function() {
         var postDiv, searchDiv;
         this.searchView = new searchView({
