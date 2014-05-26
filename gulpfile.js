@@ -21,7 +21,7 @@ gulp.task('templates', function(){
 });
 
 gulp.task('jade', function(){
-  gulp.src('./client/*.jade')
+  gulp.src('./client/index.jade')
   .pipe(jade())
   .pipe(gulp.dest('./public'))
   .pipe(reload());
