@@ -16,11 +16,11 @@
     if (auth.level() === "5") {
       Admin = require('views/admin/Main');
     }
-    region = new Backbone.Marionette.Region({
-      el: "#content"
-    });
     banner = new Backbone.Marionette.Region({
       el: "#banner"
+    });
+    region = new Backbone.Marionette.Region({
+      el: "#content"
     });
     footer = new Backbone.Marionette.Region({
       el: "#footer"
@@ -85,6 +85,9 @@
 
       AppRouter.prototype.login = function() {
         var view;
+        if (auth.loggedIn()) {
+          return this.navigate();
+        }
         view = new Login;
         return region.show(view);
       };

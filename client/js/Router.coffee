@@ -14,8 +14,8 @@ define (require) ->
   if auth.level() == "5"
     Admin = require 'views/admin/Main'
 
-  region = new Backbone.Marionette.Region el: "#content"
   banner = new Backbone.Marionette.Region el: "#banner"
+  region = new Backbone.Marionette.Region el: "#content"
   footer = new Backbone.Marionette.Region el: "#footer"
   
   class AppRouter extends Backbone.Router
@@ -35,23 +35,19 @@ define (require) ->
       "*user": "profile"
 
 
-
     post: (id) ->
       view = new Post post:id
       region.show view
 
     main: ->
       view = new Main
-      #$("#content").html view.render().el
       region.show view
-
 
     new: ->
       return auth.login() unless auth.loggedIn()
       view = new New
       region.show view
 
-   
     profile: (id) ->
       view = new Profile user:id
       region.show view
@@ -60,6 +56,7 @@ define (require) ->
       window.location.href = "/logout?server=true"
       
     login: ->
+      return @navigate() if auth.loggedIn()
       view = new Login
       region.show view
 
