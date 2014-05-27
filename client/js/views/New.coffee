@@ -19,10 +19,18 @@ define (require) ->
       @model = new Post
       @$el.html templ
         auth: auth
+      @focusInput()
+      
       return @
+
     events:
       "submit form": "saveData"
       "keyup #message": "changed"
+
+    focusInput: (e) ->
+      setTimeout =>
+        @$el.find(".title").focus()
+      , 1
 
     saveData: (e) ->
       e.preventDefault()

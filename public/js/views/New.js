@@ -28,12 +28,21 @@
         this.$el.html(templ({
           auth: auth
         }));
+        this.focusInput();
         return this;
       };
 
       View.prototype.events = {
         "submit form": "saveData",
         "keyup #message": "changed"
+      };
+
+      View.prototype.focusInput = function(e) {
+        return setTimeout((function(_this) {
+          return function() {
+            return _this.$el.find(".title").focus();
+          };
+        })(this), 1);
       };
 
       View.prototype.saveData = function(e) {
