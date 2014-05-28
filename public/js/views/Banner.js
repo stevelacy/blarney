@@ -13,11 +13,19 @@
         return View.__super__.constructor.apply(this, arguments);
       }
 
+      View.prototype.events = {
+        "click .navbar .user": "toggleNav"
+      };
+
       View.prototype.render = function() {
         this.$el.html(templ({
           auth: auth
         }));
         return this;
+      };
+
+      View.prototype.toggleNav = function() {
+        return this.$el.find(".user-nav").fadeToggle();
       };
 
       return View;

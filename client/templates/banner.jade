@@ -1,30 +1,22 @@
-nav.navbar.navbar-default
-  .navbar-header
-    a.navbar-brand.green(href="/") Blarney
-    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar .navbar-collapse')
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
-  .nav.sidebar
-    .navbar-collapse.collapse
-      ul.nav.navbar-nav
-        li
-          a(href ="v1/posts") API
-      ul.nav.navbar-nav.right-nav
-        if auth && auth.loggedIn()
-          li.nav-user-pre
-            a(href="/new") New
-          .nav-user
-            .btn-group
-              img.dropdown-toggle(data-toggle='dropdown' src="#{auth.image()}" alt="")
-              ul.dropdown-menu.trans
-                li
-                  a(href="/#{auth.handle()}") Profile
-                li
-                  a(href='/logout') Logout
-                if auth.level() == "5"
-                  li
-                    a(href='/admin') Admin
-        else
-          li
-            a#login(href="/login") Login
+.navbar
+  .left
+    a.logo.green(href="/") Blarney
+  .right
+    if auth && auth.loggedIn()
+      li.user
+        a
+          img(src="#{auth.image()}")
+        .user-nav
+          ul
+            li
+              a(href="/#{auth.handle()}") Profile
+            li
+              a(href='/logout') Logout
+            if auth.level() == "5"
+              li
+                a(href='/admin') Admin
+      li.new
+        a(href="/new") New
+    else
+      li.new
+        a(href="/login") Login
