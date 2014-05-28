@@ -461,22 +461,19 @@ nav .nav-user * {
   height: 375px;
   margin: 75px 0 0 5%;
 }
-.profile .bio-left {
+.profile .bio .left {
   width: 60%;
 }
-.profile .bio-right {
+.profile .bio .right {
   width: 40%;
 }
-.profile .bio-left,
-.profile .bio-right {
+.profile .bio .left,
+.profile .bio .right {
   height: 100%;
   padding: 5%;
   display: block;
   float: left;
   overflow: hidden;
-}
-.profile-content {
-  min-height: 0px;
 }
 .profile-background {
   position: absolute;
