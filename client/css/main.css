@@ -10,21 +10,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-body {
-  width: 100%;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.5em;
-  font-weight: 200;
-  color: #232323;
-}
-a {
-  text-decoration: none;
-  color: #659d32;
-}
-a:hover {
-  color: #51891e;
-  text-decoration: underline;
-}
+
 input,
 textarea {
   border: 1px solid #fafafa;

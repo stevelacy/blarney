@@ -1,40 +1,52 @@
 .navbar
-  padding-top 18px
-  min-height 90px
+  position relative
+  width 100%
+  min-height 75px
   font-size 1.3em
-  border-radius 0
-  margin 0
   background #fafafa
   z-index 9
-
-// Nav alterations
-
-nav .right-nav
-  position relative
-  float right
-
-nav .nav-user-pre
-  position: relative
-  right 75px
-  background green-med
-  a 
-    color #fff !important
-
-nav .nav-user
-  cursor pointer
-  position absolute
-  top 0
-  right 20px
-  width 40px
-  height 40px
-  img
-    height 50px
-  ul
+  .logo
+    margin-left 20px
+    font-size 1.2em
+  .left
     position absolute
-    top 60px
-    left -110px
-  .navbar, *
-    border-radius 0
-    -webkit-border-radius 0
-    -moz-border-radius 0
-    border none
+  .right
+    position relative
+    float right
+    width 90%
+    height 75px
+    display block
+    padding 12px 12px 0 12px
+    li
+      list-style none
+      display block
+      float right
+      width 100px
+    .user
+      img
+        width 50px
+      .user-nav
+        display none
+        li
+          text-align center
+          width 90px
+          float left
+          padding 5px
+          background #efefef
+          height 32px
+          font-size 18px
+          &:hover
+            background #fafafa
+          a
+            text-decoration none
+    .new
+      margin-top 14px !important
+      a
+        color #fff !important
+        padding 12px
+        background green-light
+        &:hover
+          text-decoration none
+          background green-med
+
+

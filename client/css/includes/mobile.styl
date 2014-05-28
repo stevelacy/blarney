@@ -55,51 +55,6 @@
 
 
 @media all and (max-width: 765px)
-  .nav
-    text-align center
-  overflow-x hidden
-  .navbar-collapse
-    position relative
-    margin-top 18px
-    min-height 90px
-    font-size 1.6em
-  .navbar-header
-    button.navbar-toggle
-      box-shadow none
-      border none
-      &:hover
-        background #fff
-    .icon-bar
-      background-color #000 !important
-
-  .navbar-header, .navbar-header button.navbar-toggle, .navbar-header.icon-bar
-    -webkit-border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    border-radius: 0 !important;    
-      
-  nav .right-nav
-    position relative
-    float none
-
-  nav .nav-user-pre
-    position: relative
-    right 0
-    background none
-    a 
-      color green-med !important
-
-  nav .nav-user
-    display: inline-block
-    position relative
-    width 100%
-    text-align center
-    height 150px
-    margin 10px
-    img
-      margin-left 10px
-    li
-      height 40px
-      font-size 1.3em
 
 
   .post-author
@@ -169,8 +124,34 @@
 
 @media all and (max-width: 500px)
 
-  nav
-    right 0px
+  .navbar
+    .right
+      li
+      .user
+        .user-nav
+          display none
+          position absolute
+          left 0
+          width 90%
+          min-height 50px
+          background #efefef
+          text-align center
+          li
+            width 100px
+            display inline-block
+            float none
+            padding 10px
+            background #efefef
+            height 50px
+            font-size 18px
+            &:hover
+              background #fafafa
+            a
+              text-decoration none
+
+
+
+
 
   .search
     margin 30px
