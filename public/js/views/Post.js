@@ -52,7 +52,7 @@
           auth: auth
         }));
         markdown = marked(this.model.get("content"));
-        this.$el.find(".post-content").html(markdown);
+        this.$el.find(".post .content").html(markdown);
         commentDiv = this.$el.find('.comments-box');
         commentDiv.html(this.commentsView.el);
         return this;
