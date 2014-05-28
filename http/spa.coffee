@@ -9,8 +9,12 @@ rootFile = path.join "public", "index.html"
 User = db.model "User"
 Post = db.model "Post"
 
-app.get "/s/:query", (req, res) ->
-  Post.find({title: {$regex: req.params.query, $options: "i"}}).populate('author').exec (err, posts) ->
+app.get "/s/:query/:limit?*", (req, res) ->
+  limit = 12
+  limit = Number(req.params.limit) if req.params.limit and typeof Number(req.params.limit) is "number"
+  Post.find({title: {$regex: req.params.query, $options: "i"}})
+  .limit(limit)
+  .populate('author').exec (err, posts) ->
     res.json posts
 
 app.get '/js/loggedIn.js', (req, res) ->
