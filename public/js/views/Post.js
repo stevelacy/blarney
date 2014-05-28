@@ -53,7 +53,7 @@
         }));
         markdown = marked(this.model.get("content"));
         this.$el.find(".post .content").html(markdown);
-        commentDiv = this.$el.find('.comments-box');
+        commentDiv = this.$el.find('.comments');
         commentDiv.html(this.commentsView.el);
         return this;
       };

@@ -40,7 +40,7 @@ define (require) ->
         auth: auth
       markdown = marked @model.get "content"
       @$el.find(".post .content").html markdown
-      commentDiv = @$el.find '.comments-box'
+      commentDiv = @$el.find '.comments'
       commentDiv.html @commentsView.el
       return @
 
