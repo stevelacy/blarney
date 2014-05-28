@@ -6,7 +6,6 @@
     "coffee-script": "1.7.0",
     "crudify": "*",
     "passport": "*",
-    "passport-twitter": "*",
     "connect": "*",
     "connect-mongo": "*",
     "express": "3.x",
@@ -21,6 +20,7 @@
     "try-parse": "*",
     "nib": "*",
     "knox": "~0.8.8",
+    "passport-twitter": "*",
     "passport-facebook": "~1.0.2"
   },
   "devDependencies": {

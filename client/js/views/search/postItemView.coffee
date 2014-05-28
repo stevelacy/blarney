@@ -8,5 +8,3 @@ define (require) ->
       @$el.html templ
         item: @model
       return @
-
-  

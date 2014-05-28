@@ -14,7 +14,7 @@ gulp.task('templates', function(){
   .pipe(wrap({
     deps: ['vendor/jade'],
     params: ['jade']
-    }))
+  }))
   .pipe(gulp.dest('./public/templates'))
   .pipe(reload());
 
