@@ -18,9 +18,9 @@ if item
             | #{item.get('name')}
         .bio.bg.bg-white-pure
           //.bio-left(class='#{profile.colors.bio}')
-          .bio-left
+          .left
             | #{item.get('description')}
-          .bio-right
+          .right
             if item.get('provider') == "twitter"
               a(href="https://twitter.com/#{item.get('handle')}") Twitter  @#{item.get('handle')}
 

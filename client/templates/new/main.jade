@@ -1,10 +1,10 @@
 if auth && auth.loggedIn()
 .spacer
 .align-center
-  .main-box.new.bg-white.box-center.box-shadow
+  .new.main-box.bg-white.box-center.box-shadow
     .editor
       form
-        input.title.box-shadow-thin#title(type='text' name='title' placeholder='Title')
+        input.title.box-shadow-thin(type='text' name='title' placeholder='Title')
         br
         textarea.message.box-shadow-thin#message(name='content' placeholder='Message - parsed with markdown')
         br
