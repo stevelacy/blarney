@@ -215,39 +215,42 @@ nav .nav-user * {
   width: 30px;
   font-size: 1em;
 }
-.post-title {
+.content {
+  margin: 2% 0 0 1.5%;
+  word-wrap: break-word;
+  max-width: 75%;
+}
+.content .flag {
+  float: right;
+}
+.post .date {
+  font-size: 1em;
+}
+.post .title {
   margin: 1%;
   max-width: 78%;
   word-wrap: break-word;
 }
-.post-stats {
+.post .stats {
   position: relative;
   width: 100px;
   height: 40px;
   margin-left: 10px;
   padding: 10px;
 }
-.post-stats img {
+.post .stats img {
   width: 50px;
   display: block;
   float: left;
 }
-.post-stats span {
+.post .stats span {
   position: absolute;
   width: 50px;
   left: 8px;
   top: 24px;
   text-align: center;
 }
-.post-content {
-  margin: 2% 0 0 1.5%;
-  word-wrap: break-word;
-  max-width: 75%;
-}
-.post .date {
-  font-size: 1em;
-}
-.post-author {
+.post .author {
   position: absolute;
   top: 0;
   right: 0;
@@ -255,22 +258,22 @@ nav .nav-user * {
   height: 100%;
   font-size: 1.3em;
 }
-.post-author .icon {
+.post .author .icon {
   margin: 20px 0 0 0;
   width: 50px;
   height: 50px;
 }
-.post-author .name {
+.post .author .name {
   width: 100%;
   font-size: 1.3em;
 }
-.post-author .bio {
+.post .author .bio {
   margin: 10px;
   max-width: 90%;
 }
-.post-author .icon,
-.post-author .name,
-.post-author .bio {
+.post .author .icon,
+.post .author .name,
+.post .author .bio {
   word-wrap: break-word;
   display: inline-block;
 }
