@@ -7,6 +7,3 @@ define (require) ->
     render: ->
       @$el.html templ auth: auth
       return @
-
-  
-

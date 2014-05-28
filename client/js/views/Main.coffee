@@ -34,5 +34,3 @@ define (require) ->
       searchDiv.html @searchView.render().el
 
       return @
-
-

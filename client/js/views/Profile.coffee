@@ -87,4 +87,3 @@ define (require) ->
 
       xhr.send formData, (err, res) ->
         console.log err if err?
-
