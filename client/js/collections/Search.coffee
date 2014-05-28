@@ -3,7 +3,7 @@ define (require) ->
 
   class Items extends Backbone.Collection
     url: ->
-      return "/s/#{@query}"
+      return "/s/#{@query}?limit=12"
 
     model: Post
   return Items

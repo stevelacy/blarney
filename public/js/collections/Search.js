@@ -13,7 +13,7 @@
       }
 
       Items.prototype.url = function() {
-        return "/s/" + this.query;
+        return "/s/" + this.query + "?limit=12";
       };
 
       Items.prototype.model = Post;
