@@ -13,6 +13,7 @@
     Footer = require('views/Footer');
     Profile = require('views/Profile');
     auth = require('app/auth');
+    require("utils/analytics");
     if (auth.level() === "5") {
       Admin = require('views/admin/Main');
     }
@@ -31,6 +32,10 @@
       function AppRouter() {
         return AppRouter.__super__.constructor.apply(this, arguments);
       }
+
+      AppRouter.prototype.initialize = function() {
+        return this.bind("route", this.routeHit);
+      };
 
       AppRouter.prototype.routes = {
         "": "main",
@@ -109,6 +114,14 @@
       AppRouter.prototype.navigate = function() {
         return Backbone.history.navigate('/', {
           trigger: true
+        });
+      };
+
+      AppRouter.prototype.routeHit = function() {
+        var path;
+        path = Backbone.history.getFragment();
+        return ga("send", "pageview", {
+          page: "/" + path
         });
       };
 

@@ -8,6 +8,7 @@ define (require) ->
   Footer = require 'views/Footer'
   Profile = require 'views/Profile'
   auth = require 'app/auth'
+  require "utils/analytics"
 
 
   # Admin
@@ -19,6 +20,9 @@ define (require) ->
   footer = new Backbone.Marionette.Region el: "#footer"
   
   class AppRouter extends Backbone.Router
+    initialize: ->
+      @bind "route", @routeHit
+
     routes:
       "": "main"
       "new": "new"
@@ -72,6 +76,11 @@ define (require) ->
       Backbone.history.navigate '/',
         trigger: true
 
+    # utils
+    routeHit: ->
+      path = Backbone.history.getFragment()
+      ga "send", "pageview", {page: "/" + path}
+
   appRouter = new AppRouter
 
   bannerView = new Banner
@@ -79,6 +88,3 @@ define (require) ->
   
   footerView = new Footer
   footer.show footerView
-
-
-  
