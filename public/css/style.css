@@ -118,12 +118,12 @@ input {
   width: 90px;
   float: left;
   padding: 5px;
-  background: #efefef;
+  background: #fafafa;
   height: 32px;
   font-size: 18px;
 }
 .navbar .right .user .user-nav li:hover {
-  background: #fafafa;
+  background: #fff;
 }
 .navbar .right .user .user-nav li a {
   text-decoration: none;
@@ -304,7 +304,7 @@ input {
   display: inline-block;
 }
 .comment {
-  width: 100%;
+  width: 90%;
   min-height: 100px;
   position: relative;
   display: block;
