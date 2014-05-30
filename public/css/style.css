@@ -304,7 +304,7 @@ input {
   display: inline-block;
 }
 .comment {
-  width: 90%;
+  width: 100%;
   min-height: 100px;
   position: relative;
   display: block;
@@ -316,7 +316,7 @@ input {
 .comment .user {
   position: relative;
   top: 20px;
-  left: 5%;
+  left: 2%;
   min-width: 200px;
   width: 50%;
   display: block;
@@ -342,7 +342,7 @@ input {
   display: block;
   float: left;
   padding: 1%;
-  margin: 40px 0 10px 5%;
+  margin: 40px 0 10px 2%;
 }
 .comment .rating {
   position: absolute;
@@ -590,7 +590,7 @@ footer ul li {
 }
 @media all and (min-width: 1100px) {
   .comments {
-    margin-left: 10%;
+    margin-left: 1%;
   }
 }
 @media all and (max-width: 1100px) {
