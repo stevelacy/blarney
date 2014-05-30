@@ -1,7 +1,7 @@
-mongoose = require "mongoose"
-async = require "async"
-requireDir = require "require-dir"
 path = require "path"
+async = require "async"
+mongoose = require "mongoose"
+requireDir = require "require-dir"
 config = require "../config"
 
 db = mongoose.createConnection config.mongodb.uri

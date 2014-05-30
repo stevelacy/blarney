@@ -71,5 +71,5 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', ['templates', 'scripts', 'copy', 'watch', 'jade', 'stylus'], function(){
-  require('./start'); 
+  require('./start');
 });

@@ -2,7 +2,6 @@ mongoose = require "mongoose"
 {Schema} = mongoose
 
 
-
 noWrite = ->
   perms =
     read: true
