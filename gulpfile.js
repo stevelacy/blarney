@@ -34,7 +34,7 @@ gulp.task('stylus', function(){
   .pipe(reload());
 });
 
-gulp.task('scripts',['lint:all'], function(){
+gulp.task('scripts', ['lint:all'], function(){
   gulp.src('./client/js/**/*.coffee')
     .pipe(coffee())
     .pipe(gulp.dest('./public/js'))
