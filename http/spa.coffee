@@ -27,7 +27,7 @@ app.get '/js/loggedIn.js', (req, res) ->
     src += "\r\nwindow._handle = \"#{req.user.handle}\";"
 
   res.set 'Content-Type', 'application/javascript'
-  res.send 200, src  
+  res.send 200, src
 
 
 app.get "/*", (req, res) ->
@@ -41,7 +41,7 @@ app.post "/upload", (req, res) ->
   return res.render "error/400" unless req.files.image?
   return res.render "error/400", {error:"Wrong filetype"} unless req.files.image.type in config.allowedFileTypes
 
-  toPath = path.join "/images/", req.user.handle 
+  toPath = path.join "/images/", req.user.handle
   fStream = fs.createReadStream req.files.image.path
   put = amazon.putStream fStream, toPath,
     "Content-Length": req.files.image.size

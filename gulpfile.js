@@ -34,7 +34,7 @@ gulp.task('stylus', function(){
   .pipe(reload());
 });
 
-gulp.task('scripts',['lint:coffee'], function(){
+gulp.task('scripts',['lint:all'], function(){
   gulp.src('./client/js/**/*.coffee')
     .pipe(coffee())
     .pipe(gulp.dest('./public/js'))
@@ -43,11 +43,19 @@ gulp.task('scripts',['lint:coffee'], function(){
     .pipe(gulp.dest('./public/js'));
 });
 
-gulp.task('lint:coffee', function(){
+gulp.task('lint:client:coffee', function(){
   gulp.src('./client/**/*.coffee')
   .pipe(clint())
   .pipe(clint.reporter());
 });
+
+// Server coffee
+gulp.task('lint:server:coffee', function(){
+  gulp.src(['./http/**/*.coffee', './mongodb/**/*.coffee'])
+  .pipe(clint())
+  .pipe(clint.reporter());
+});
+gulp.task('lint:all', ['lint:server:coffee', 'lint:client:coffee']);
 
 gulp.task('copy', function(){
   gulp.src('./client/css/**/*.css')
@@ -68,8 +76,9 @@ gulp.task('watch', function(){
     gulp.watch('./client/*.jade', ['jade']);
     gulp.watch('./client/css/**/*.css', ['copy']);
     gulp.watch('./client/css/**/*.styl', ['stylus']);
+    gulp.watch(['./http/**/*.coffee', './mongodb/**/*.coffee'], ['lint:server:coffee']);
 });
 
-gulp.task('default', ['templates', 'scripts', 'copy', 'watch', 'jade', 'stylus'], function(){
+gulp.task('default', ['templates', 'scripts', 'copy', 'watch', 'jade', 'stylus', 'lint:all'], function(){
   require('./start');
 });

@@ -48,7 +48,7 @@ User = new Schema
     type: String
     required: true
     default: 0
-    authorize: noWrite  
+    authorize: noWrite
 
   token:
     type: String
@@ -67,7 +67,7 @@ User = new Schema
     default: "https://si0.twimg.com/sticky/default_profile_images/default_profile_0_normal.png"
     authorize: noWrite
 
-  background: 
+  background:
     type: String
     default: '/images/bg/' + randBG
 
@@ -83,7 +83,7 @@ User = new Schema
     type: String
     authorize: noWrite
 
-  location: 
+  location:
     type: String
     authorize: noWrite
 

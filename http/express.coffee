@@ -28,7 +28,7 @@ app.use passport.session()
 
 
 app.all '*', (req, res, next) ->
-  return next() unless req.get 'Origin' 
+  return next() unless req.get 'Origin'
   res.set 'Access-Control-Allow-Origin', '*'
   res.set 'Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'
   res.set 'Access-Control-Allow-Headers', 'X-Requested-With, Content-Type'
