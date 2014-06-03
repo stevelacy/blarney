@@ -1,19 +1,20 @@
 define (require) ->
-  New = require 'views/New'
-  Main = require 'views/Main'
-  Post = require 'views/Post'
-  Login = require 'views/Login'
-  Search = require 'views/Search'
-  Banner = require 'views/Banner'
-  Footer = require 'views/Footer'
-  Profile = require 'views/Profile'
-  auth = require 'app/auth'
+  New = require "views/New"
+  Edit = require "views/Edit"
+  Main = require "views/Main"
+  Post = require "views/Post"
+  Login = require "views/Login"
+  Search = require "views/Search"
+  Banner = require "views/Banner"
+  Footer = require "views/Footer"
+  Profile = require "views/Profile"
+  auth = require "app/auth"
   require "utils/analytics"
 
 
   # Admin
   if auth.level() == "5"
-    Admin = require 'views/admin/Main'
+    Admin = require "views/admin/Main"
 
   banner = new Backbone.Marionette.Region el: "#banner"
   region = new Backbone.Marionette.Region el: "#content"
@@ -26,6 +27,7 @@ define (require) ->
     routes:
       "": "main"
       "new": "new"
+      "edit/:id": "edit"
       "p/:id": "post"
       "login": "login"
       "logout": "logout"
@@ -52,6 +54,11 @@ define (require) ->
       view = new New
       region.show view
 
+    edit: (id) ->
+      return auth.login() unless auth.loggedIn()
+      view = new Edit id:id
+      region.show view
+
     profile: (id) ->
       view = new Profile user:id
       region.show view
@@ -73,7 +80,7 @@ define (require) ->
         query: term
       region.show view
     navigate: ->
-      Backbone.history.navigate '/',
+      Backbone.history.navigate "/",
         trigger: true
 
     # utils
