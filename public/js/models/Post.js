@@ -14,6 +14,8 @@
 
       Item.prototype.urlRoot = '/v1/posts';
 
+      Item.prototype.idAttribute = "_id";
+
       Item.prototype.casts = {
         author: User
       };

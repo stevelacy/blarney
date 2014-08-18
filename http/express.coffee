@@ -1,7 +1,7 @@
 express = require "express"
 connect = require "connect"
 path = require "path"
-MongoStore = require("connect-mongo")(connect)
+
 
 passport = require "passport"
 config = require "../config"
@@ -14,12 +14,7 @@ app.use express.methodOverride()
 app.use express.bodyParser()
 app.use express.cookieParser()
 
-sessionStore = new MongoStore
-  mongoose_connection: db
-  auto_reconnect: true
-
 app.use express.session
-  store: sessionStore
   secret: config.cookieSecret
   maxAge: 31536000000
 

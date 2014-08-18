@@ -3,6 +3,7 @@ define (require) ->
 
   class Item extends Backbone.Model
     urlRoot: '/v1/posts'
+    idAttribute: "_id"
     casts:
       author: User
     url: ->

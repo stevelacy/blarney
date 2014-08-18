@@ -1,0 +1,17 @@
+if auth && auth.loggedIn()
+.spacer
+.align-center
+  .new.main-box.bg-white.box-center.box-shadow
+    .editor
+      form
+        input.title.box-shadow-thin(type='text' name='title' placeholder='Title' value="#{item.get('title')}")
+        br
+        textarea.message.box-shadow-thin#message(name='content' placeholder='Message - parsed with markdown') #{item.get('content')}
+        br
+        button.btn.btn-success.margin(type="submit") Publish
+    .preview.align-left
+      h1 Preview
+      h3 Tips
+      li.text-small Do this for that
+      li.text-small And this for that
+    a(href="https://help.github.com/articles/github-flavored-markdown" target="_blank") Markdown help
