@@ -1,0 +1,13 @@
+{
+  "uri": "localhost",
+  "port": 5000,
+  "mongodb": {
+    "uri": "mongodb://localhost/blarney_local"
+  },
+  "apis": [
+    "User",
+    "Post",
+    "Comment"
+  ],
+  "cookieSecret": "watcat"
+}

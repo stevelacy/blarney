@@ -14,4 +14,4 @@ build
 
 *key*
 node_modules
-config/*
+config/keys.json

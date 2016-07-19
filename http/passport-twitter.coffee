@@ -34,7 +34,7 @@ handleFunction = (token, tokenSecret, profile, cb) ->
 
 strategy = new TwitterStrategy
   consumerKey: config.twitter.consumerKey
-  consumerSecret: config.twitter.secretKey
+  consumerSecret: config.twitter.consumerSecret
   callbackURL: config.twitter.callback
 , handleFunction
 

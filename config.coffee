@@ -6,7 +6,7 @@ path = require "path"
 {argv} = require "optimist"
 env = argv.env or process.env.NODE_ENV or "development"
 
-configWithEnv = path.join __dirname, "./config/", "#{env}.json"
+configWithEnv = path.join __dirname, "./config/", "keys.json"
 configDefault = path.join __dirname, "./config/", "default.json"
 logFile = path.join process.cwd(), "#{env}.log"
 
